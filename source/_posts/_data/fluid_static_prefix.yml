@@ -1,0 +1,26 @@
+# internal_js: /js
+# internal_css: /css
+
+# internal_img: https://cdn.jsdelivr.net/gh/RainSunMe/RainSunMe.github.io@v1.0/img
+
+# anchor: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/anchor
+
+# font_awesome: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/font-awesome
+
+# github_markdown: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/github-markdown
+
+# jquery: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/jquery
+
+# bootstrap: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap
+
+# mdbootstrap: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/mdbootstrap
+
+# popper: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/popper
+
+# prettify: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/prettify
+
+# prettify_theme: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/prettify
+
+# tocbot: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/tocbot
+
+# typed: https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/typed
