@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="RainSun">
+  <meta name="keywords" content="前端 树莓派 服务器 内网穿透">
+  <title>RainSun&#39;s blog</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.1.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>RainSun&#39;s blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/bg.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/mongodb/" target="_self">
+          <img src="/img/mongodb-title.jpg" srcset="undefined" alt="mongoDB学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/mongodb/">
+        <p class="h4 index-header">mongoDB学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">mongoDB创建新用户db.createUser(
+  {
+    user: &quot;yingbo&quot;,
+    pwd: &quot;&quot;,
+    roles: [ { role: &quot;dbAdmin&quot;, db: &quot;yingbo&quot; },{ role: &#39;readWrite&#39;, db: &quot;yingbo&quot;} ]
+  }
+)
+
+db.createUser(
+  {
+    user: &quot;admin&quot;,
+    pwd: &quot;&quot;,
+    roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ]
+  }
+)
+log目录 /var/log/mongodb/mongod.logdb目录 /var/lib/mongo配置文件 /etc/mongod.conf启动/重启/停止  sudo service mongod start/restart/stop开启用户认证 c</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
+          
+            <a href="/categories/mongoDB">mongoDB</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
+          
+            <a href="/tags/mongoDB">mongoDB</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/pi-origin/" target="_self">
+          <img src="/img/ali-title.png" srcset="undefined" alt="树莓派3b更换国内软件源" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/pi-origin/">
+        <p class="h4 index-header">树莓派3b更换国内软件源</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">更换软件源
+切换到root用户su - root
+
+修改 /etc/apt/sources.listsudo nano /etc/apt/sources.list
+ 原文deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi 加#注释掉
+ 加入如下阿里源，deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+
+修改/etc/apt/sources.list.d/raspi.listsudo nano /etc/apt/sources.list.d/raspi.list
+ 原文deb http://archive.raspberrypi.org/debian/ stretch main ui， 加#
+ 加入如下科大源：deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main u</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/pi-ngrok/" target="_self">
+          <img src="/img/ngrok-title.png" srcset="undefined" alt="树莓派3b部署ngrok" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/pi-ngrok/">
+        <p class="h4 index-header">树莓派3b部署ngrok</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">ngrok先去sunny ngrok买个id
+下载wget &#39;hls.ctopus.com/sunny/linux_arm.zip?v=2&#39;
+重命名mv linux_arm.zip?v=2 linux_arm.zip
+解压缩unzip linux_arm.zip
+切文件夹cd linux_arm
+启动！./sunny clientid &lt;your-clientid&gt;
+后台运行setsid ./sunny clientid &lt;your-clientid&gt; &amp;
+移动到 /use/local/bin 目录下并给予可执行权限
+sudo mv sunny /usr/local/bin/sunny
+sudo chmod +x /usr/local/bin/sunny编写启动脚本sudo vim /etc/init.d/sunny
+内容
+#!/bin/sh -e
+### BEGIN INIT INFO
+# Provides:          ngrok.cc
+# Required-Start:    $network $remote_fs $loca</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/ngrok">ngrok</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/ngrok">ngrok</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/pi-gogs/" target="_self">
+          <img src="/img/gogs-title.jpg" srcset="undefined" alt="树莓派3b安装gogs" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/pi-gogs/">
+        <p class="h4 index-header">树莓派3b安装gogs</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">gogs创建新用户git 如果不创建会导致主账号登陆不了ssh
+切换为root用户为了获取创建用户的权限
+sudo su
+给root创建一个新的密码
+sudo passwd root
+添加一个新用户（如用户名为git）
+useradd git
+为该用户设定登录密码
+passwd git
+为该用户指定命令解释程序（通常为/bin/bash）
+usermod -s /bin/bash git
+为该用户指定用户主目录
+usermod -d /home/git git
+查看用户的属性
+cat /etc/passwd
+切换到用户git
+su git
+再次切换到root用户（不要用sudo su, 而用su root）
+su root
+执行visudo命令
+visudo
+该命令实际上打开的是/etc/sudoers文件，修改该文件，在“root ALL=(ALL:ALL) ALL”这一行下面加入一行：
+git ALL=(ALL:ALL) ALL
+ctrl+o（然后再按enter）保存，ctrl+c取消，ctrl+x退出
+
+下载wget &#39;https://github.com/gogs/go</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/gogs">gogs</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/gogs">gogs</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/git/" target="_self">
+          <img src="/img/git-title.jpg" srcset="undefined" alt="git常用命令总结" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/git/">
+        <p class="h4 index-header">git常用命令总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">git
+SSH C:\Users\yingbo\.ssh
+
+创建： ssh-keygen -t rsa -C &#39;邮件地址&#39;
+测试： ssh -T git@github.com
+注意：上面创建语句完成后会让你输入密码，直接回车，不然之后提交的时候每次都会让你输入密码
+
+
+git init 初始化仓库
+
+git status 查看仓库状态
+
+git add &#39;文件名&#39; 向暂存区添加文件，如果添加所有文件，’文件名’ =&gt; *
+
+git commit -m &#39;text&#39; 
+
+提交，text为提交描述
+直接 git commit会进入详细编辑的界面
+第一行简介
+第二行空行
+第三行详情
+
+
+
+
+git log 提交日志
+
+尾缀
+--pretty = short 只显示概要
+目录名/文件名 只显示该目录或者该文件的记录
+-P 显示改动
+-P 文件名 显示该文件的改动
+
+
+
+
+git diff 查看区别
+
+git diff HEAD 本次与上次的区别
+
+
+git branch 显示所有分支
+
+git checkout -b name 创建name</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7">工具</a>&nbsp;
+          
+            <a href="/categories/git">git</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
+          
+            <a href="/tags/git">git</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/linux/" target="_self">
+          <img src="/img/linux-title.jpg" srcset="undefined" alt="linux 命令积累" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/linux/">
+        <p class="h4 index-header">linux 命令积累</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">linux查看所有端口占用情况netstat -ntlp
+创建文件touch
+查看 5000端口占用程序sudo lsof -i:5000
+停止进程sudo kill (PID)
+下载到当前文件夹wget&quot;&lt;url&gt;&quot;
+下载到 /home/omio/Desktopwget -P /home/omio/Desktop/&quot;&lt;url&gt;&quot;
+下载并重命名为NewFileNamewget -O /home/omio/Desktop/NewFileName&quot;&lt;url&gt;&quot;
+压缩zip -r archive_name.zip directory_to_compress
+解压缩unzip archive_name.zip
+打包tar -cvf archive_name.tar directory_to_compress
+解包tar -xvf archive_name.tar.gz
+压缩tar -zcvf archive_name.tar.gz directory_to_compress
+解压缩tar -zxvf</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%B3%BB%E7%BB%9F">系统</a>&nbsp;
+          
+            <a href="/categories/linux">linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/system">system</a>&nbsp;
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+            <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/flask/" target="_self">
+          <img src="https://dormousehole.readthedocs.io/en/latest/_images/flask-logo.png" srcset="undefined" alt="Flask 简单安装和部署" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/flask/">
+        <p class="h4 index-header">Flask 简单安装和部署</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">flask安装venv
+python3 -m venv venv
+启动venv
+. venv/bin/activate
+关闭venv
+deactivate 
+查看现在已经安装的依赖
+pip3 list
+更新pip
+pip install --upgrade pip
+安装Flask
+pip install Flask
+安装最新的flask
+pip install -U https://github.com/pallets/flask/archive/master.tar.gz
+安装pymongo
+pip install pymongo
+安装requests
+pip install requests
+安装payjs
+pip install payjs
+设置全局变量
+export FLASK_APP=qrcode.py
+export FLASK_ENV=development
+启动
+flask run --host=0.0.0.0
+在虚拟环境下安装gunicorn 
+pip install gunicorn
+添加配置文件 gunicorn.conf
+# 并行工作线程数
+workers = 4</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A1%86%E6%9E%B6">框架</a>&nbsp;
+          
+            <a href="/categories/flask">flask</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/python">python</a>&nbsp;
+          
+            <a href="/tags/flask">flask</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/16/hello-world/" target="_self">
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573903734488&di=5e20992798c05e322bb32348c9f0aa6d&imgtype=0&src=http%3A%2F%2Fimg.cwq.com%2F201712%2F1513127498165415.jpeg" srcset="undefined" alt="Hello World" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/16/hello-world/">
+        <p class="h4 index-header">Hello World</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
+More info: Writing
+Run server$ hexo server
+More info: Server
+Generate static files$ hexo generate
+More info: Generating
+Deploy to remote sites$ hexo deploy
+More info: Deployment
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-16&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/quickStart">quickStart</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Hexo">Hexo</a>&nbsp;
+          
+            <a href="/tags/Fluid">Fluid</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/jquery/jquery.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/popper/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3ad039c2b7e1e0812c3ffc9e370bc4cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Fight For Your Dream&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>mongoDB学习笔记</title>
+    <link href="undefined2019/11/30/mongodb/"/>
+    <url>2019/11/30/mongodb/</url>
+    
+    <content type="html"><![CDATA[<h1 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h1><h3 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h3><pre><code class="js">db.createUser(  {    user: &quot;yingbo&quot;,    pwd: &quot;&quot;,    roles: [ { role: &quot;dbAdmin&quot;, db: &quot;yingbo&quot; },{ role: &#39;readWrite&#39;, db: &quot;yingbo&quot;} ]  })db.createUser(  {    user: &quot;admin&quot;,    pwd: &quot;&quot;,    roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ]  })</code></pre><h3 id="log目录-var-log-mongodb-mongod-log"><a href="#log目录-var-log-mongodb-mongod-log" class="headerlink" title="log目录 /var/log/mongodb/mongod.log"></a>log目录 <code>/var/log/mongodb/mongod.log</code></h3><h3 id="db目录-var-lib-mongo"><a href="#db目录-var-lib-mongo" class="headerlink" title="db目录 /var/lib/mongo"></a>db目录 <code>/var/lib/mongo</code></h3><h3 id="配置文件-etc-mongod-conf"><a href="#配置文件-etc-mongod-conf" class="headerlink" title="配置文件 /etc/mongod.conf"></a>配置文件 <code>/etc/mongod.conf</code></h3><h3 id="启动-重启-停止-sudo-service-mongod-start-restart-stop"><a href="#启动-重启-停止-sudo-service-mongod-start-restart-stop" class="headerlink" title="启动/重启/停止  sudo service mongod start/restart/stop"></a>启动/重启/停止  <code>sudo service mongod start/restart/stop</code></h3><h3 id="开启用户认证-conf-文件加"><a href="#开启用户认证-conf-文件加" class="headerlink" title="开启用户认证 conf 文件加"></a>开启用户认证 conf 文件加</h3><pre><code>security:  authorization: enabled</code></pre><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><pre><code class="c">//方法一mongo --port 12236 -u &quot;admin&quot; -p &quot;&quot; --authenticationDatabase &quot;admin&quot;//方法二db.auth(&quot;yingbo&quot;, &quot;&quot;)</code></pre><h3 id="显示所有数据库"><a href="#显示所有数据库" class="headerlink" title="显示所有数据库"></a>显示所有数据库</h3><p><code>show dbs</code></p><h3 id="删库"><a href="#删库" class="headerlink" title="删库"></a>删库</h3><pre><code>use &lt;dbname&gt;db.dropDatabase()</code></pre><h3 id="显示所有集合"><a href="#显示所有集合" class="headerlink" title="显示所有集合"></a>显示所有集合</h3><p><code>show tables</code> 或者 <code>show collections</code></p><h3 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h3><pre><code class="js">//正常情况下直接插入数据就可以自动新建一个集合//创建固定集合 mycol，整个集合空间大小 6142800 KB, 文档最大个数为 10000 个。db.createCollection(&quot;&lt;collectionName&gt;&quot;, { capped : true, autoIndexId : true, size :    6142800, max : 10000 } )//单纯的新建一个集合db.createCollection(&quot;&lt;collectionName&gt;&quot;)</code></pre><h3 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h3><p><code>db.&lt;collectionName&gt;.drop()</code></p><h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><p><code>db.&lt;collectionName&gt;.insert(&lt;object&gt;)</code></p><h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><p><code>db.&lt;collectionName&gt;.remove({key:value})</code> find里边可以为{}删除全部</p><h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><pre><code>db.&lt;collectionName&gt;.update(   &lt;query&gt;,   &lt;update&gt;,   {     upsert: &lt;boolean&gt;,     multi: &lt;boolean&gt;,     writeConcern: &lt;document&gt;   })/*    query : update的查询条件，类似sql update查询内where后面的。    update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的    upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。    multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。    writeConcern :可选，抛出异常的级别。*/</code></pre><h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><p><code>db.&lt;collectionName&gt;.find({key:value})</code> find里边可以没有参数</p><pre><code>//格式化显示db.col.find().pretty()//条件语句db.col.find({likes : {$lt :200, $gt : 100}}).pretty() //限制 100&lt;likes&lt;200$lt:小于$lte:小于或等于$gt:大于$gte:大于或等于$ne: 不等于$type:     Double     1          String     2          Object     3          Array     4          Binary data     5          Undefined     6     已废弃。    Object id     7          Boolean     8          Date     9          Null     10          Regular Expression     11          JavaScript     13          Symbol     14          JavaScript (with scope)     15          32-bit integer     16          Timestamp     17          64-bit integer     18          Min key     255     Query with -1.    Max key     127//ANDdb.col.find({key1:value1, key2:value2}).pretty()//ORdb.col.find({$or:[{&quot;by&quot;:&quot;菜鸟教程&quot;},{&quot;title&quot;: &quot;MongoDB 教程&quot;}]}).pretty()//AND+ORdb.col.find({&quot;likes&quot;: {$gt:50}, $or: [{&quot;by&quot;: &quot;菜鸟教程&quot;},{&quot;title&quot;: &quot;MongoDB 教程&quot;}]}).pretty()</code></pre><hr><h2 id="Limit与Skip方法"><a href="#Limit与Skip方法" class="headerlink" title="Limit与Skip方法"></a>Limit与Skip方法</h2><p><code>db.&lt;collectionName&gt;.find().limit(&lt;number1&gt;).skip(&lt;number2&gt;)</code></p><p>number1 : 本次查询最多显示条数</p><p>number2 : 本次查询跳过的条数</p><hr><h2 id="sort-方法"><a href="#sort-方法" class="headerlink" title="sort() 方法"></a>sort() 方法</h2><p><code>db.&lt;collectionName&gt;.find().sort({&lt;key&gt;:&lt;number&gt;})</code></p><p>key : 需要进行排序的键名</p><p>number : 其中 1 为升序排列，而 -1 是用于降序排列</p><hr><h2 id="createIndex-方法"><a href="#createIndex-方法" class="headerlink" title="createIndex() 方法"></a>createIndex() 方法</h2><p><code>db.values.createIndex({&lt;key&gt;: &lt;number&gt;, &lt;key&gt;: &lt;number&gt;}, {background: true})</code></p><p>key : 需要进行排序的键名</p><p>number : 其中 1 为升序排列，而 -1 是用于降序排列</p><p>建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 “background” 可选参数。 “background” 默认值为false。</p><hr><h2 id="aggregate-方法"><a href="#aggregate-方法" class="headerlink" title="aggregate() 方法"></a>aggregate() 方法</h2><pre><code>db.mycol.aggregate([{$group : {_id : &quot;$by_user&quot;, num_tutorial : {$sum : 1}}}]){   &quot;result&quot; : [      {         &quot;_id&quot; : &quot;runoob.com&quot;,         &quot;num_tutorial&quot; : 2      },      {         &quot;_id&quot; : &quot;Neo4j&quot;,         &quot;num_tutorial&quot; : 1      }   ],   &quot;ok&quot; : 1}</code></pre><p>$sum    计算总和。    db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$sum : “$likes”}}}])</p><p>$avg    计算平均值    db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$avg : “$likes”}}}])</p><p>$min    获取集合中所有文档对应值得最小值。    db.mycol.aggregate([{$group : {_id : “$by_user”, num_tutorial : {$min : “$likes”}}}])</p><p>$max    获取集合中所有文档对应值得最大值。    db.mycol.aggregate([{$group : {_id :<br>“$by_user”, num_tutorial : {$max : “$likes”}}}])</p><p>$push    在结果文档中插入值到一个数组中。    db.mycol.aggregate([{$group : {_id : “$by_user”, url : {$push: “$url”}}}])</p><p>$addToSet    在结果文档中插入值到一个数组中，但不创建副本。    db.mycol.aggregate([{$group : {_id : “$by_user”, url : {$addToSet : “$url”}}}])</p><p>$first    根据资源文档的排序获取第一个文档数据。    db.mycol.aggregate([{$group : {_id : “$by_user”, first_url : {$first : “$url”}}}])</p><p>$last    根据资源文档的排序获取最后一个文档数据    db.mycol.aggregate([{$group : {_id : “$by_user”, last_url : {$last : “$url”}}}])</p><h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>$project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。</p><pre><code>结果中就只还有_id,tilte和author三个字段db.article.aggregate(    { $project : {        title : 1 ,        author : 1 ,    }} );连id一起删除db.article.aggregate(    { $project : {        _id : 0 ,        title : 1 ,        author : 1    }});</code></pre><p>$match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。</p><pre><code>db.articles.aggregate( [  { $match : { score : { $gt : 70, $lte : 90 } } },  { $group: { _id: null, count: { $sum: 1 } } }] );</code></pre><p>$limit：用来限制MongoDB聚合管道返回的文档数。</p><p>$skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。</p><pre><code>db.article.aggregate(    { $skip : 5 });</code></pre><p>$unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。</p><p>$group：将集合中的文档分组，可用于统计结果。</p><p>$sort：将输入文档排序后输出。</p><p>$geoNear：输出接近某一地理位置的有序文档。</p><hr><h2 id="MongoDB-复制（副本集）"><a href="#MongoDB-复制（副本集）" class="headerlink" title="MongoDB 复制（副本集）"></a>MongoDB 复制（副本集）</h2><p>等树莓派装完再看</p><h2 id="MongoDB-分片"><a href="#MongoDB-分片" class="headerlink" title="MongoDB 分片"></a>MongoDB 分片</h2><p>等树莓派装完再看</p><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p><code>mongodump -h dbhost -d dbname -o dbdirectory</code></p><p>-h：<br>MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017</p><p>-d：<br>需要备份的数据库实例，例如：test</p><p>-o：<br>备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。 </p><h2 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h2><p><code>mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d dbname &lt;path&gt;</code></p><pre><code>--host &lt;:port&gt;, -h &lt;:port&gt;：MongoDB所在服务器地址，默认为： localhost:27017--db , -d ：需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2--drop：恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！&lt;path&gt;：mongorestore 最后的一个参数，设置备份数据所在位置，例如：c:\data\dump\test。你不能同时指定 &lt;path&gt; 和 --dir 选项，--dir也可以设置备份目录。--dir：指定备份的目录你不能同时指定 &lt;path&gt; 和 --dir 选项。</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据库</category>
+      
+      <category>mongoDB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+      <tag>mongoDB</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>树莓派3b更换国内软件源</title>
+    <link href="undefined2019/11/30/pi-origin/"/>
+    <url>2019/11/30/pi-origin/</url>
+    
+    <content type="html"><![CDATA[<h1 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h1><ol><li><p>切换到root用户<br><code>su - root</code></p></li><li><p>修改 /etc/apt/sources.list<br><code>sudo nano /etc/apt/sources.list</code></p><p> 原文<code>deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi</code> 加#注释掉</p><p> 加入如下阿里源，<code>deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi</code></p></li><li><p>修改/etc/apt/sources.list.d/raspi.list<br><code>sudo nano /etc/apt/sources.list.d/raspi.list</code></p><p> 原文<code>deb http://archive.raspberrypi.org/debian/ stretch main ui，</code> 加#</p><p> 加入如下科大源：<code>deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui</code></p></li><li><p>更新系统和软件<br><code>sudo apt-get update</code></p><p> <code>sudo apt-get upgrade</code></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>树莓派3b</category>
+      
+      <category>软件源</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>树莓派3b</tag>
+      
+      <tag>软件源</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>树莓派3b部署ngrok</title>
+    <link href="undefined2019/11/30/pi-ngrok/"/>
+    <url>2019/11/30/pi-ngrok/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ngrok"><a href="#ngrok" class="headerlink" title="ngrok"></a>ngrok</h1><p>先去<a href="http://www.ngrok.cc/" target="_blank" rel="noopener">sunny ngrok</a>买个id</p><p>下载<br><code>wget &#39;hls.ctopus.com/sunny/linux_arm.zip?v=2&#39;</code></p><p>重命名<br><code>mv linux_arm.zip?v=2 linux_arm.zip</code></p><p>解压缩<br><code>unzip linux_arm.zip</code></p><p>切文件夹<br><code>cd linux_arm</code></p><p>启动！<br><code>./sunny clientid &lt;your-clientid&gt;</code></p><p>后台运行<br><code>setsid ./sunny clientid &lt;your-clientid&gt; &amp;</code></p><p>移动到 /use/local/bin 目录下并给予可执行权限</p><pre><code>sudo mv sunny /usr/local/bin/sunnysudo chmod +x /usr/local/bin/sunny</code></pre><p>编写启动脚本<br><code>sudo vim /etc/init.d/sunny</code></p><p>内容</p><pre><code>#!/bin/sh -e### BEGIN INIT INFO# Provides:          ngrok.cc# Required-Start:    $network $remote_fs $local_fs# Required-Stop:     $network $remote_fs $local_fs# Default-Start:     2 3 4 5# Default-Stop:      0 1 6# Short-Description: autostartup of ngrok for Linux### END INIT INFONAME=sunnyDAEMON=/usr/local/bin/$NAMEPIDFILE=/var/run/$NAME.pid[ -x &quot;$DAEMON&quot; ] || exit 0case &quot;$1&quot; in  start)      if [ -f $PIDFILE ]; then        echo &quot;$NAME already running...&quot;        echo -e &quot;\033[1;35mStart Fail\033[0m&quot;      else        echo &quot;Starting $NAME...&quot;        start-stop-daemon -S -p $PIDFILE -m -b -o -q -x $DAEMON -- clientid &lt;your-clientid&gt; || return 2        echo -e &quot;\033[1;32mStart Success\033[0m&quot;    fi    ;;  stop)        echo &quot;Stoping $NAME...&quot;        start-stop-daemon -K -p $PIDFILE -s TERM -o -q || return 2        rm -rf $PIDFILE        echo -e &quot;\033[1;32mStop Success\033[0m&quot;    ;;  restart)    $0 stop &amp;&amp; sleep 2 &amp;&amp; $0 start    ;;  *)    echo &quot;Usage: $0 {start|stop|restart}&quot;    exit 1    ;;esacexit 0</code></pre><p>测试</p><pre><code>sudo chmod 755 /etc/init.d/sunnysudo /etc/init.d/sunny startsudo /etc/init.d/sunny start    #启动sudo /etc/init.d/sunny stop     #停止sudo /etc/init.d/sunny restart  #重启</code></pre><p>开机启动</p><pre><code>cd /etc/init.dsudo update-rc.d sunny defaults 90    #加入开机启动sudo update-rc.d -f sunny remove  #取消开机启动</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>树莓派3b</category>
+      
+      <category>ngrok</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>树莓派3b</tag>
+      
+      <tag>ngrok</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>树莓派3b安装gogs</title>
+    <link href="undefined2019/11/30/pi-gogs/"/>
+    <url>2019/11/30/pi-gogs/</url>
+    
+    <content type="html"><![CDATA[<h1 id="gogs"><a href="#gogs" class="headerlink" title="gogs"></a>gogs</h1><p>创建新用户git 如果不创建会导致主账号登陆不了ssh</p><p>切换为root用户为了获取创建用户的权限</p><p><code>sudo su</code></p><p>给root创建一个新的密码</p><p><code>sudo passwd root</code></p><p>添加一个新用户（如用户名为git）</p><p><code>useradd git</code></p><p>为该用户设定登录密码</p><p><code>passwd git</code></p><p>为该用户指定命令解释程序（通常为/bin/bash）</p><p><code>usermod -s /bin/bash git</code></p><p>为该用户指定用户主目录</p><p><code>usermod -d /home/git git</code></p><p>查看用户的属性</p><p><code>cat /etc/passwd</code></p><p>切换到用户git</p><p><code>su git</code></p><p>再次切换到root用户（不要用sudo su, 而用su root）</p><p><code>su root</code></p><p>执行visudo命令</p><p><code>visudo</code></p><p>该命令实际上打开的是/etc/sudoers文件，修改该文件，在“root ALL=(ALL:ALL) ALL”这一行下面加入一行：</p><p><code>git ALL=(ALL:ALL) ALL</code></p><p>ctrl+o（然后再按enter）保存，ctrl+c取消，ctrl+x退出</p><hr><p>下载<br><code>wget &#39;https://github.com/gogs/gogs/releases/download/v0.11.91/raspi_armv7.zip&#39;</code></p><p>解压<br><code>unzip raspi_armv7.zip</code></p><p>进文件夹<br><code>cd gogs</code></p><p>开启web服务<br><code>./gogs web</code></p><p>去3000端口进行设置，数据库设置成sqlite就行</p><p>在<code>/etc/systemd/system/gogs.service</code>新建文件</p><pre><code>[Unit]Description=Gogs (Go Git Service)After=syslog.targetAfter=network.target#After=mysqld.service#After=postgresql.service#After=memcached.service#After=redis.service[Service]# Modify these two values and uncomment them if you have# repos with lots of files and get an HTTP error 500 because# of that####LimitMEMLOCK=infinity#LimitNOFILE=65535Type=simpleUser=gitGroup=gitWorkingDirectory=/home/git/gogsExecStart=/home/git/gogs/gogs webRestart=alwaysEnvironment=USER=git HOME=/home/git[Install]WantedBy=multi-user.target</code></pre><p>更新 User、Group、WorkingDirectory、ExecStart 和 Environment 为相对应的值。其中 WorkingDirectory 为您的 Gogs 实际安装路径根目录。</p><p>[可选] 如果您 Gogs 安装示例使用 MySQL/MariaDB、PostgreSQL、Redis 或 memcached，请去掉相应 After 属性的注释。</p><p>然后通过 <code>sudo systemctl enable gogs</code> 命令激活，最后执行 <code>sudo systemd start gogs</code>，就可以做到开机启动了。</p><p>官方文件解释<a href="'https://gogs.io/docs/advanced/configuration_cheat_sheet'">docs</a></p><p>重启 <code>sudo systemctl restart gogs</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>树莓派3b</category>
+      
+      <category>gogs</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>树莓派3b</tag>
+      
+      <tag>gogs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>git常用命令总结</title>
+    <link href="undefined2019/11/30/git/"/>
+    <url>2019/11/30/git/</url>
+    
+    <content type="html"><![CDATA[<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><ul><li><p>SSH <code>C:\Users\yingbo\.ssh</code></p><ul><li>创建： <code>ssh-keygen -t rsa -C &#39;邮件地址&#39;</code></li><li>测试： <code>ssh -T git@github.com</code></li><li>注意：上面创建语句完成后会让你输入密码，直接回车，不然之后提交的时候每次都会让你输入密码</li></ul></li><li><p><code>git init</code> 初始化仓库</p></li><li><p><code>git status</code> 查看仓库状态</p></li><li><p><code>git add &#39;文件名&#39;</code> 向暂存区添加文件，如果添加所有文件，’文件名’ =&gt; *</p></li><li><p><code>git commit -m &#39;text&#39;</code> </p><ul><li>提交，text为提交描述</li><li>直接 <code>git commit</code>会进入详细编辑的界面<ul><li>第一行简介</li><li>第二行空行</li><li>第三行详情</li></ul></li></ul></li><li><p><code>git log</code> 提交日志</p><ul><li>尾缀<ul><li><code>--pretty = short</code> 只显示概要</li><li><code>目录名/文件名</code> 只显示该目录或者该文件的记录</li><li><code>-P</code> 显示改动</li><li><code>-P</code> 文件名 显示该文件的改动</li></ul></li></ul></li><li><p><code>git diff</code> 查看区别</p><ul><li><code>git diff HEAD</code> 本次与上次的区别</li></ul></li><li><p><code>git branch</code> 显示所有分支</p><ul><li><code>git checkout -b name</code> 创建name分支并进入( 等同于下边两步)<ul><li>=&gt; <code>git branch name</code></li><li>=&gt; <code>git checkout name</code></li></ul></li><li><code>git checkout -</code> 切换回上一个分支</li><li>注：最好每做一件事就创建一个新的分支，保证代码无误再合并到主分支，保障主分支随时可用</li></ul></li><li><p>合并分支</p><ul><li><code>git checkout &#39;合并到的分支名&#39;</code></li><li><code>git merge --no--ff &#39;合并后消失的分支名&#39;</code></li><li><code>git log --graph</code> 图表形式提交日志</li></ul></li><li><p><code>git reset --hard &#39;哈希值&#39;</code> 回溯历史版本</p></li><li><p><code>git reflog</code> 操作日志</p></li><li><p>查看冲突并解决 git merge 后提示有冲突，此时冲突文件会被修改，进文件改成想要的样子，然后git add，git commit，done！</p></li><li><p><code>git commit --amend</code> 修改上一条的提交信息</p></li><li><p>压缩历史</p><ul><li><code>git commit -am</code> 一次性进暂存然后提交<ul><li>注：修改名称为 typo 例： fix typo</li></ul></li><li><code>git rebase -i HEAD~2</code> 合并两次最新提交</li><li>进入编辑器</li><li>pick 7a34294 Add feature-C</li><li>pick ofba227 Fix typo 将typo -&gt; fixup<br>然后保存 -&gt; ok</li></ul></li><li><p>添加远程仓库</p><ul><li><code>git remote add origin &#39;网址&#39;</code></li><li><code>git push -u origin master</code></li><li>//将当前分支推送到origin远端的master分支（master不存在的话自动新建）</li><li><code>git clone &#39;网址&#39;</code> 克隆仓库</li><li><code>git branch -a</code> 同时显示本地和远端的分支</li><li><code>git checkout -b feature-D origin/feature-D</code></li><li>//新建本地feature-D分支并把远端的feature-D同步过来</li></ul></li><li><p><code>git fetch</code> 与 <code>git pull</code> 的区别</p><ul><li>git pull = git fetch + git margin</li></ul></li><li><p>删除分支</p><ul><li><code>git branch -D &#39;分支名&#39;</code></li></ul></li><li><p>PR总结</p><pre><code>git checkout -b &lt;name&gt; //创建分支coding...git commit -m &#39;&lt;content&gt;&#39; //提交git pushd -u origin &lt;name&gt;  //推远端web -&gt; prgit branch -d &lt;name&gt;  //删除本地git push origin --delete &lt;name&gt; //删除远端</code></pre></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>git</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>命令</tag>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux 命令积累</title>
+    <link href="undefined2019/11/30/linux/"/>
+    <url>2019/11/30/linux/</url>
+    
+    <content type="html"><![CDATA[<h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><p>查看所有端口占用情况<br><code>netstat -ntlp</code></p><p>创建文件<br><code>touch</code></p><p>查看 5000端口占用程序<br><code>sudo lsof -i:5000</code></p><p>停止进程<br><code>sudo kill (PID)</code></p><p>下载到当前文件夹<br><code>wget&quot;&lt;url&gt;&quot;</code></p><p>下载到 /home/omio/Desktop<br><code>wget -P /home/omio/Desktop/&quot;&lt;url&gt;&quot;</code></p><p>下载并重命名为NewFileName<br><code>wget -O /home/omio/Desktop/NewFileName&quot;&lt;url&gt;&quot;</code></p><p>压缩<br><code>zip -r archive_name.zip directory_to_compress</code></p><p>解压缩<br><code>unzip archive_name.zip</code></p><p>打包<br><code>tar -cvf archive_name.tar directory_to_compress</code></p><p>解包<br><code>tar -xvf archive_name.tar.gz</code></p><p>压缩<br><code>tar -zcvf archive_name.tar.gz directory_to_compress</code></p><p>解压缩<br><code>tar -zxvf archive_name.tar.gz</code></p><p><code>tar -zxvf archive_name.tar.gz -C /tmp/extract_here/</code></p><p>重命名<br><code>mv fromfile tofile</code><br>如把文件a.txt得命名为b.txt，可以是mv a.txt b.txt。</p><p>删除一个空目录<br><code>rm -d 目录名</code></p><p>删除一个空目录<br><code>rm -dir 目录名</code></p><p>删除一个非空目录<br><code>rm -r 目录名</code></p><p>删除文件<br><code>rm 文件名</code></p><p>修改文件权限<br><a href="'https://blog.csdn.net/slwhy/article/details/78876237'">链接</a></p><p>sudo chmod o+rwx /usr/local/bin/sunny</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>系统</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>system</tag>
+      
+      <tag>linux</tag>
+      
+      <tag>命令</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Flask 简单安装和部署</title>
+    <link href="undefined2019/11/30/flask/"/>
+    <url>2019/11/30/flask/</url>
+    
+    <content type="html"><![CDATA[<h1 id="flask"><a href="#flask" class="headerlink" title="flask"></a>flask</h1><p>安装venv</p><p><code>python3 -m venv venv</code></p><p>启动venv</p><p><code>. venv/bin/activate</code></p><p>关闭venv</p><p><code>deactivate</code> </p><p>查看现在已经安装的依赖</p><p><code>pip3 list</code></p><p>更新pip</p><p><code>pip install --upgrade pip</code></p><p>安装Flask</p><p><code>pip install Flask</code></p><p>安装最新的flask</p><p><code>pip install -U https://github.com/pallets/flask/archive/master.tar.gz</code></p><p>安装pymongo</p><p><code>pip install pymongo</code></p><p>安装requests</p><p><code>pip install requests</code></p><p>安装payjs</p><p><code>pip install payjs</code></p><p>设置全局变量</p><p><code>export FLASK_APP=qrcode.py</code></p><p><code>export FLASK_ENV=development</code></p><p>启动</p><p><code>flask run --host=0.0.0.0</code></p><p>在虚拟环境下安装gunicorn </p><p><code>pip install gunicorn</code></p><p>添加配置文件 gunicorn.conf</p><pre><code># 并行工作线程数workers = 4# 监听内网端口5000【按需要更改】bind = &#39;127.0.0.1:5000&#39;# 设置守护进程【关闭连接时，程序仍在运行】daemon = True# 设置超时时间120s，默认为30s。按自己的需求进行设置timeout = 120# 设置访问日志和错误信息日志路径# accesslog = &#39;./logs/acess.log&#39;# errorlog = &#39;./logs/error.log&#39;# 自动重启autostart = ture</code></pre><p>启动gunicorn</p><p><code>gunicorn qrcode:app -c gunicorn.conf</code></p><p>查询gunicorn</p><p><code>pstree -ap|grep gunicorn</code></p><p>停止进程</p><p><code>kill (pid)</code></p><hr><p>在路由中</p><ol><li>同时有user/ 和 user 优先解释 user/</li><li>只有 user 的情况下 访问user/会报404</li><li>只有 user/ 的情况下 访问user会被重定向</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>flask</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>flask</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="undefined2019/11/16/hello-world/"/>
+    <url>2019/11/16/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>quickStart</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+      <tag>Fluid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
