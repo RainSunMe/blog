@@ -136,6 +136,63 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/03/30/init-centos/" target="_self">
+          <img src="/img/linux-title.jpg" srcset="undefined" alt="阿里云服务器初始化" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/30/init-centos/">
+        <p class="h4 index-header">阿里云服务器初始化</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">初始化服务器因为是阿里的服务器，装的centos8，已经自己换好阿里的镜像源了，很nice更新yum
+sudo yum -y updateTodo
+
+ nginx
+ mongodb 
+ docker
+ htop安装nginx使用yum安装sudo yum -y install nginx   # 安装 nginx
+sudo yum remove nginx  # 卸载 nginx配置nginx服务sudo systemctl enable nginx # 设置开机启动
+sudo service nginx start # 启动nginx服务
+sudo service nginx stop # 停止nginx服务
+sudo service nginx restart # 重启nginx服务
+sudo service nginx reload # 重新加载配置，一般是在修改过nginx配置文件时使用安装htop使用yum安装yum install epel-release -y
+yum install htop -y安装docker网页链接如果报错package docker-ce-3:1</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%B3%BB%E7%BB%9F">系统</a>&nbsp;
+          
+            <a href="/categories/%E9%83%A8%E7%BD%B2%E6%96%B0%E6%9C%8D%E5%8A%A1%E5%99%A8">部署新服务器</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+            <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/11/30/mongodb/" target="_self">
           <img src="/img/mongodb-title.jpg" srcset="undefined" alt="mongoDB学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -566,9 +623,9 @@ export FLASK_ENV=development
 flask run --host=0.0.0.0
 在虚拟环境下安装gunicorn 
 pip install gunicorn
-添加配置文件 gunicorn.conf
+添加配置文件 gunicorn.conf.py
 # 并行工作线程数
-workers = 4</div>
+workers </div>
         </div>
       </a>
 
@@ -715,6 +772,11 @@ More info: Deployment
 
 
     
+  <!-- 备案信息 -->
+  <a href="http://beian.miit.gov.cn/" target="_blank"
+     rel="nofollow noopener">吉ICP备18005655号</a>
+  
+
 
   </div>
 </footer>

@@ -253,7 +253,13 @@ db.col.find({key1:value1, key2:value2}).pretty()
 db.col.find({$or:[{&quot;by&quot;:&quot;菜鸟教程&quot;},{&quot;title&quot;: &quot;MongoDB 教程&quot;}]}).pretty()
 
 //AND+OR
-db.col.find({&quot;likes&quot;: {$gt:50}, $or: [{&quot;by&quot;: &quot;菜鸟教程&quot;},{&quot;title&quot;: &quot;MongoDB 教程&quot;}]}).pretty()</code></pre><hr>
+db.col.find({&quot;likes&quot;: {$gt:50}, $or: [{&quot;by&quot;: &quot;菜鸟教程&quot;},{&quot;title&quot;: &quot;MongoDB 教程&quot;}]}).pretty()
+
+// 排除某个字段，例如_id
+db.col.find({},{&quot;_id&quot;: 0})
+
+// 指定返回某几个字段
+db.col.find({},{&quot;name&quot;: 1, &quot;sex&quot;: 1})</code></pre><hr>
 <h2 id="Limit与Skip方法"><a href="#Limit与Skip方法" class="headerlink" title="Limit与Skip方法"></a>Limit与Skip方法</h2><p><code>db.&lt;collectionName&gt;.find().limit(&lt;number1&gt;).skip(&lt;number2&gt;)</code></p>
 <p>number1 : 本次查询最多显示条数</p>
 <p>number2 : 本次查询跳过的条数</p>
@@ -486,6 +492,11 @@ mongorestore 最后的一个参数，设置备份数据所在位置，例如：c
 
 
     
+  <!-- 备案信息 -->
+  <a href="http://beian.miit.gov.cn/" target="_blank"
+     rel="nofollow noopener">吉ICP备18005655号</a>
+  
+
 
   </div>
 </footer>

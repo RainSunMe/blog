@@ -145,6 +145,12 @@ db.col.find({$or:[{"by":"菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
 
 //AND+OR
 db.col.find({"likes": {$gt:50}, $or: [{"by": "菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
+
+// 排除某个字段，例如_id
+db.col.find({},{"_id": 0})
+
+// 指定返回某几个字段
+db.col.find({},{"name": 1, "sex": 1})
 ```
 
 ---

@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    289 字
+                    291 字
                   </span>&nbsp;
                 
 
@@ -190,7 +190,7 @@
 <p><code>flask run --host=0.0.0.0</code></p>
 <p>在虚拟环境下安装gunicorn </p>
 <p><code>pip install gunicorn</code></p>
-<p>添加配置文件 gunicorn.conf</p>
+<p>添加配置文件 gunicorn.conf.py</p>
 <pre><code># 并行工作线程数
 workers = 4
 # 监听内网端口5000【按需要更改】
@@ -204,7 +204,7 @@ timeout = 120
 # errorlog = &#39;./logs/error.log&#39;
 # 自动重启
 autostart = ture</code></pre><p>启动gunicorn</p>
-<p><code>gunicorn qrcode:app -c gunicorn.conf</code></p>
+<p><code>gunicorn qrcode:app -c gunicorn.conf.py</code></p>
 <p>查询gunicorn</p>
 <p><code>pstree -ap|grep gunicorn</code></p>
 <p>停止进程</p>
@@ -362,6 +362,11 @@ autostart = ture</code></pre><p>启动gunicorn</p>
 
 
     
+  <!-- 备案信息 -->
+  <a href="http://beian.miit.gov.cn/" target="_blank"
+     rel="nofollow noopener">吉ICP备18005655号</a>
+  
+
 
   </div>
 </footer>

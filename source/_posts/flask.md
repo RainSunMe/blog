@@ -62,7 +62,7 @@ date: 2019-11-30 20:21:00
 
 `pip install gunicorn`
 
-添加配置文件 gunicorn.conf
+添加配置文件 gunicorn.conf.py
 
 ```
 # 并行工作线程数
@@ -82,7 +82,7 @@ autostart = ture
 
 启动gunicorn
 
-`gunicorn qrcode:app -c gunicorn.conf`
+`gunicorn qrcode:app -c gunicorn.conf.py`
 
 查询gunicorn
 

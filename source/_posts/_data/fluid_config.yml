@@ -96,10 +96,10 @@ footer:
     uv_format: "总访客数 {} 人"
 
   beian:  # The footer of China's website policy, other areas keep disable
-    enable: false
-    icp_text: 京ICP证123456号 # ICP证号
-    police_text: 京公网安备12345678号 # 公安备案号，不填则只显示ICP
-    police_code: 12345678 # 公安备案的编号，用于URL跳转查询
+    enable: true
+    icp_text: 吉ICP备18005655号 # ICP证号
+    police_text:  # 公安备案号，不填则只显示ICP
+    police_code:  # 公安备案的编号，用于URL跳转查询
 
 scroll_top_arrow:  # 向顶部滚动的箭头
   enable: true
@@ -260,7 +260,7 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
     "fab fa-github": https://github.com/RainSunMe
     # "fab fa-twitter": https://twitter.com
     "fab fa-weixin": /img/wx.jpg # 微信图标，这个是特殊图标，点击不会跳转而是悬浮二维码，所以链接需要对应二维码图片地址
-
+    
 
 #---------------------------
 # 404页
