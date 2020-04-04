@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="RainSun">
   <meta name="keywords" content="前端 树莓派 服务器 内网穿透">
-  <title>树莓派3b更换国内软件源 ~ RainSun&#39;s blog</title>
+  <title>分类 - docker ~ RainSun&#39;s blog</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/css/bootstrap.min.css"  >
@@ -38,7 +38,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -98,7 +98,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/pi.jpg')no-repeat center center;
+         style="background: url('/img/category.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -108,41 +108,6 @@
               
             </span>
 
-            
-              <br>
-              
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期六, 十一月 30日 2019, 9:44 晚上
-                </p>
-              
-
-              <p>
-                
-                  
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
-                    125 字
-                  </span>&nbsp;
-                
-
-                
-                  
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      1 分钟
-                  </span>&nbsp;
-                
-
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
             
           </div>
 
@@ -154,111 +119,33 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+    
       
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <h1 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h1><h2 id="切换到root用户"><a href="#切换到root用户" class="headerlink" title="切换到root用户"></a>切换到root用户</h2><p><code>su - root</code></p>
-<h2 id="修改-etc-apt-sources-list"><a href="#修改-etc-apt-sources-list" class="headerlink" title="修改 /etc/apt/sources.list"></a>修改 /etc/apt/sources.list</h2><p><code>sudo nano /etc/apt/sources.list</code></p>
-<pre><code>原文`deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi` 加#注释掉
-
-加入如下阿里源，`deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi`</code></pre><h2 id="修改-etc-apt-sources-list-d-raspi-list"><a href="#修改-etc-apt-sources-list-d-raspi-list" class="headerlink" title="修改/etc/apt/sources.list.d/raspi.list"></a>修改/etc/apt/sources.list.d/raspi.list</h2><p><code>sudo nano /etc/apt/sources.list.d/raspi.list</code></p>
-<pre><code>原文`deb http://archive.raspberrypi.org/debian/ stretch main ui，` 加#
-
-加入如下科大源：`deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui`</code></pre><h2 id="更新系统和软件"><a href="#更新系统和软件" class="headerlink" title="更新系统和软件"></a>更新系统和软件</h2><p><code>sudo apt-get update</code></p>
-<pre><code>`sudo apt-get upgrade`</code></pre>
-            <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
-                
-                  <a class="hover-with-bg" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>
-                  &nbsp;
-                
-                  <a class="hover-with-bg" href="/categories/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>
-                  &nbsp;
-                
-              </span>&nbsp;&nbsp;
-            
-            
-              <span>
-                <i class="iconfont icon-tag"></i>
-                
-                  <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>
-                
-                  <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>
-                
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
+      <p class="h5">2020</p>
+    
+    <a href="/2020/04/01/docker/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">docker学习笔记</span>
+      <span style="float: right;">04-01</span>
+    </a>
+  
+</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'false' === true;
-    var verify = 'false' === true;
-    var oldLoad = window.onload;
-    window.onload = function () {
-      new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
-        app_id: "A3JYkveICuvxzCmgLEBxx45A-gzGzoHsz",
-        app_key: "aFXgOtg5azzGFzSyzJ7m39PT",
-        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
-        avatar: "retro",
-        meta: ['nick', 'mail', 'link'],
-        pageSize: "10",
-      });
-      oldLoad && oldLoad();
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-    
-  </div>
-</div>
-
     
   </main>
 
@@ -338,11 +225,6 @@
 
 
 
-  
-    <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
-
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -394,7 +276,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "树莓派3b更换国内软件源&nbsp;",
+        "分类 - docker&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,

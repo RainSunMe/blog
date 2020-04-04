@@ -136,8 +136,130 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/04/pi-aria2/" target="_self">
+          <img src="/img/aria2-title.jpg" srcset="undefined" alt="树莓派3b安装aria2" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/04/pi-aria2/">
+        <p class="h4 index-header">树莓派3b安装aria2</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">aria2安装aria2sudo apt-get install aria2配置aria2的文件mkdir ~/.aria2
+touch ~/.aria2/aria2.session
+mkdir /home/pi/data/aria2
+mkdir /home/pi/data/aria2/download
+nano ~/.aria2/aria2.confconf文件里边写
+dir=/home/pi/data/aria2/download
+disable-ipv6=true
+enable-rpc=true
+rpc-allow-origin-all=true
+rpc-listen-all=true
+continue=true
+input-file=/home/pi/.aria2/aria2.session
+save-session=/home/pi/.aria2/aria2.session 
+max-concurrent-downloads=5
+save-session-interval=60
+peer-id-prefix=-TR2770-
+user-agent=Transmission/2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/aria2">aria2</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/aria2">aria2</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/01/docker/" target="_self">
+          <img src="/img/docker-title.jpg" srcset="undefined" alt="docker学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/01/docker/">
+        <p class="h4 index-header">docker学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">docker查看全部网桥
+docker network ls查看某个网桥
+docker network inspect &lt;name&gt;创建一个名为lacus的网桥
+docker network create --driver bridge lacus允许指定网段 上一句指定参数在名之前
+--subnet 172.22.16.0/24 --gateway 172.22.16.1删除lacus网桥
+docker network rm lacus连接到lacus网桥
+--network=lacus
+容器间通信的三种方式IP通信
+只要放在了一个网桥下就可以通过ip进行访问了
+Docker DNS Server
+docker内嵌了DNS Server，只要使用--name=&lt;name&gt;指定容器名并且绑定在一个网桥中就可以使用名字ping -c 3 name连通
+
+使用 docker DNS 有个限制：只能在 user-defined 网络中使用。
+
+joined 容器
+通过--network=container:&lt;name&gt;指定jointed容器
+实例运行por</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7">工具</a>&nbsp;
+          
+            <a href="/categories/docker">docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/30/init-centos/" target="_self">
-          <img src="/img/linux-title.jpg" srcset="undefined" alt="阿里云服务器初始化" class="img-fluid rounded z-depth-3 index-thumbnails">
+          <img src="/img/ali-title.png" srcset="undefined" alt="阿里云服务器初始化" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
       </div>
     
@@ -266,16 +388,14 @@ log目录 /var/log/mongodb/mongod.logdb目录 /var/lib/mongo配置文件 /etc/mo
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">更换软件源
-切换到root用户su - root
-
+          <div class="index-text mb-1">更换软件源切换到root用户su - root
 修改 /etc/apt/sources.listsudo nano /etc/apt/sources.list
- 原文deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi 加#注释掉
- 加入如下阿里源，deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+原文`deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi` 加#注释掉
 
-修改/etc/apt/sources.list.d/raspi.listsudo nano /etc/apt/sources.list.d/raspi.list
- 原文deb http://archive.raspberrypi.org/debian/ stretch main ui， 加#
- 加入如下科大源：deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main u</div>
+加入如下阿里源，`deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi`修改/etc/apt/sources.list.d/raspi.listsudo nano /etc/apt/sources.list.d/raspi.list
+原文`deb http://archive.raspberrypi.org/debian/ stretch main ui，` 加#
+
+加入如下科大源：`deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main </div>
         </div>
       </a>
 
@@ -537,19 +657,46 @@ git checkout -b name 创建name</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">linux查看所有端口占用情况netstat -ntlp
-创建文件touch
-查看 5000端口占用程序sudo lsof -i:5000
-停止进程sudo kill (PID)
-下载到当前文件夹wget&quot;&lt;url&gt;&quot;
-下载到 /home/omio/Desktopwget -P /home/omio/Desktop/&quot;&lt;url&gt;&quot;
-下载并重命名为NewFileNamewget -O /home/omio/Desktop/NewFileName&quot;&lt;url&gt;&quot;
-压缩zip -r archive_name.zip directory_to_compress
-解压缩unzip archive_name.zip
-打包tar -cvf archive_name.tar directory_to_compress
-解包tar -xvf archive_name.tar.gz
-压缩tar -zcvf archive_name.tar.gz directory_to_compress
-解压缩tar -zxvf</div>
+          <div class="index-text mb-1">linux切换用户su - root
+- 的含义是携带当前环境变量
+
+增加用户useradd
+-g 指定用户所在群组 
+-m 自动建立用户的登入目录 
+-n 取消建立和用户同名的群组
+
+更改对应用户密码passwd查看进程ps
+-ef 查看所有进程以及其pid 
+-aux 查看所有进程并显示其占用的cpu以及mem 
+-w 显示加宽可以显示更多信息
+ps -auxwww加宽三次
+
+停止进程kill (pid)
+-s 发送指定信号到进程
+-p 打印出进程号，但是不发送信号
+-l 打印出所有可用信号名称
+
+查看磁盘fdisk -l
+必须使用root权限
+
+切换目录cd ../
+./当前目录
+../上级目录
+cd -返回到上个目录
+
+显示当前文件夹下的文件夹以及文件ls
+-l 显示详细信息
+-a -all 列出所有文件包括隐藏文件
+-d 将目录名和其他文件一样列出，而不是列出目录的内容
+-f 不排序目录内容，按他们在磁盘上存储的顺序列出
+
+创建一个目录mkdir
+-m 对新建目录设置权限
+-p 可以是一个路径，可以一次创建多层目录
+
+查看文件内容cat (文件路径)
+-n 输出行号
+-b 输</div>
         </div>
       </a>
 
@@ -653,59 +800,19 @@ workers </div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/11/16/hello-world/" target="_self">
-          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573903734488&di=5e20992798c05e322bb32348c9f0aa6d&imgtype=0&src=http%3A%2F%2Fimg.cwq.com%2F201712%2F1513127498165415.jpeg" srcset="undefined" alt="Hello World" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/16/hello-world/">
-        <p class="h4 index-header">Hello World</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server$ hexo server
-More info: Server
-Generate static files$ hexo generate
-More info: Generating
-Deploy to remote sites$ hexo deploy
-More info: Deployment
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/quickStart">quickStart</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Hexo">Hexo</a>&nbsp;
-          
-            <a href="/tags/Fluid">Fluid</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
 
 
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

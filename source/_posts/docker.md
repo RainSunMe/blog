@@ -1,3 +1,11 @@
+---
+title: docker学习笔记
+date: 2020-4-1 21:23:42
+tags: [linux, docker]
+categories: [工具, docker]
+index_img: /img/docker-title.jpg
+banner_img: /img/docker.jpg
+---
 # docker
 查看全部网桥
 ```
@@ -39,29 +47,29 @@ docker内嵌了DNS Server，只要使用`--name=<name>`指定容器名并且绑�
 通过`--network=container:<name>`指定`jointed`容器
 
 ## 实例
-运行portainer
+**运行portainer**
 ```
 docker run -d -p 127.0.0.1:5001:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --name prtainer  portainer/portainer
 ```
-运行mongodb
+**运行mongodb**
 ```
 // pi
 docker run -d --name rpi-mongodb3 -v /home/pi/db/mongo:/data/db -p 27017:27017 --network=lacus casualsimulation/rpi-mongodb3 mongod --auth
 // al
 docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --network=lacus mongo mongod --auth
 ```
-打包
+**打包**
 ```
-// al ccb wL2wG2aD6aI1
+// al ccb
 docker build -t lacus/ccb_backend:1.0 .
-// al yg zV1pL8sP4nQ1
+// al yg
 docker build -t lacus/yg_backend:1.0 .
-// al coc qlSfefSor5
+// al coc
 docker build -t lacus/coc_backend:1.0 .
 // al ccb frontEnd
 docker build -t lacus/ccb_frontend:1.0 .
 ```
-运行
+**运行**
 ```
 // al ccb
 docker run -it --name ccb -v /root/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --network=lacus lacus/ccb_backend:1.0 /bin/sh

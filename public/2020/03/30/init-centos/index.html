@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    217 字
+                    245 字
                   </span>&nbsp;
                 
 
@@ -167,8 +167,8 @@
 <pre><code>sudo yum -y update</code></pre><p>Todo</p>
 <ol>
 <li><input checked="" disabled="" type="checkbox"> nginx</li>
-<li><input disabled="" type="checkbox"> mongodb </li>
-<li><input disabled="" type="checkbox"> docker</li>
+<li><input checked="" disabled="" type="checkbox"> mongodb </li>
+<li><input checked="" disabled="" type="checkbox"> docker</li>
 <li><input checked="" disabled="" type="checkbox"> htop<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2>使用<code>yum</code>安装<pre><code>sudo yum -y install nginx   # 安装 nginx
 sudo yum remove nginx  # 卸载 nginx</code></pre>配置<code>nginx</code>服务<pre><code>sudo systemctl enable nginx # 设置开机启动
 sudo service nginx start # 启动nginx服务
@@ -177,7 +177,7 @@ sudo service nginx restart # 重启nginx服务
 sudo service nginx reload # 重新加载配置，一般是在修改过nginx配置文件时使用</code></pre><h2 id="安装htop"><a href="#安装htop" class="headerlink" title="安装htop"></a>安装htop</h2>使用<code>yum</code>安装<pre><code>yum install epel-release -y
 yum install htop -y</code></pre><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">网页链接</a><br>如果报错<code>package docker-ce-3:19.03.8-3.el7.x86_64 requires containerd.io &gt;= 1.2.2-3, but none of the providers can be installed</code><br>就执行以下命令<pre><code>dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
 sudo yum install docker-ce docker-ce-cli
-sudo systemctl start docker</code></pre></li>
+sudo systemctl start docker</code></pre><h2 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h2>使用<code>docker</code>安装<pre><code>docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --network=lacus mongo mongod --auth</code></pre></li>
 </ol>
 
             <hr>

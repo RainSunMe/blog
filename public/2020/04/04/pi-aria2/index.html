@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="RainSun">
   <meta name="keywords" content="前端 树莓派 服务器 内网穿透">
-  <title>树莓派3b更换国内软件源 ~ RainSun&#39;s blog</title>
+  <title>树莓派3b安装aria2 ~ RainSun&#39;s blog</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期六, 十一月 30日 2019, 9:44 晚上
+                  星期六, 四月 4日 2020, 11:02 上午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    125 字
+                    293 字
                   </span>&nbsp;
                 
 
@@ -163,15 +163,58 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h1><h2 id="切换到root用户"><a href="#切换到root用户" class="headerlink" title="切换到root用户"></a>切换到root用户</h2><p><code>su - root</code></p>
-<h2 id="修改-etc-apt-sources-list"><a href="#修改-etc-apt-sources-list" class="headerlink" title="修改 /etc/apt/sources.list"></a>修改 /etc/apt/sources.list</h2><p><code>sudo nano /etc/apt/sources.list</code></p>
-<pre><code>原文`deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi` 加#注释掉
+            <h1 id="aria2"><a href="#aria2" class="headerlink" title="aria2"></a>aria2</h1><h2 id="安装aria2"><a href="#安装aria2" class="headerlink" title="安装aria2"></a>安装<code>aria2</code></h2><pre><code>sudo apt-get install aria2</code></pre><h2 id="配置aria2的文件"><a href="#配置aria2的文件" class="headerlink" title="配置aria2的文件"></a>配置<code>aria2</code>的文件</h2><pre><code>mkdir ~/.aria2
+touch ~/.aria2/aria2.session
+mkdir /home/pi/data/aria2
+mkdir /home/pi/data/aria2/download
+nano ~/.aria2/aria2.conf</code></pre><p><code>conf</code>文件里边写</p>
+<pre><code>dir=/home/pi/data/aria2/download
+disable-ipv6=true
+enable-rpc=true
+rpc-allow-origin-all=true
+rpc-listen-all=true
+continue=true
+input-file=/home/pi/.aria2/aria2.session
+save-session=/home/pi/.aria2/aria2.session 
+max-concurrent-downloads=5
+save-session-interval=60
+peer-id-prefix=-TR2770-
+user-agent=Transmission/2.77
+bt-seed-unverified=true
+bt-save-metadata=true</code></pre><p>测试运行看看有没有错误</p>
+<pre><code>aria2c –conf-path=/home/pi/.aria2/aria2.conf</code></pre><p>把它做成系统服务</p>
+<pre><code>sudo nano /etc/init.d/aria2c</code></pre><p>输入</p>
+<pre><code>#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          aria2
+# Required-Start:    $remote_fs $network
+# Required-Stop:     $remote_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Aria2 Downloader
+### END INIT INFO
 
-加入如下阿里源，`deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi`</code></pre><h2 id="修改-etc-apt-sources-list-d-raspi-list"><a href="#修改-etc-apt-sources-list-d-raspi-list" class="headerlink" title="修改/etc/apt/sources.list.d/raspi.list"></a>修改/etc/apt/sources.list.d/raspi.list</h2><p><code>sudo nano /etc/apt/sources.list.d/raspi.list</code></p>
-<pre><code>原文`deb http://archive.raspberrypi.org/debian/ stretch main ui，` 加#
+case &quot;$1&quot; in
+start)
 
-加入如下科大源：`deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui`</code></pre><h2 id="更新系统和软件"><a href="#更新系统和软件" class="headerlink" title="更新系统和软件"></a>更新系统和软件</h2><p><code>sudo apt-get update</code></p>
-<pre><code>`sudo apt-get upgrade`</code></pre>
+echo -n &quot;Starting aria2c&quot;
+sudo -u pi aria2c --conf-path=/home/pi/.aria2/aria2.conf -D
+;;
+stop)
+
+echo -n &quot;Shutting down aria2c &quot;
+killall aria2c
+;;
+restart)
+
+killall aria2c
+sudo -u pi aria2c --conf-path=/home/pi/.aria2/aria2.conf -D
+;;
+esac
+exit</code></pre><h2 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h2><pre><code>sudo chmod 755 /etc/init.d/aria2c</code></pre><h2 id="测试服务是否能启动"><a href="#测试服务是否能启动" class="headerlink" title="测试服务是否能启动"></a>测试服务是否能启动</h2><pre><code>sudo service aria2c start</code></pre><p>报错就再输入一句</p>
+<pre><code>sudo update-rc.d aria2c defaults</code></pre><h2 id="添加aria2c服务自动运行"><a href="#添加aria2c服务自动运行" class="headerlink" title="添加aria2c服务自动运行"></a>添加aria2c服务自动运行</h2><pre><code>sudo update-rc.d aria2c defaults</code></pre><h2 id="进文件夹下载yaaw"><a href="#进文件夹下载yaaw" class="headerlink" title="进文件夹下载yaaw"></a>进文件夹下载yaaw</h2><pre><code>cd data/aria2
+git clone http://github.com/wzhy90/yaaw</code></pre><p>之后就在teaweb里边设置代理就ok</p>
+
             <hr>
           </div>
           <br>
@@ -184,7 +227,7 @@
                   <a class="hover-with-bg" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>
                   &nbsp;
                 
-                  <a class="hover-with-bg" href="/categories/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>
+                  <a class="hover-with-bg" href="/categories/aria2">aria2</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -195,7 +238,7 @@
                 
                   <a class="hover-with-bg" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>
                 
-                  <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>
+                  <a class="hover-with-bg" href="/tags/aria2">aria2</a>
                 
               </span>
             
@@ -394,7 +437,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "树莓派3b更换国内软件源&nbsp;",
+        "树莓派3b安装aria2&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,

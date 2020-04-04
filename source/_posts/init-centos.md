@@ -3,7 +3,7 @@ title: 阿里云服务器初始化
 date: 2020-3-30 21:23:42
 tags: [linux, 命令]
 categories: [系统, 部署新服务器]
-index_img: /img/linux-title.jpg
+index_img: /img/ali-title.png
 banner_img: /img/linux.png
 ---
 # 初始化服务器
@@ -14,8 +14,8 @@ sudo yum -y update
 ```
 Todo
 1. [x] nginx
-2. [ ] mongodb 
-3. [ ] docker
+2. [x] mongodb 
+3. [x] docker
 4. [x] htop
 ## 安装nginx
 使用`yum`安装
@@ -45,4 +45,9 @@ yum install htop -y
 dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
 sudo yum install docker-ce docker-ce-cli
 sudo systemctl start docker
+```
+## 安装mongodb
+使用`docker`安装
+```
+docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --network=lacus mongo mongod --auth
 ```
