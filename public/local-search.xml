@@ -4,6 +4,64 @@
   
   
   <entry>
+    <title>typescript学习笔记（基础篇2</title>
+    <link href="undefined2020/04/05/ts2/"/>
+    <url>2020/04/05/ts2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="typescript基础"><a href="#typescript基础" class="headerlink" title="typescript基础"></a>typescript基础</h1><p><a href="https://ts.xcatliu.com" target="_blank" rel="noopener">TypeScript入门教程</a></p><h2 id="写在前边"><a href="#写在前边" class="headerlink" title="写在前边"></a>写在前边</h2><p>这只是一个笔记，并不是教程，阮一峰大佬写的教程链接在上边</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul><li><p>函数声明定义</p><pre><code class="ts">function sum(x: number, y: number): number {  return x + y;}</code></pre><blockquote><p>输入多余的（或者少于要求的）参数，是不被允许的</p></blockquote></li><li><p>函数表达式定义</p><pre><code class="ts">let mySum: (x: number, y: number) =&gt; number = function (x: number, y: number): number {  return x + y;};</code></pre><blockquote><p>注意不要混淆了 TypeScript 中的 =&gt; 和 ES6 中的 =&gt;。<br>在 TypeScript 的类型定义中，=&gt; 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。<br>在 ES6 中，=&gt; 叫做箭头函数，应用十分广泛，可以参考 ES6 中的箭头函数。</p></blockquote></li><li><p>用接口定义函数的形状</p><pre><code class="ts">interface SearchFunc {  (source: string, subString: string): boolean;}let mySearch: SearchFunc;mySearch = function(source: string, subString: string) {  return source.search(subString) !== -1;}</code></pre><blockquote><p>采用函数表达式|接口定义函数的方式时，对等号左侧进行类型限制，可以保证以后对函数名赋值时保证参数个数、参数类型、返回值类型不变。</p></blockquote></li><li><p>可选参数<br>与接口中的可选属性类似，我们用 <code>?</code> 表示可选的参数</p><pre><code class="ts">function buildName(firstName: string, lastName?: string) {  if (lastName) {      return firstName + &#39; &#39; + lastName;  } else {      return firstName;  }}let tomcat = buildName(&#39;Tom&#39;, &#39;Cat&#39;);let tom = buildName(&#39;Tom&#39;);</code></pre><blockquote><p>需要注意的是，可选参数必须接在必需参数后面。换句话说，可选参数后面不允许再出现必需参数了</p></blockquote></li><li><p>参数默认值<br>TypeScript 会将添加了默认值的参数识别为可选参数</p><pre><code class="ts">function buildName(firstName: string, lastName: string = &#39;Cat&#39;) {  return firstName + &#39; &#39; + lastName;}let tomcat = buildName(&#39;Tom&#39;, &#39;Cat&#39;);let tom = buildName(&#39;Tom&#39;);</code></pre><blockquote><p>此时就不受「可选参数必须接在必需参数后面」的限制了</p></blockquote></li><li><p>剩余参数<br>ES6 中，可以使用 <code>...rest</code> 的方式获取函数中的剩余参数（rest 参数）</p></li></ul><p>事实上，items 是一个数组。所以我们可以用数组的类型来定义它</p><pre><code class="ts">function push(array: any[], ...items: any[]) {    items.forEach(function(item) {        array.push(item);    });}let a = [];push(a, 1, 2, 3);</code></pre><blockquote><p>rest 参数只能是最后一个参数</p></blockquote><ul><li>重载</li></ul><p>重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。</p><p>比如，我们需要实现一个函数 reverse，输入数字 123 的时候，输出反转的数字 321，输入字符串 ‘hello’ 的时候，输出反转的字符串 ‘olleh’。</p><p>利用联合类型，我们可以这么实现：</p><pre><code class="ts">function reverse(x: number): number;function reverse(x: string): string;function reverse(x: number | string): number | string {    if (typeof x === &#39;number&#39;) {        return Number(x.toString().split(&#39;&#39;).reverse().join(&#39;&#39;));    } else if (typeof x === &#39;string&#39;) {        return x.split(&#39;&#39;).reverse().join(&#39;&#39;);    }}</code></pre><p>上例中，我们重复定义了多次函数 <code>reverse</code>，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。</p><blockquote><p>注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。</p></blockquote><h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>使用 <code>值</code> as <code>类型</code> 的语法</p><pre><code class="ts">interface Cat {    name: string;    run(): void;}interface Fish {    name: string;    swim(): void;}function isFish(animal: Cat | Fish) {    if (typeof animal.swim === &#39;function&#39;) {  // 会报错，因为swim不是Cat和Fish的共有属性        return true;    }    return false;}function isFish(animal: Cat | Fish) {    if (typeof (animal as Fish).swim === &#39;function&#39;) { // 使用断言，避免错误        return true;    }    return false;}</code></pre><blockquote><p>类型断言只能够「欺骗」TypeScript 编译器，无法避免运行时的错误，反而滥用类型断言可能会导致运行时错误</p></blockquote><pre><code class="ts">window.foo = 1; // 直接赋值会提示你window上边没有foo属性(window as any).foo = 1; // 把window断言成一个any就可以随便赋值了</code></pre><ul><li>总结</li></ul><p>联合类型可以被断言为其中一个类型</p><p>父类可以被断言为子类</p><p>任何类型都可以被断言为 any</p><p>any 可以被断言为任何类型</p><p>要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>语言</category>
+      
+      <category>ts</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ts</tag>
+      
+      <tag>基础2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>typescript学习笔记（基础篇1</title>
+    <link href="undefined2020/04/05/ts1/"/>
+    <url>2020/04/05/ts1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="typescript基础"><a href="#typescript基础" class="headerlink" title="typescript基础"></a>typescript基础</h1><p><a href="https://ts.xcatliu.com" target="_blank" rel="noopener">TypeScript入门教程</a></p><h2 id="写在前边"><a href="#写在前边" class="headerlink" title="写在前边"></a>写在前边</h2><p>这只是一个笔记，并不是教程，阮一峰大佬写的教程链接在上边</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>cnpm install -g typescript</code></pre><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><pre><code>tsc hello.ts</code></pre><blockquote><p>我们约定使用 TypeScript 编写的文件以 .ts 为后缀，用 TypeScript 编写 React 时，以 .tsx 为后缀。</p></blockquote><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>TypeScript 中，使用 : 指定变量的类型，: 的前后有没有空格都可以。</p><blockquote><p>TypeScript 只会进行静态检查，如果发现有错误，编译的时候就会报错。<br>如果要在报错的时候终止 js 文件的生成，可以在 tsconfig.json 中配置 noEmitOnError 即可。关于 tsconfig.json，请参阅<a href="https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/tsconfig.json.html" target="_blank" rel="noopener">官方手册</a></p></blockquote><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>JavaScript 的类型分为两种：原始数据类型（Primitive data types）和对象类型（Object types）。</p><p>原始数据类型包括：布尔值、数值、字符串、null、undefined 以及 ES6 中的新类型 Symbol。</p><h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><p><code>boolean</code></p><pre><code class="ts">let isDone: boolean = false;</code></pre><p>注意，使用构造函数 <strong>Boolean</strong> 创造的对象不是布尔值：</p><pre><code class="ts">let createdByNewBoolean: boolean = new Boolean(1); // 会报错的，是一个Boolean对象let createdByNewBoolean: boolean = Boolean(1); // 通过，是一个boolean</code></pre><blockquote><p>在 TypeScript 中，boolean 是 JavaScript 中的基本类型，而 Boolean 是 JavaScript 中的构造函数。其他基本类型（除了 null 和 undefined）一样，不再赘述。</p></blockquote><h3 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h3><p><code>number</code></p><pre><code class="ts">let decLiteral: number = 6;let hexLiteral: number = 0xf00d;// ES6 中的二进制表示法let binaryLiteral: number = 0b1010;// ES6 中的八进制表示法let octalLiteral: number = 0o744;let notANumber: number = NaN;let infinityNumber: number = Infinity;</code></pre><blockquote><p>编译完会自动转成十进制</p></blockquote><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><code>string</code></p><pre><code class="ts">let myName: string = &#39;Tom&#39;;let myAge: number = 25;// 模板字符串let sentence: string = `Hello, my name is ${myName}.I&#39;ll be ${myAge + 1} years old next month.`;</code></pre><blockquote><p>编译完模板字符串会变成加号串联的形式，自动加<code>/n</code></p></blockquote><h3 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h3><p><code>void</code></p><p><strong>JavaScript</strong> 没有空值（Void）的概念，在 <strong>TypeScript</strong> 中，可以用 <code>void</code> 表示没有任何返回值的函数：</p><pre><code class="ts">function alertName(): void {    alert(&#39;My name is Tom&#39;);}</code></pre><blockquote><p>声明一个 <code>void</code> 类型的变量没有什么用，因为你只能将它赋值为 <code>undefined</code> 和 <code>null</code></p></blockquote><h3 id="Null-和-Undefined"><a href="#Null-和-Undefined" class="headerlink" title="Null 和 Undefined"></a>Null 和 Undefined</h3><p><code>null undefined</code></p><pre><code class="ts">let u: undefined = undefined;let n: null = null;</code></pre><blockquote><p>与 <code>void</code> 的区别是，<code>undefined</code> 和 <code>null</code> 是所有类型的子类型。也就是说 <code>undefined</code> 类型的变量，可以赋值给其他类型的变量，但是反过来 <code>void</code> 不能赋值给任何类型的变量</p></blockquote><h3 id="任意值"><a href="#任意值" class="headerlink" title="任意值"></a>任意值</h3><p><code>any</code><br>如果是一个普通类型，在赋值中改变类型是不被允许的。</p><p>但是如果是<code>any</code>类型，则允许被赋值为任意类型</p><pre><code class="ts">let myFavoriteNumber: any = &#39;seven&#39;;myFavoriteNumber = 7;</code></pre><blockquote><p>可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。</p></blockquote><p>变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型</p><pre><code class="ts">let something;something = &#39;seven&#39;;something = 7;something.setName(&#39;Tom&#39;);</code></pre><h3 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h3><p>如果变量在定义的时候赋值，但是没指定类型，会自动进行推论</p><pre><code class="ts">let myFavoriteNumber = &#39;seven&#39;;// 等价于let myFavoriteNumber: string = &#39;seven&#39;;myFavoriteNumber = 7; // 会报错</code></pre><blockquote><p>如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成 <code>any</code> 类型而完全不被类型检查：</p></blockquote><h3 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h3><p>联合类型使用 | 分隔每个类型。</p><pre><code class="ts">let myFavoriteNumber: string | number;myFavoriteNumber = &#39;seven&#39;; // okmyFavoriteNumber = 7; // okmyFavoriteNumber = true; // 会报错</code></pre><p>当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，我们只能访问此联合类型的所有类型里共有的属性或方法：</p><pre><code class="ts">function getLength(something: string | number): number {    return something.length; // 会报错，.length不是string和number共有的属性    return something.toString(); // ok}</code></pre><p>联合类型的变量在被赋值的时候，会根据类型推论的规则推断出一个类型</p><pre><code class="ts">let myFavoriteNumber: string | number;myFavoriteNumber = &#39;seven&#39;;console.log(myFavoriteNumber.length); // 5myFavoriteNumber = 7;console.log(myFavoriteNumber.length); // 会报错</code></pre><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。</p><p>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。</p><pre><code class="ts">interface IPerson {    name: string;    age: number;}let tom: IPerson = {    name: &#39;Tom&#39;,    age: 25};</code></pre><p>接口一般首字母大写，有的编程语言会建议接口的名称加上<code>I</code>前缀</p><p>定义的变量比接口多属性少属性都是不允许的，<strong>赋值的时候，变量的形状必须和接口的形状保持一致。</strong></p><ul><li>可选属性</li></ul><p><strong>可选属性的含义是该属性可以不存在</strong>，这时<strong>仍然不允许添加未定义的属性</strong></p><pre><code class="ts">interface Person {    name: string;    age?: number;}let tom: Person = {    name: &#39;Tom&#39;,    gender: &#39;male&#39; // 这句就会报错，因为出现了未加定义的属性};</code></pre><ul><li>任意属性</li></ul><p>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是<strong>它的类型的子集</strong></p><pre><code class="ts">interface Person {    name: string;    age?: number;    [propName: string]: string;}let tom: Person = {    name: &#39;Tom&#39;,    age: 25, // 这句就会报错，因为不是string，即使上边定义age是number也不行    gender: &#39;male&#39;,};interface Person {    name: string;    age?: number;    [propName: string]: string | number; // 接口定义成这样使用联合类型age就不会报错了}</code></pre><ul><li>只读属性</li></ul><p>一些字段只能在创建的时候被赋值</p><pre><code class="ts">interface Person {    readonly id: number;    name: string;    age?: number;    [propName: string]: any;}let tom: Person = {    id: 89757,    name: &#39;Tom&#39;,    gender: &#39;male&#39;};tom.id = 9527;// index.ts(14,5): error TS2540: Cannot assign to &#39;id&#39; because it is a constant or a read-only property.</code></pre><blockquote><p>注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候</p></blockquote><h3 id="数组的类型"><a href="#数组的类型" class="headerlink" title="数组的类型"></a>数组的类型</h3><ul><li><p>「类型 + 方括号」表示法</p><pre><code class="ts">let fibonacci: number[] = [1, 1, 2, 3, 5];</code></pre><blockquote><p>数组的项中<strong>不允许</strong>出现其他的类型<br>数组的一些方法的参数也会根据数组在定义时约定的类型进行限制,如果约定是<code>number</code>类型,<strong>push</strong>一个<code>string</code>类型就会报错</p></blockquote></li><li><p>数组泛型</p><pre><code class="ts">let fibonacci: Array&lt;number&gt; = [1, 1, 2, 3, 5];</code></pre></li><li><p>用接口表示数组<br><code>NumberArray</code> 表示：只要索引的类型是数字时，那么值的类型必须是数字。</p><pre><code class="ts">interface NumberArray {  [index: number]: number;}let fibonacci: NumberArray = [1, 1, 2, 3, 5];</code></pre></li><li><p>类数组<br>类数组（Array-like Object）不是数组类型，比如 arguments：</p><pre><code class="ts">function sum() {  let args: {      [index: number]: number;      length: number;      callee: Function;  } = arguments;}</code></pre></li><li><p>any 在数组中的应用<br>一个比较常见的做法是，用 any 表示数组中允许出现任意类型：</p><pre><code class="ts">let list: any[] = [&#39;xcatliu&#39;, 25, { website: &#39;http://xcatliu.com&#39; }];</code></pre></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>语言</category>
+      
+      <category>ts</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ts</tag>
+      
+      <tag>基础1</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Koa学习笔记</title>
     <link href="undefined2020/04/05/js-koa/"/>
     <url>2020/04/05/js-koa/</url>

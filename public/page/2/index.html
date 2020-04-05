@@ -136,6 +136,180 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/git/" target="_self">
+          <img src="/img/git-title.jpg" srcset="undefined" alt="git常用命令总结" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/git/">
+        <p class="h4 index-header">git常用命令总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">git
+SSH C:\Users\yingbo\.ssh
+
+创建： ssh-keygen -t rsa -C &#39;邮件地址&#39;
+测试： ssh -T git@github.com
+注意：上面创建语句完成后会让你输入密码，直接回车，不然之后提交的时候每次都会让你输入密码
+
+
+git init 初始化仓库
+
+git status 查看仓库状态
+
+git add &#39;文件名&#39; 向暂存区添加文件，如果添加所有文件，’文件名’ =&gt; *
+
+git commit -m &#39;text&#39; 
+
+提交，text为提交描述
+直接 git commit会进入详细编辑的界面
+第一行简介
+第二行空行
+第三行详情
+
+
+
+
+git log 提交日志
+
+尾缀
+--pretty = short 只显示概要
+目录名/文件名 只显示该目录或者该文件的记录
+-P 显示改动
+-P 文件名 显示该文件的改动
+
+
+
+
+git diff 查看区别
+
+git diff HEAD 本次与上次的区别
+
+
+git branch 显示所有分支
+
+git checkout -b name 创建name</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7">工具</a>&nbsp;
+          
+            <a href="/categories/git">git</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
+          
+            <a href="/tags/git">git</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/30/linux/" target="_self">
+          <img src="/img/linux-title.jpg" srcset="undefined" alt="linux 命令积累" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/30/linux/">
+        <p class="h4 index-header">linux 命令积累</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">linux切换用户su - root
+- 的含义是携带当前环境变量
+
+增加用户useradd
+-g 指定用户所在群组 
+-m 自动建立用户的登入目录 
+-n 取消建立和用户同名的群组
+
+更改对应用户密码passwd查看进程ps
+-ef 查看所有进程以及其pid 
+-aux 查看所有进程并显示其占用的cpu以及mem 
+-w 显示加宽可以显示更多信息
+ps -auxwww加宽三次
+
+停止进程kill (pid)
+-s 发送指定信号到进程
+-p 打印出进程号，但是不发送信号
+-l 打印出所有可用信号名称
+
+查看磁盘fdisk -l
+必须使用root权限
+
+切换目录cd ../
+./当前目录
+../上级目录
+cd -返回到上个目录
+
+显示当前文件夹下的文件夹以及文件ls
+-l 显示详细信息
+-a -all 列出所有文件包括隐藏文件
+-d 将目录名和其他文件一样列出，而不是列出目录的内容
+-f 不排序目录内容，按他们在磁盘上存储的顺序列出
+
+创建一个目录mkdir
+-m 对新建目录设置权限
+-p 可以是一个路径，可以一次创建多层目录
+
+查看文件内容cat (文件路径)
+-n 输出行号
+-b 输</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%B3%BB%E7%BB%9F">系统</a>&nbsp;
+          
+            <a href="/categories/linux">linux</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/system">system</a>&nbsp;
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+            <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/11/30/flask/" target="_self">
           <img src="https://dormousehole.readthedocs.io/en/latest/_images/flask-logo.png" srcset="undefined" alt="Flask 简单安装和部署" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
