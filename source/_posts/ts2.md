@@ -10,7 +10,7 @@ date: 2020-04-05 23:16:00
 [TypeScript入门教程](https://ts.xcatliu.com)
 ## 写在前边
 这只是一个笔记，并不是教程，阮一峰大佬写的教程链接在上边
-### 函数
+## 函数
 - 函数声明定义
 ```ts
 function sum(x: number, y: number): number {
@@ -104,7 +104,7 @@ function reverse(x: number | string): number | string {
 上例中，我们重复定义了多次函数 `reverse`，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。
 > 注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
 
-### 断言
+## 断言
 使用 `值` as `类型` 的语法
 ```ts
 interface Cat {
@@ -146,3 +146,60 @@ window.foo = 1; // 直接赋值会提示你window上边没有foo属性
 any 可以被断言为任何类型
 
 要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可
+## 声明文件
+当使用第三方库时，我们需要引用它的声明文件，才能获得对应的代码补全、接口提示等功能。
+
+声明文件必需以 `.d.ts` 为后缀。
+```ts
+// src/jQuery.d.ts
+
+declare var jQuery: (selector: string) => any;
+```
+> 假如仍然无法解析，那么可以检查下 `tsconfig.json` 中的 `files、include` 和 `exclude` 配置，确保其包含了 `jQuery.d.ts` 文件。
+
+## 第三方声明文件
+当然，jQuery 的声明文件不需要我们定义了，社区已经帮我们定义好了：jQuery in DefinitelyTyped。
+
+我们可以直接下载下来使用，但是更推荐的是使用 `@types` 统一管理第三方库的声明文件。
+
+`@types` 的使用方式很简单，直接用 `npm` 安装对应的声明模块即可，以 `jQuery` 举例
+```cmd
+cnpm install @types/jquery --save-dev
+```
+可以在[这个页面](https://microsoft.github.io/TypeSearch/)搜索你需要的声明文件。
+
+## 书写声明文件
+当一个第三方库没有提供声明文件时，我们就需要自己书写声明文件了。前面只介绍了最简单的声明文件内容，而真正书写一个声明文件并不是一件简单的事，以下会详细介绍如何书写声明文件。
+- 全局变量[教程链接](https://ts.xcatliu.com/basics/declaration-files#quan-ju-bian-liang)
+- npm包[教程链接](https://ts.xcatliu.com/basics/declaration-files#npm-bao)
+- UMD库[教程链接](https://ts.xcatliu.com/basics/declaration-files#umd-ku)
+- 直接扩展全局变量[教程链接](https://ts.xcatliu.com/basics/declaration-files#zhi-jie-kuo-zhan-quan-ju-bian-liang)
+- 在 npm 包或 UMD 库中扩展全局变量[教程链接](https://ts.xcatliu.com/basics/declaration-files#zai-npm-bao-huo-umd-ku-zhong-kuo-zhan-quan-ju-bian-liang)
+- 模块插件[教程链接](https://ts.xcatliu.com/basics/declaration-files#mo-kuai-cha-jian)
+- 声明文件中的依赖[教程链接](https://ts.xcatliu.com/basics/declaration-files#sheng-ming-wen-jian-zhong-de-yi-lai)
+- 自动生成声明文件[教程链接](https://ts.xcatliu.com/basics/declaration-files#zi-dong-sheng-cheng-sheng-ming-wen-jian)
+
+## 内置对象
+ECMAScript 标准提供的内置对象有：`Boolean、Error、Date、RegExp` 等。
+```ts
+let b: Boolean = new Boolean(1);
+let e: Error = new Error('Error occurred');
+let d: Date = new Date();
+let r: RegExp = /[a-z]/;
+```
+> 更多的内置对象，可以查看 MDN 的[文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)。
+
+## DOM 和 BOM 的内置对象
+DOM 和 BOM 提供的内置对象有：`Document、HTMLElement、Event、NodeList` 等。
+```ts
+let body: HTMLElement = document.body;
+let allDiv: NodeList = document.querySelectorAll('div');
+document.addEventListener('click', function(e: MouseEvent) {
+  // Do something
+});
+```
+## 用 TypeScript 写 Node.js
+Node.js 不是内置对象的一部分，如果想用 TypeScript 写 Node.js，则需要引入第三方声明文件：
+```cmd
+npm install @types/node --save-dev
+```
