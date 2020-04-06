@@ -15,7 +15,14 @@ if (page.title) {
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="<%= config.description %>">
   <meta name="author" content="<%= config.author %>">
+  <% if (page.keywords){ %>
+  <meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>">
+  <% } else if (config.keywords){ %>
   <meta name="keywords" content="<%= config.keywords %>">
+  <%} %>
+  <% if (config.baidu_site_verification) { %>
+  <meta name="baidu-site-verification" content="nLbPI5Gbnr" />
+  <%} %>
   <title><%= title %></title>
 
   <%- partial('_partial/css.ejs') %>

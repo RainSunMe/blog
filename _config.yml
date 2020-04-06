@@ -6,7 +6,7 @@
 title: RainSun's blog
 subtitle: Fight For Your Dream
 description: ''
-keywords: 前端 树莓派 服务器 内网穿透
+keywords: 前端,树莓派,服务器,内网穿透,前端博客,JavaScript,html5,css3,NodeJs,Ubuntu,TypeScript,Python,Flask,ngrok,centOS,Docker,Koa
 author: RainSun
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -99,3 +99,8 @@ deploy:
   type: git
   repository: git@github.com:RainSunMe/RainSunMe.github.io.git
   branch: master
+
+sitemap:
+  path: sitemap.xml
+
+baidu_site_verification: true
