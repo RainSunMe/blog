@@ -104,3 +104,4 @@ sitemap:
   path: sitemap.xml
 
 baidu_site_verification: true
+baidu_push: true
