@@ -16,7 +16,7 @@ timezone: 'Asia/Shanghai'
 # url: http://blog.powerrain.cn
 url: http://localhost:4000
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year/:month/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing index.html from permalinks

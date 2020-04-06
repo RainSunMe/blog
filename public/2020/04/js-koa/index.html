@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="RainSun">
+  
+  <meta name="keywords" content="前端,树莓派,服务器,内网穿透,前端博客,JavaScript,html5,css3,NodeJs,Ubuntu,TypeScript,Python,Flask,ngrok,centOS,Docker,Koa">
+  
+  
+  <meta name="baidu-site-verification" content="nLbPI5Gbnr" />
+  
+  <title>Koa学习笔记 ~ RainSun&#39;s blog</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>RainSun&#39;s blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/koa.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 四月 5日 2020, 10:45 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      14 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>cnpm install koa --save</code></pre><h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello-world"></a>hello-world</h2><pre><code class="js">const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+app.use(async ctx =&gt; {
+  ctx.body = &#39;Hello World&#39;;
+});
+
+app.listen(3000);</code></pre>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>使用yield以及next,当一个中间件调用<code>next()</code>函数时，函数挂起并控件传递给定义的下一个中间件。在没有更多的中间件执行下游之后，堆栈将退出，并且每个中间件被恢复以执行其上游行为。</p>
+<pre><code class="js">const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+const one = (ctx, next) =&gt; {
+  console.log(&#39;&gt;&gt; one&#39;);
+  next();
+  console.log(&#39;&lt;&lt; one&#39;);
+}
+
+const two = (ctx, next) =&gt; {
+  console.log(&#39;&gt;&gt; two&#39;);
+  next();
+  console.log(&#39;&lt;&lt; two&#39;);
+}
+
+const three = (ctx, next) =&gt; {
+  console.log(&#39;&gt;&gt; three&#39;);
+  next();
+  console.log(&#39;&lt;&lt; three&#39;);
+}
+
+app.use(one);
+app.use(two);
+app.use(three);
+
+app.listen(3000);
+
+/*
+&gt;&gt; one
+&gt;&gt; two
+&gt;&gt; three
+&lt;&lt; three
+&lt;&lt; two
+&lt;&lt; one
+&gt;&gt; one
+&gt;&gt; two
+&gt;&gt; three
+&lt;&lt; three
+&lt;&lt; two
+&lt;&lt; one
+*/</code></pre>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>应用配置是 app 实例属性，目前支持的配置项如下</p>
+<ul>
+<li>app.env node运行环境，默认为 NODE_ENV or “development”</li>
+<li>app.proxy 表示是否开启代理信任开关,默认为false，如果为 true，则解析 “Host” 的 header 域，对于获取request请求中的host，protocol，ip分别优先从Header字段中的<a href="https://cloud.tencent.com/developer/section/1190030" target="_blank" rel="noopener">X-Forwarded-Host</a>，X-Forwarded-Proto，X-Forwarded-For获取</li>
+<li>app.subdomainOffset 表示子域名是从第几级开始的，这个参数决定了request.subdomains的返回结果，默认值为2，表示 .subdomains 所忽略的字符偏移量。<pre><code class="js">//比如有netease.youdata.163.com域名
+app.subdomainOffset = 2;
+console.log(ctx.request.subdomains);  //返回[&quot;youdata&quot;, &quot;netease&quot;]
+app.subdomainOffset = 3;
+console.log(ctx.request.subdomains);  //返回[&quot;netease&quot;]
+//koa获取subdomains的源码
+get subdomains() {    
+const offset = this.app.subdomainOffset;    
+const hostname = this.hostname;    
+if (net.isIP(hostname)) return [];    
+return hostname
+    .split(&#39;.&#39;)
+    .reverse()
+    .slice(offset);
+}</code></pre>
+</li>
+</ul>
+<h2 id="app-listen-…"><a href="#app-listen-…" class="headerlink" title="app.listen(…)"></a>app.listen(…)</h2><p><code>app.listen(...)</code> 实际上是以下代码的语法糖</p>
+<pre><code class="js">http.createServer(app.callback()).listen(3000);</code></pre>
+<p>这意味着您可以同时支持 <strong>HTTP</strong> 和 <strong>HTTPS</strong>，或者在多个端口监听同一个应用</p>
+<pre><code class="js">const http = require(&#39;http&#39;);
+const https = require(&#39;https&#39;);
+const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+http.createServer(app.callback()).listen(3000);
+https.createServer(app.callback()).listen(3001);</code></pre>
+<h2 id="app-callback"><a href="#app-callback" class="headerlink" title="app.callback()"></a>app.callback()</h2><p>返回一个适合 <code>http.createServer()</code> 方法的回调函数用来处理请求。 您也可以使用这个回调函数将您的app挂载在 Connect/Express 应用上。</p>
+<pre><code class="js">//koa的callback函数实现源码
+function callback() {    
+  const fn = compose(this.middleware);   //koa-compose包负责将多个中间件组装成一个中间件
+  if (!this.listeners(&#39;error&#39;).length) this.on(&#39;error&#39;, this.onerror);    
+  const handleRequest = (req, res) =&gt; {      
+    const ctx = this.createContext(req, res);  //这个函数负责生成中间件接收器ctx，绑定一些对象的关联关系
+      return this.handleRequest(ctx, fn);  //使用中间件函数fn处理路由请求
+    };    
+    return handleRequest;
+  }
+  //handleRequest函数的源码实现也很简单，执行中间件函数，并做一些返回处理和异常处理
+  function handleRequest(ctx, fnMiddleware) {    
+    const res = ctx.res;
+    res.statusCode = 404;    
+    const onerror = err =&gt; ctx.onerror(err);    
+    const handleResponse = () =&gt; respond(ctx);
+    onFinished(res, onerror);    
+    return fnMiddleware(ctx).then(handleResponse).catch(onerror);
+  }</code></pre>
+<h2 id="app-use-function"><a href="#app-use-function" class="headerlink" title="app.use(function)"></a>app.use(function)</h2><p>use函数主要作用是给app.middleware数组中添加中间件</p>
+<h2 id="app-keys"><a href="#app-keys" class="headerlink" title="app.keys="></a>app.keys=</h2><p>该密钥会被传递给KeyGrip, 当然，您也可以自己生成 KeyGrip. 例如:</p>
+<pre><code class="js">app.keys = [&#39;im a newer secret&#39;, &#39;i like turtle&#39;];
+app.keys = new KeyGrip([&#39;im a newer secret&#39;, &#39;i like turtle&#39;], &#39;sha256&#39;);</code></pre>
+<p>在进行cookie签名时，只有设置 signed 为 true 的时候，才会使用密钥进行加密：</p>
+<pre><code class="js">ctx.cookies.set(&#39;name&#39;, &#39;tobi&#39;, { signed: true });</code></pre>
+<h2 id="app-context"><a href="#app-context" class="headerlink" title="app.context"></a>app.context</h2><p>app.context是从中创建ctx的原型。 可以通过编辑app.context向ctx添加其他属性。当需要将ctx添加到整个应用程序中使用的属性或方法时，这将会非常有用。这可能会更加有效（不需要中间件）和/或更简单（更少的require()），而不必担心更多的依赖于ctx，这可以被看作是一种反向模式。</p>
+<p>例如，从ctx中添加对数据库的引用：</p>
+<pre><code class="js">app.context.db = db();
+
+app.use(async ctx =&gt; {
+  console.log(ctx.db);
+});</code></pre>
+<blockquote>
+<p>ctx上的很多属性是被限制的，在app.context只能通过使用Object.defineProperty()来编辑这些属性（不推荐）。可以在 <a href="https://github.com/koajs/koa/issues/652上查阅" target="_blank" rel="noopener">https://github.com/koajs/koa/issues/652上查阅</a><br>已安装的APP沿用父级的ctx和配置。因此，安装的应用程序只是一组中间件。</p>
+</blockquote>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>默认情况下Koa会将所有错误信息输出到 stderr， 除非 app.silent 是 true.当err.status是404或者err.expose时，默认错误处理程序也不会输出错误。要执行自定义错误处理逻辑，如集中式日志记录，您可以添加一个”错误”事件侦听器：</p>
+<pre><code class="js">app.on(&#39;error&#39;, err =&gt; {
+  log.error(&#39;server error&#39;, err)
+});</code></pre>
+<p>如果错误发生在 请求/响应 环节，并且其不能够响应客户端时，Contenxt 实例也会被传递到 error 事件监听器的回调函数里。</p>
+<pre><code class="js">app.on(&#39;error&#39;, (err, ctx) =&gt; {
+  log.error(&#39;server error&#39;, err, ctx)
+});</code></pre>
+<p>当发生错误但仍能够响应客户端时（比如没有数据写到socket中），Koa会返回一个500错误(Internal Server Error)。 无论哪种情况，Koa都会生成一个应用级别的错误信息，以便实现日志记录等目的。</p>
+<h1 id="Context-上下文"><a href="#Context-上下文" class="headerlink" title="Context(上下文)"></a>Context(上下文)</h1><p>在每个<code>requset</code>请求中被创建，在中间件中作为接收器(receiver)来引用</p>
+<pre><code class="js">app.use(async ctx =&gt; {
+  ctx; // is the Context
+  ctx.request; // is a koa Request
+  ctx.response; // is a koa Response
+});</code></pre>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>Context 详细的方法和访问器。</p>
+<h3 id="ctx-req"><a href="#ctx-req" class="headerlink" title="ctx.req"></a>ctx.req</h3><p><strong>Node</strong> 的 request 对象。</p>
+<h3 id="ctx-res"><a href="#ctx-res" class="headerlink" title="ctx.res"></a>ctx.res</h3><p><strong>Node</strong> 的 response 对象</p>
+<blockquote>
+<p>Koa 不支持 直接调用底层 res 进行响应处理。请避免使用以下 node 属性：<br>res.statusCode<br>res.writeHead()<br>res.write()<br>res.end()</p>
+</blockquote>
+<h3 id="ctx-request"><a href="#ctx-request" class="headerlink" title="ctx.request"></a>ctx.request</h3><p><strong>Koa</strong> 的 Request 对象。</p>
+<h3 id="ctx-response"><a href="#ctx-response" class="headerlink" title="ctx.response"></a>ctx.response</h3><p><strong>Koa</strong> 的 Response 对象。</p>
+<h3 id="ctx-state"><a href="#ctx-state" class="headerlink" title="ctx.state"></a>ctx.state</h3><p>推荐的命名空间，用于通过中间件传递信息到前端视图<code>ctx.state.user = await User.find(id);</code></p>
+<h3 id="ctx-app"><a href="#ctx-app" class="headerlink" title="ctx.app"></a>ctx.app</h3><p>应用实例引用。</p>
+<h3 id="ctx-cookies-get-name-options"><a href="#ctx-cookies-get-name-options" class="headerlink" title="ctx.cookies.get(name, [options])"></a>ctx.cookies.get(name, [options])</h3><p>获得 <strong>cookie</strong> 中名为 <strong>name</strong> 的值，options 为可选参数;signed 如果为 true，表示请求时 cookie 需要进行签名。</p>
+<blockquote>
+<p>注意：Koa 使用了 Express 的 cookies 模块，options 参数只是简单地直接进行传递。</p>
+</blockquote>
+<h3 id="ctx-cookies-set-name-value-options"><a href="#ctx-cookies-set-name-value-options" class="headerlink" title="ctx.cookies.set(name, value, [options])"></a>ctx.cookies.set(name, value, [options])</h3><p>设置 cookie 中名为 name 的值，options 为可选参数：</p>
+<ul>
+<li>maxAge 一个数字，表示 Date.now()到期的毫秒数</li>
+<li>signed 是否要做签名</li>
+<li>expires cookie有效期</li>
+<li>pathcookie 的路径，默认为 ‘/‘</li>
+<li>domain cookie 的域</li>
+<li>secure false 表示 cookie 通过 HTTP 协议发送，true 表示 cookie 通过 HTTPS 发送。</li>
+<li>httpOnly true 表示 cookie 只能通过 HTTP 协议发送</li>
+<li>overwrite 一个布尔值，表示是否覆盖以前设置的同名的Cookie（默认为false）。 如果为true，在设置此cookie时，将在同一请求中使用相同名称（不管路径或域）设置的所有Cookie将从Set-Cookie头部中过滤掉。</li>
+</ul>
+<h3 id="ctx-throw-status-msg-properties"><a href="#ctx-throw-status-msg-properties" class="headerlink" title="ctx.throw([status], [msg], [properties])"></a>ctx.throw([status], [msg], [properties])</h3><p>抛出包含 .status 属性的错误，默认为 500。该方法可以让 Koa 准确的响应处理状态。 Koa支持以下组合： </p>
+<pre><code class="js">ctx.throw(400);
+ctx.throw(400, &#39;name required&#39;);
+ctx.throw(400, &#39;name required&#39;, { user: user });
+//该对象被合并到错误中，这对装饰机器友好错误非常有用，并且这些错误会被报给上层请求。</code></pre>
+<p>this.throw(‘name required’, 400) 等价于：</p>
+<pre><code class="js">const err = new Error(&#39;name required&#39;);
+err.status = 400;
+err.expose = true;
+throw err;</code></pre>
+<blockquote>
+<p>注意：这些用户级错误被标记为 err.expose，其意味着这些消息被准确描述为对客户端的响应，而并非使用在您不想泄露失败细节的场景中。</p>
+</blockquote>
+<h3 id="ctx-assert-value-status-msg-properties"><a href="#ctx-assert-value-status-msg-properties" class="headerlink" title="ctx.assert(value, [status], [msg], [properties])"></a>ctx.assert(value, [status], [msg], [properties])</h3><p>当!value时， Helper 方法抛出一个类似.throw()的错误。 类似node’s assert() 方法。 </p>
+<pre><code class="js">ctx.assert(ctx.state.user, 401, &#39;User not found. Please login!&#39;);</code></pre>
+<p>koa 使用 <a href="https://github.com/jshttp/http-assert" target="_blank" rel="noopener">http-assert</a> 来<a href="https://www.runoob.com/w3cnote/c-assert.html" target="_blank" rel="noopener">断言</a>。</p>
+<h3 id="ctx-respond"><a href="#ctx-respond" class="headerlink" title="ctx.respond"></a>ctx.respond</h3><p>为了避免使用 Koa 的内置响应处理功能，您可以直接赋值 this.repond = false;。如果您不想让 Koa 来帮助您处理 reponse，而是直接操作原生 res 对象，那么请使用这种方法。</p>
+<blockquote>
+<p>注意： 这种方式是不被 Koa 支持的。其可能会破坏 Koa 中间件和 Koa 本身的一些功能。其只作为一种 hack 的方式，并只对那些想要在 Koa 方法和中间件中使用传统 fn(req, res) 方法的人来说会带来便利。</p>
+</blockquote>
+<h3 id="Request-aliases"><a href="#Request-aliases" class="headerlink" title="Request aliases"></a>Request aliases</h3><p>ctx会代理ctx.response和ctx.request上的一些属性和函数(这个代理逻辑是在ctx.response和ctx.request的原型上实现的)</p>
+<pre><code class="js">//以下是koa源码（method表示代理方法，access表示代理属性可读可写，getter表示代理属性可读）：
+delegate(proto, &#39;response&#39;)
+  .method(&#39;attachment&#39;) //将Content-Disposition 设置为 “附件” 以指示客户端提示下载
+  .method(&#39;redirect&#39;) //返回重定向，如果没有code设置，默认设置code为302
+  /*
+    // 字符串 &quot;back&quot; 是一个特殊参数，其提供了 Referrer 支持。当没有Referrer时，使用 alt 或者 / 代替。
+    ctx.redirect(&#39;back&#39;);
+    ctx.redirect(&#39;back&#39;, &#39;/index.html&#39;);
+    ctx.redirect(&#39;/login&#39;);
+    ctx.redirect(&#39;http://google.com&#39;);
+  */
+  .method(&#39;remove&#39;)   //删除响应头的某个属性
+  .method(&#39;vary&#39;)  //设置Vary响应头
+  .method(&#39;set&#39;) //设置响应头，可以传递对象，数组，单个值的形式
+  .method(&#39;append&#39;) //给response.headers中的某个key值追加其它value
+  .method(&#39;flushHeaders&#39;)  //执行this.res.flushHeaders()
+  .access(&#39;status&#39;)  //http返回code码，优先选择用户的设置，如果用户没有主动设置，而设置了ctx.body的值， 如果设置值为null，则返回204，如果设置值不为null，那么返回200，否则默认情况下是404
+  .access(&#39;message&#39;)  //获取响应的状态消息. 默认情况下, response.message 与 response.status 关联
+  .access(&#39;body&#39;)   //response的返回结果
+  .access(&#39;length&#39;)  //response的headers的Content-Length，可以自己设置，默认根据body二进制大小设置
+  .access(&#39;type&#39;)   //设置响应的content-type
+  .access(&#39;lastModified&#39;)  //设置响应头Last-Modified
+  .access(&#39;etag&#39;)  //设置包含 &quot; 包裹的 ETag 响应头
+  .getter(&#39;headerSent&#39;)  //检查是否已经发送了一个响应头。 用于查看客户端是否可能会收到错误通知
+  .getter(&#39;writable&#39;);   //返回是否可以继续写入delegate(proto, &#39;request&#39;)
+  .method(&#39;acceptsLanguages&#39;)
+  .method(&#39;acceptsEncodings&#39;)
+  .method(&#39;acceptsCharsets&#39;)
+  .method(&#39;accepts&#39;)        //accepts函数用于判断客户端请求是否接受某种返回类型
+  .method(&#39;get&#39;)   //获取请求头中的某个属性值
+  .method(&#39;is&#39;)  //判断请求头希望返回什么类型
+  /*
+    检查请求所包含的 &quot;Content-Type&quot; 是否为给定的 type 值。 如果没有 request body，返回 undefined。 如果没有 content type，或者匹配失败，返回 false。 否则返回匹配的 content-type。
+    // With Content-Type: text/html; charset=utf-8
+    ctx.is(&#39;html&#39;); // =&gt; &#39;html&#39;
+    ctx.is(&#39;text/html&#39;); // =&gt; &#39;text/html&#39;
+    ctx.is(&#39;text/*&#39;, &#39;text/html&#39;); // =&gt; &#39;text/html&#39;
+
+    // When Content-Type is application/json
+    ctx.is(&#39;json&#39;, &#39;urlencoded&#39;); // =&gt; &#39;json&#39;
+    ctx.is(&#39;application/json&#39;); // =&gt; &#39;application/json&#39;
+    ctx.is(&#39;html&#39;, &#39;application/*&#39;); // =&gt; &#39;application/json&#39;
+
+    ctx.is(&#39;html&#39;); // =&gt; false
+    //比如说您希望保证只有图片发送给指定路由
+    if (ctx.is(&#39;image/*&#39;)) {
+      // process
+    } else {
+      ctx.throw(415, &#39;images only!&#39;);
+    }
+  */
+  .access(&#39;querystring&#39;) //获取原始查询字符串
+  .access(&#39;idempotent&#39;)
+  .access(&#39;socket&#39;) //返回请求套接字
+  .access(&#39;search&#39;) //搜索字符串
+  .access(&#39;method&#39;)  //请求方法
+  .access(&#39;query&#39;)  //获取请求的查询字符串对象
+  .access(&#39;path&#39;)  //获取请求路径名
+  .access(&#39;url&#39;)  //请求的url,该url可以被重写
+  .getter(&#39;origin&#39;)  //获取url的来源：包括 protocol 和 host（http://example.com）
+  .getter(&#39;href&#39;) //获取完整的请求URL，包括 protocol，host 和 url（http://example.com/foo/bar?q=1）
+  .getter(&#39;subdomains&#39;) //以数组形式返回子域名  
+  /* 举例来说，如果域名是 &quot;tobi.ferrets.example.com&quot;:
+    如果没有设置 app.subdomainOffset，其 subdomains 为 [&quot;ferrets&quot;, &quot;tobi&quot;]。 如果设置 app.subdomainOffset 为3，其 subdomains 为 [&quot;tobi&quot;]
+  */
+  .getter(&#39;protocol&#39;) //返回请求协议
+  .getter(&#39;host&#39;) //获取当前主机的host(hostname:port)
+  .getter(&#39;hostname&#39;) //获取当前主机的host
+  .getter(&#39;URL&#39;) //获取 WHATWG 解析的 URL 对象
+  .getter(&#39;header&#39;) //返回请求头对象
+  .getter(&#39;headers&#39;)  //返回请求头对象
+  .getter(&#39;secure&#39;) //通过 ctx.protocol == &quot;https&quot; 来检查请求是否通过 TLS 发出
+  .getter(&#39;stale&#39;) 
+  .getter(&#39;fresh&#39;) //检查请求缓存是否 &quot;fresh&quot;(内容没有发生变化)。该方法用于在 If-None-Match / ETag, If-Modified-Since 和 Last-Modified 中进行缓存协调。当在 response headers 中设置一个或多个上述参数后，该方法应该被使用。
+  .getter(&#39;ips&#39;)  //当 X-Forwarded-For 存在并且 app.proxy 被启用时，这些 ips 的数组被返回
+  .getter(&#39;ip&#39;); //请求远程地址
+//比如以下操作是等价的：
+ctx.body = {
+  code: 200,
+  result: {
+      nick: &quot;zhangdianpeng&quot;
+  }
+}
+
+ctx.response.body = {
+    code: 200,
+    result: {
+        nick: &quot;zhangdianpeng&quot;
+    }
+}
+console.log(&#39;ctx.method:&#39;, ctx.method);
+console.log(&#39;ctx.request.method:&#39;, ctx.request.method);
+/*
+作者：网易云社区
+链接：https://www.jianshu.com/p/20cf1c476d22
+来源：简书
+改进：RainSun
+*/</code></pre>
+<h1 id="使用Make构建网站"><a href="#使用Make构建网站" class="headerlink" title="使用Make构建网站"></a>使用Make构建网站</h1><p><a href="http://www.ruanyifeng.com/blog/2015/03/build-website-with-make.html" target="_blank" rel="noopener">阮一峰教程</a></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6">框架</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/koa">koa</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/js">js</a>
+                
+                  <a class="hover-with-bg" href="/tags/Web%E5%90%8E%E7%AB%AF">Web后端</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "A3JYkveICuvxzCmgLEBxx45A-gzGzoHsz",
+        app_key: "aFXgOtg5azzGFzSyzJ7m39PT",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+  <!-- 备案信息 -->
+  <a href="http://beian.miit.gov.cn/" target="_blank"
+     rel="nofollow noopener">吉ICP备18005655号</a>
+  
+
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/jquery/jquery.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/popper/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3ad039c2b7e1e0812c3ffc9e370bc4cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Koa学习笔记&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
