@@ -1,12 +1,12 @@
 ---
-title: typescript学习笔记（基础篇1
-tags: [ts, 基础1]
+title: TypeScript学习笔记（基础篇1
+tags: [ts, 基础1, 每日一更]
 categories: [语言, ts]
 index_img: /img/ts.jpg
 banner_img: /img/ts.jpg
 date: 2020-04-05 16:07:00
 ---
-# typescript基础
+# TypeScript基础
 [TypeScript入门教程](https://ts.xcatliu.com)
 ## 写在前边
 这只是一个笔记，并不是教程，阮一峰大佬写的教程链接在上边

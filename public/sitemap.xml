@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:4000/2020/04/ts2/</loc>
+    <loc>http://localhost:4000/2020/04/ts3/</loc>
     
-    <lastmod>2020-04-05T15:18:32.945Z</lastmod>
+    <lastmod>2020-04-06T05:48:27.466Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://localhost:4000/2020/04/ts1/</loc>
     
-    <lastmod>2020-04-05T15:18:20.937Z</lastmod>
+    <lastmod>2020-04-06T03:38:21.660Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/2020/04/ts2/</loc>
+    
+    <lastmod>2020-04-06T03:38:18.610Z</lastmod>
     
   </url>
   

@@ -20,7 +20,7 @@
   
   <meta name="baidu-site-verification" content="nLbPI5Gbnr" />
   
-  <title>typescript学习笔记（基础篇2 ~ RainSun&#39;s blog</title>
+  <title>TypeScript学习笔记（基础篇2 ~ RainSun&#39;s blog</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fluid-dev/hexo-theme-fluid@1.5.0/source/lib/bootstrap/css/bootstrap.min.css"  >
@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1k 字
+                    1.5k 字
                   </span>&nbsp;
                 
 
@@ -135,7 +135,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -168,9 +168,9 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="typescript基础"><a href="#typescript基础" class="headerlink" title="typescript基础"></a>typescript基础</h1><p><a href="https://ts.xcatliu.com" target="_blank" rel="noopener">TypeScript入门教程</a></p>
+            <h1 id="TypeScript基础"><a href="#TypeScript基础" class="headerlink" title="TypeScript基础"></a>TypeScript基础</h1><p><a href="https://ts.xcatliu.com" target="_blank" rel="noopener">TypeScript入门教程</a></p>
 <h2 id="写在前边"><a href="#写在前边" class="headerlink" title="写在前边"></a>写在前边</h2><p>这只是一个笔记，并不是教程，阮一峰大佬写的教程链接在上边</p>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
 <li><p>函数声明定义</p>
 <pre><code class="ts">function sum(x: number, y: number): number {
   return x + y;
@@ -257,7 +257,7 @@ function reverse(x: number | string): number | string {
 <blockquote>
 <p>注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。</p>
 </blockquote>
-<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>使用 <code>值</code> as <code>类型</code> 的语法</p>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>使用 <code>值</code> as <code>类型</code> 的语法</p>
 <pre><code class="ts">interface Cat {
     name: string;
     run(): void;
@@ -293,6 +293,46 @@ function isFish(animal: Cat | Fish) {
 <p>任何类型都可以被断言为 any</p>
 <p>any 可以被断言为任何类型</p>
 <p>要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可</p>
+<h2 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h2><p>当使用第三方库时，我们需要引用它的声明文件，才能获得对应的代码补全、接口提示等功能。</p>
+<p>声明文件必需以 <code>.d.ts</code> 为后缀。</p>
+<pre><code class="ts">// src/jQuery.d.ts
+
+declare var jQuery: (selector: string) =&gt; any;</code></pre>
+<blockquote>
+<p>假如仍然无法解析，那么可以检查下 <code>tsconfig.json</code> 中的 <code>files、include</code> 和 <code>exclude</code> 配置，确保其包含了 <code>jQuery.d.ts</code> 文件。</p>
+</blockquote>
+<h2 id="第三方声明文件"><a href="#第三方声明文件" class="headerlink" title="第三方声明文件"></a>第三方声明文件</h2><p>当然，jQuery 的声明文件不需要我们定义了，社区已经帮我们定义好了：jQuery in DefinitelyTyped。</p>
+<p>我们可以直接下载下来使用，但是更推荐的是使用 <code>@types</code> 统一管理第三方库的声明文件。</p>
+<p><code>@types</code> 的使用方式很简单，直接用 <code>npm</code> 安装对应的声明模块即可，以 <code>jQuery</code> 举例</p>
+<pre><code class="cmd">cnpm install @types/jquery --save-dev</code></pre>
+<p>可以在<a href="https://microsoft.github.io/TypeSearch/" target="_blank" rel="noopener">这个页面</a>搜索你需要的声明文件。</p>
+<h2 id="书写声明文件"><a href="#书写声明文件" class="headerlink" title="书写声明文件"></a>书写声明文件</h2><p>当一个第三方库没有提供声明文件时，我们就需要自己书写声明文件了。前面只介绍了最简单的声明文件内容，而真正书写一个声明文件并不是一件简单的事，以下会详细介绍如何书写声明文件。</p>
+<ul>
+<li>全局变量<a href="https://ts.xcatliu.com/basics/declaration-files#quan-ju-bian-liang" target="_blank" rel="noopener">教程链接</a></li>
+<li>npm包<a href="https://ts.xcatliu.com/basics/declaration-files#npm-bao" target="_blank" rel="noopener">教程链接</a></li>
+<li>UMD库<a href="https://ts.xcatliu.com/basics/declaration-files#umd-ku" target="_blank" rel="noopener">教程链接</a></li>
+<li>直接扩展全局变量<a href="https://ts.xcatliu.com/basics/declaration-files#zhi-jie-kuo-zhan-quan-ju-bian-liang" target="_blank" rel="noopener">教程链接</a></li>
+<li>在 npm 包或 UMD 库中扩展全局变量<a href="https://ts.xcatliu.com/basics/declaration-files#zai-npm-bao-huo-umd-ku-zhong-kuo-zhan-quan-ju-bian-liang" target="_blank" rel="noopener">教程链接</a></li>
+<li>模块插件<a href="https://ts.xcatliu.com/basics/declaration-files#mo-kuai-cha-jian" target="_blank" rel="noopener">教程链接</a></li>
+<li>声明文件中的依赖<a href="https://ts.xcatliu.com/basics/declaration-files#sheng-ming-wen-jian-zhong-de-yi-lai" target="_blank" rel="noopener">教程链接</a></li>
+<li>自动生成声明文件<a href="https://ts.xcatliu.com/basics/declaration-files#zi-dong-sheng-cheng-sheng-ming-wen-jian" target="_blank" rel="noopener">教程链接</a></li>
+</ul>
+<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><p>ECMAScript 标准提供的内置对象有：<code>Boolean、Error、Date、RegExp</code> 等。</p>
+<pre><code class="ts">let b: Boolean = new Boolean(1);
+let e: Error = new Error(&#39;Error occurred&#39;);
+let d: Date = new Date();
+let r: RegExp = /[a-z]/;</code></pre>
+<blockquote>
+<p>更多的内置对象，可以查看 MDN 的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects" target="_blank" rel="noopener">文档</a>。</p>
+</blockquote>
+<h2 id="DOM-和-BOM-的内置对象"><a href="#DOM-和-BOM-的内置对象" class="headerlink" title="DOM 和 BOM 的内置对象"></a>DOM 和 BOM 的内置对象</h2><p>DOM 和 BOM 提供的内置对象有：<code>Document、HTMLElement、Event、NodeList</code> 等。</p>
+<pre><code class="ts">let body: HTMLElement = document.body;
+let allDiv: NodeList = document.querySelectorAll(&#39;div&#39;);
+document.addEventListener(&#39;click&#39;, function(e: MouseEvent) {
+  // Do something
+});</code></pre>
+<h2 id="用-TypeScript-写-Node-js"><a href="#用-TypeScript-写-Node-js" class="headerlink" title="用 TypeScript 写 Node.js"></a>用 TypeScript 写 Node.js</h2><p>Node.js 不是内置对象的一部分，如果想用 TypeScript 写 Node.js，则需要引入第三方声明文件：</p>
+<pre><code class="cmd">npm install @types/node --save-dev</code></pre>
 
             <hr>
           </div>
@@ -318,6 +358,8 @@ function isFish(animal: Cat | Fish) {
                   <a class="hover-with-bg" href="/tags/ts">ts</a>
                 
                   <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%802">基础2</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%9B%B4">每日一更</a>
                 
               </span>
             
@@ -516,7 +558,7 @@ function isFish(animal: Cat | Fish) {
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "typescript学习笔记（基础篇2&nbsp;",
+        "TypeScript学习笔记（基础篇2&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,

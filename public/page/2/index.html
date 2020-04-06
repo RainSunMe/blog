@@ -141,6 +141,76 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/pi-gogs/" target="_self">
+          <img src="/img/gogs-title.jpg" srcset="undefined" alt="树莓派3b安装gogs" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/pi-gogs/">
+        <p class="h4 index-header">树莓派3b安装gogs</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">gogs创建新用户git 如果不创建会导致主账号登陆不了ssh
+切换为root用户为了获取创建用户的权限
+sudo su
+给root创建一个新的密码
+sudo passwd root
+添加一个新用户（如用户名为git）
+useradd git
+为该用户设定登录密码
+passwd git
+为该用户指定命令解释程序（通常为/bin/bash）
+usermod -s /bin/bash git
+为该用户指定用户主目录
+usermod -d /home/git git
+查看用户的属性
+cat /etc/passwd
+切换到用户git
+su git
+再次切换到root用户（不要用sudo su, 而用su root）
+su root
+执行visudo命令
+visudo
+该命令实际上打开的是/etc/sudoers文件，修改该文件，在“root ALL=(ALL:ALL) ALL”这一行下面加入一行：
+git ALL=(ALL:ALL) ALL
+ctrl+o（然后再按enter）保存，ctrl+c取消，ctrl+x退出
+
+下载wget &#39;https://github.com/gogs/go</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/gogs">gogs</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/gogs">gogs</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/11/git/" target="_self">
           <img src="/img/git-title.jpg" srcset="undefined" alt="git常用命令总结" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
