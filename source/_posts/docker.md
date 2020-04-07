@@ -54,9 +54,9 @@ docker run -d -p 127.0.0.1:5001:9000 --restart=always -v /var/run/docker.sock:/v
 **运行mongodb**
 ```
 // pi
-docker run -d --name rpi-mongodb3 -v /home/pi/db/mongo:/data/db -p 27017:27017 --network=lacus casualsimulation/rpi-mongodb3 mongod --auth
+docker run -d --name mongo -v /home/pi/db/mongo:/data/db -p 27017:27017 --restart=always --network=lacus casualsimulation/rpi-mongodb3 mongod --auth
 // al
-docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --network=lacus mongo mongod --auth
+docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --restart=always --network=lacus mongo mongod --auth
 ```
 **打包**
 ```
@@ -80,7 +80,7 @@ docker run -it --name coc -v /root/data/coc/docker/logs:/app/logs -v /root/data/
 // al ccb frontEnd
 docker run -d --name ccb_frontend -p 127.0.0.1:5005:80 --network=lacus lacus/ccb_frontend:1.0
 // pi ccb frontEnd
-docker run -d --name ccb_frontend -p 127.0.0.1:5003:80 --network=lacus lacus/ccb_frontend:1.0
+docker run -d --name ccb_frontend -p 127.0.0.1:5003:80 --restart=always --network=lacus lacus/ccb_frontend:1.0
 // pi ccb backEnd
-docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --network=lacus lacus/ccb_backend:1.0 /bin/sh
+docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --restart=always --network=lacus lacus/ccb_backend:1.0 /bin/sh
 ```
