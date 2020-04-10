@@ -60,21 +60,35 @@ docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --
 ```
 **打包**
 ```
-// al ccb
-docker build -t lacus/ccb_backend:1.0 .
-// al yg
-docker build -t lacus/yg_backend:1.0 .
 // al coc
 docker build -t lacus/coc_backend:1.0 .
-// al ccb frontEnd
-docker build -t lacus/ccb_frontend:1.0 .
+
+// al tracer_backend
+docker build -t lacus/tracer_backend:1.0 .
+// al tracer_user
+docker build -t lacus/tracer_user:1.0 .
+// al tracer_admin
+docker build -t lacus/tracer_admin:1.0 .
+
+// al canary_backend
+docker build -t lacus/canary_backend:1.0 .
+// al canary_frontend
+docker build -t lacus/canary_frontend:1.0 .
 ```
 **运行**
 ```
-// al ccb
-docker run -it --name ccb -v /root/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --network=lacus lacus/ccb_backend:1.0 /bin/sh
-// al yg
-docker run -it --name yg -v /root/data/yg/docker/logs:/app/logs -v /root/data/yg/docker/upload:/app/upload -p 127.0.0.1:5003:80 --network=lacus lacus/yg_backend:1.0 /bin/sh
+// al tracer_backend
+docker run -it --name tracer_backend -v /root/data/tracer/backEnd/logs:/app/logs -v /root/data/tracer/backEnd/upload:/app/upload -p 127.0.0.1:5002:80 --network=lacus lacus/tracer_backend:1.0 /bin/sh
+// al tracer_user
+docker run -d --name tracer_user -p 127.0.0.1:5003:80 --restart=always --network=lacus lacus/tracer_user:1.0
+// al tracer_admin
+docker run -d --name tracer_admin -p 127.0.0.1:5004:80 --restart=always --network=lacus lacus/tracer_admin:1.0
+
+// al canary_backend
+docker run -it --name canary_backend -v /root/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5005:80 --network=lacus lacus/canary_backend:1.0 /bin/sh
+// al canary_frontend
+docker run -d --name canary_frontend -p 127.0.0.1:5006:80 --restart=always --network=lacus lacus/canary_frontend:1.0
+
 // al coc
 docker run -it --name coc -v /root/data/coc/docker/logs:/app/logs -v /root/data/coc/docker/upload:/app/upload -p 127.0.0.1:5004:80 --network=lacus lacus/coc_backend:1.0 /bin/sh
 // al ccb frontEnd

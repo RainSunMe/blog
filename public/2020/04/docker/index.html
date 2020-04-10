@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    493 字
+                    583 字
                   </span>&nbsp;
                 
 
@@ -135,7 +135,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -187,29 +187,43 @@
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><strong>运行portainer</strong></p>
 <pre><code>docker run -d -p 127.0.0.1:5001:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --name prtainer  portainer/portainer</code></pre><p><strong>运行mongodb</strong></p>
 <pre><code>// pi
-docker run -d --name rpi-mongodb3 -v /home/pi/db/mongo:/data/db -p 27017:27017 --network=lacus casualsimulation/rpi-mongodb3 mongod --auth
+docker run -d --name mongo -v /home/pi/db/mongo:/data/db -p 27017:27017 --restart=always --network=lacus casualsimulation/rpi-mongodb3 mongod --auth
 // al
-docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --network=lacus mongo mongod --auth</code></pre><p><strong>打包</strong></p>
-<pre><code>// al ccb
-docker build -t lacus/ccb_backend:1.0 .
-// al yg
-docker build -t lacus/yg_backend:1.0 .
-// al coc
+docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --restart=always --network=lacus mongo mongod --auth</code></pre><p><strong>打包</strong></p>
+<pre><code>// al coc
 docker build -t lacus/coc_backend:1.0 .
-// al ccb frontEnd
-docker build -t lacus/ccb_frontend:1.0 .</code></pre><p><strong>运行</strong></p>
-<pre><code>// al ccb
-docker run -it --name ccb -v /root/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --network=lacus lacus/ccb_backend:1.0 /bin/sh
-// al yg
-docker run -it --name yg -v /root/data/yg/docker/logs:/app/logs -v /root/data/yg/docker/upload:/app/upload -p 127.0.0.1:5003:80 --network=lacus lacus/yg_backend:1.0 /bin/sh
+
+// al tracer_backend
+docker build -t lacus/tracer_backend:1.0 .
+// al tracer_user
+docker build -t lacus/tracer_user:1.0 .
+// al tracer_admin
+docker build -t lacus/tracer_admin:1.0 .
+
+// al canary_backend
+docker build -t lacus/canary_backend:1.0 .
+// al canary_frontend
+docker build -t lacus/canary_frontend:1.0 .</code></pre><p><strong>运行</strong></p>
+<pre><code>// al tracer_backend
+docker run -it --name tracer_backend -v /root/data/tracer/backEnd/logs:/app/logs -v /root/data/tracer/backEnd/upload:/app/upload -p 127.0.0.1:5002:80 --network=lacus lacus/tracer_backend:1.0 /bin/sh
+// al tracer_user
+docker run -d --name tracer_user -p 127.0.0.1:5003:80 --restart=always --network=lacus lacus/tracer_user:1.0
+// al tracer_admin
+docker run -d --name tracer_admin -p 127.0.0.1:5004:80 --restart=always --network=lacus lacus/tracer_admin:1.0
+
+// al canary_backend
+docker run -it --name canary_backend -v /root/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5005:80 --network=lacus lacus/canary_backend:1.0 /bin/sh
+// al canary_frontend
+docker run -d --name canary_frontend -p 127.0.0.1:5006:80 --restart=always --network=lacus lacus/canary_frontend:1.0
+
 // al coc
 docker run -it --name coc -v /root/data/coc/docker/logs:/app/logs -v /root/data/coc/docker/upload:/app/upload -p 127.0.0.1:5004:80 --network=lacus lacus/coc_backend:1.0 /bin/sh
 // al ccb frontEnd
 docker run -d --name ccb_frontend -p 127.0.0.1:5005:80 --network=lacus lacus/ccb_frontend:1.0
 // pi ccb frontEnd
-docker run -d --name ccb_frontend -p 127.0.0.1:5003:80 --network=lacus lacus/ccb_frontend:1.0
+docker run -d --name ccb_frontend -p 127.0.0.1:5003:80 --restart=always --network=lacus lacus/ccb_frontend:1.0
 // pi ccb backEnd
-docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --network=lacus lacus/ccb_backend:1.0 /bin/sh</code></pre>
+docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --restart=always --network=lacus lacus/ccb_backend:1.0 /bin/sh</code></pre>
             <hr>
           </div>
           <br>

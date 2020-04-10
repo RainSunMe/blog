@@ -141,6 +141,65 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/11/pi-ngrok/" target="_self">
+          <img src="/img/ngrok-title.png" srcset="undefined" alt="树莓派3b部署ngrok" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/11/pi-ngrok/">
+        <p class="h4 index-header">树莓派3b部署ngrok</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">ngrok先去sunny ngrok买个id
+下载wget &#39;hls.ctopus.com/sunny/linux_arm.zip?v=2&#39;
+重命名mv linux_arm.zip?v=2 linux_arm.zip
+解压缩unzip linux_arm.zip
+切文件夹cd linux_arm
+启动！./sunny clientid &lt;your-clientid&gt;
+后台运行setsid ./sunny clientid &lt;your-clientid&gt; &amp;
+移动到 /use/local/bin 目录下并给予可执行权限
+sudo mv sunny /usr/local/bin/sunny
+sudo chmod +x /usr/local/bin/sunny编写启动脚本sudo vim /etc/init.d/sunny
+内容
+#!/bin/sh -e
+### BEGIN INIT INFO
+# Provides:          ngrok.cc
+# Required-Start:    $network $remote_fs $loca</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/ngrok">ngrok</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/ngrok">ngrok</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2019/11/pi-gogs/" target="_self">
           <img src="/img/gogs-title.jpg" srcset="undefined" alt="树莓派3b安装gogs" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
