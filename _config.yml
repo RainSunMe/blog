@@ -14,7 +14,7 @@ timezone: 'Asia/Shanghai'
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 # url: http://blog.powerrain.cn
-url: http://localhost:4000
+url: https://lacus.site
 root: /
 permalink: :year/:month/:title/
 permalink_defaults:

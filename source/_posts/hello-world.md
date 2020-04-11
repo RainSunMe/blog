@@ -41,3 +41,6 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+```html
+<meta name="baidu-site-verification" content="nLbPI5Gbnr" />
+```

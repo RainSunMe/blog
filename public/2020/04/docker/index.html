@@ -18,7 +18,7 @@
   <meta name="keywords" content="前端,树莓派,服务器,内网穿透,前端博客,JavaScript,html5,css3,NodeJs,Ubuntu,TypeScript,Python,Flask,ngrok,centOS,Docker,Koa">
   
   
-  <meta name="baidu-site-verification" content="nLbPI5Gbnr" />
+  <meta name="baidu-site-verification" content="DxtRwax5uP" />
   
   <title>docker学习笔记 ~ RainSun&#39;s blog</title>
 
@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    583 字
+                    585 字
                   </span>&nbsp;
                 
 
@@ -190,10 +190,7 @@
 docker run -d --name mongo -v /home/pi/db/mongo:/data/db -p 27017:27017 --restart=always --network=lacus casualsimulation/rpi-mongodb3 mongod --auth
 // al
 docker run -d --name mongo -v /root/db/mongo:/data/db -p 127.0.0.1:5000:27017 --restart=always --network=lacus mongo mongod --auth</code></pre><p><strong>打包</strong></p>
-<pre><code>// al coc
-docker build -t lacus/coc_backend:1.0 .
-
-// al tracer_backend
+<pre><code>// al tracer_backend
 docker build -t lacus/tracer_backend:1.0 .
 // al tracer_user
 docker build -t lacus/tracer_user:1.0 .
@@ -203,7 +200,12 @@ docker build -t lacus/tracer_admin:1.0 .
 // al canary_backend
 docker build -t lacus/canary_backend:1.0 .
 // al canary_frontend
-docker build -t lacus/canary_frontend:1.0 .</code></pre><p><strong>运行</strong></p>
+docker build -t lacus/canary_frontend:1.0 .
+
+// al cherry_backend
+docker build -t lacus/cherry_backend:1.0 .
+// al cherry_frontend
+docker build -t lacus/cherry_frontend:1.0 .</code></pre><p><strong>运行</strong></p>
 <pre><code>// al tracer_backend
 docker run -it --name tracer_backend -v /root/data/tracer/backEnd/logs:/app/logs -v /root/data/tracer/backEnd/upload:/app/upload -p 127.0.0.1:5002:80 --network=lacus lacus/tracer_backend:1.0 /bin/sh
 // al tracer_user
@@ -212,14 +214,15 @@ docker run -d --name tracer_user -p 127.0.0.1:5003:80 --restart=always --network
 docker run -d --name tracer_admin -p 127.0.0.1:5004:80 --restart=always --network=lacus lacus/tracer_admin:1.0
 
 // al canary_backend
-docker run -it --name canary_backend -v /root/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5005:80 --network=lacus lacus/canary_backend:1.0 /bin/sh
+docker run -it --name canary_backend -v /root/data/canary/backEnd/logs:/app/logs -p 127.0.0.1:5005:80 --network=lacus lacus/canary_backend:1.0 /bin/sh
 // al canary_frontend
 docker run -d --name canary_frontend -p 127.0.0.1:5006:80 --restart=always --network=lacus lacus/canary_frontend:1.0
 
-// al coc
-docker run -it --name coc -v /root/data/coc/docker/logs:/app/logs -v /root/data/coc/docker/upload:/app/upload -p 127.0.0.1:5004:80 --network=lacus lacus/coc_backend:1.0 /bin/sh
-// al ccb frontEnd
-docker run -d --name ccb_frontend -p 127.0.0.1:5005:80 --network=lacus lacus/ccb_frontend:1.0
+// al cherry_backend
+docker run -it --name cherry_backend -v /root/data/cherry/backEnd/logs:/app/logs -p 127.0.0.1:5007:80 --network=lacus lacus/cherry_backend:1.0 /bin/sh
+// al cherry_frontend
+docker run -d --name cherry_frontend -p 127.0.0.1:5008:80 --restart=always --network=lacus lacus/cherry_frontend:1.0
+
 // pi ccb frontEnd
 docker run -d --name ccb_frontend -p 127.0.0.1:5003:80 --restart=always --network=lacus lacus/ccb_frontend:1.0
 // pi ccb backEnd
