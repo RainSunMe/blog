@@ -1,6 +1,6 @@
 ---
 title: TypeScript学习笔记（基础篇2
-tags: [ts, 基础2, 每日一更]
+tags: [ts, 基础2]
 categories: [语言, ts]
 index_img: /img/ts.jpg
 banner_img: /img/ts.jpg

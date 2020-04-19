@@ -1,6 +1,6 @@
 ---
 title: JavaScript学习笔记1
-tags: [js, 基础, 每日一更]
+tags: [js, 基础]
 categories: [语言, js]
 index_img: /img/js-title.jpg
 banner_img: /img/js.jpg

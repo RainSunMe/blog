@@ -1,6 +1,6 @@
 ---
 title: TypeScript学习笔记（高级篇
-tags: [ts, 高级1, 每日一更]
+tags: [ts, 高级1]
 categories: [语言, ts]
 index_img: /img/ts.jpg
 banner_img: /img/ts.jpg

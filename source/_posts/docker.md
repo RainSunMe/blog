@@ -100,4 +100,7 @@ docker run -d --name cherry_frontend -p 127.0.0.1:5008:80 --restart=always --net
 docker run -d --name ccb_frontend -p 127.0.0.1:5003:80 --restart=always --network=lacus lacus/ccb_frontend:1.0
 // pi ccb backEnd
 docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.1:5002:80 --restart=always --network=lacus lacus/ccb_backend:1.0 /bin/sh
+
+// vueview
+ docker run  -d --name canary_frontEnd -p 127.0.0.1:5006:80 --restart=always -v /root/data/canary/frontEnd:/vue lacus/vueview
 ```
