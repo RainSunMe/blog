@@ -103,4 +103,6 @@ docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.
 
 // vueview
  docker run  -d --name canary_frontEnd -p 127.0.0.1:5006:80 --restart=always -v /root/data/canary/frontEnd:/vue lacus/vueview
+ // flask_env
+ docker run -it --name phonebook_backend -p 127.0.0.1:5011:80 -v /root/data/phonebook/backEnd:/app --network=lacus lacus/flask_env /bin/sh
 ```
