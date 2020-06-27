@@ -141,14 +141,79 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/06/js2/" target="_self">
+          <img src="/img/js-title.jpg" srcset="undefined" alt="你不知道的JavaScript（下）学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/js2/">
+        <p class="h4 index-header">你不知道的JavaScript（下）学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JavaScript基础prompt用法var input = prompt(text,defaultText)
+
+text     可选。要在对话框中显示的纯文本（而不是 HTML 格式的文本）。defaultText     可选。默认的输入文本。
+
+比较如果两边任意一边出现 true 或者 false 使用 ===
+如果两边任意一边可能是特定值0,&quot;&quot;, [] 使用 ===
+剩下的所有情况,使用 ==
+对于引用类型来说,比较仅仅是比较其引用是否是同一个,另外在和字符串比较时,数组会自动转成字符串
+var a = [1,2,3]
+var b = [1,2,3]
+var c = &quot;1,2,3&quot;
+console.log(a == b) // false
+console.log(a == c) // true
+console.log(b == c) // true
+switch语句switch(a) {
+  case 2:
+  case 10:
+    // 2 或者 10 执行
+    break;
+  default:
+    // 条件都不满</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/04/js1/" target="_self">
-          <img src="/img/js-title.jpg" srcset="undefined" alt="JavaScript学习笔记1" class="img-fluid rounded z-depth-3 index-thumbnails">
+          <img src="/img/js-title.jpg" srcset="undefined" alt="你不知道的JavaScript（上）学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 m-auto">
       <a href="/2020/04/js1/">
-        <p class="h4 index-header">JavaScript学习笔记1</p>
+        <p class="h4 index-header">你不知道的JavaScript（上）学习笔记</p>
         
         
           
@@ -677,58 +742,6 @@ log目录 /var/log/mongodb/mongod.logdb目录 /var/lib/mongo配置文件 /etc/mo
             <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>&nbsp;
           
             <a href="/tags/mongoDB">mongoDB</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/11/pi-origin/" target="_self">
-          <img src="/img/ali-title.png" srcset="undefined" alt="树莓派3b更换国内软件源" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/pi-origin/">
-        <p class="h4 index-header">树莓派3b更换国内软件源</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">更换软件源切换到root用户su - root
-修改 /etc/apt/sources.listsudo nano /etc/apt/sources.list
-原文`deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi` 加#注释掉
-
-加入如下阿里源，`deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi`修改/etc/apt/sources.list.d/raspi.listsudo nano /etc/apt/sources.list.d/raspi.list
-原文`deb http://archive.raspberrypi.org/debian/ stretch main ui，` 加#
-
-加入如下科大源：`deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
-          
-            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
-          
-            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%BA%90">软件源</a>&nbsp;
           
         
       </div>

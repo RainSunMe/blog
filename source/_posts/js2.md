@@ -1,5 +1,5 @@
 ---
-title: JavaScript学习笔记2
+title: 你不知道的JavaScript（下）学习笔记
 tags: [js, 基础]
 categories: [语言, js]
 index_img: /img/js-title.jpg
