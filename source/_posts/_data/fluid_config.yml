@@ -153,7 +153,7 @@ post:
     enable: false
     content: '<img src="https://octodex.github.com/images/jetpacktocat.png" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">' # 自定义区域，支持 HTML，可自行插入赞赏码、公众号二维码等内容
   comments:  # 评论
-    enable: true  # 开启评论
+    enable: false  # 开启评论
     type: valine  # 指定使用的评论模块  available: disqus | valine | gitalk | utterances
   image_zoom:  # 文章图片可点击放大
     enable: true
