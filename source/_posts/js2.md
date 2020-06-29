@@ -628,3 +628,169 @@ ES6中`"foo".repeat(3) // 'foofoofoo'`
 `str.includes("some") // true`
 
 不会接受正则表达式用于搜索，而且如果搜索空字符串一般会在开始或者结尾找到
+
+### 元编程
+#### 函数名
+```js
+(function(){...}); // name:
+(function*(){...}); // name:
+window.foo = function(){...}; // name:
+
+class Awesome{
+  constructor(){...} // name: Awesome
+  funny(){...} // name: funny
+}
+
+var c = class Awesome {..}; // name: Awesome
+
+var o = {
+  foo(){...}, // name: foo
+  *bar(){...}, // name: bar
+  baz: () => {...}, // name: baz
+  bam: function() {...}, // name: bam
+  get qux() {...}, // name: get qux
+  set fuz() {...}, // name: set fuz
+  ["b"+"lz"]: function() {...}, // name: blz
+  [Symbol("buz")]: function() {...} // name: [buz]
+};
+
+var x = o.foo.bind(o); // bound foo
+(function(){..}).bind(0); // bound
+
+export default function() {...} // name: default
+
+var y = new Function(); // name: anonymous
+var GeneratorFunction = function*(){}.__proto__.constructor;
+var z = new GeneratorFunction() // name: anonymous
+```
+> 默认情况下name属性不可写，但是可以通过Object.defineProperty(..)手动修改
+
+#### 元属性
+`new.target`可以指向调用new的目标构造器，也就是说如果在构造器里想区分直接调用还是子类调用使用如下代码
+```js
+class Parent {
+  constructor() {
+    if (new.target === Parent) console.log('from parent')
+    else console.log('from child')
+  }
+}
+
+class Child extends Parent {}
+var a = new Parent(); // from parent
+var b = new Child(); // from child
+```
+
+#### 公开符号
+##### Symbol.iterator
+表示任意对象上的一个专门位置（属性），语言机制自动在这个位置上寻找一个方法，这个方法构造一个迭代器来消耗这个对象的值。很多对象定义有这个符号的默认值
+```js
+var arr = [4,5,6,7,8,9];
+for(let v of arr) {
+  console.log(v) // 4 5 6 7 8 9
+}
+// 定义一个只在奇数位置产生索引值的迭代器
+arr[Symbol.iterator] = function *() {
+  var idx = 1;
+  do {
+    yield this[idx];
+  } while((idx += 2) < this.length);
+};
+for (let v of arr) {
+  console.log(v) // 5 7 9
+}
+```
+##### Symbol.toStringTag 与 Symbol.hasInstance
+```js
+function Foo(greeting) {
+  this.greeting = greeting;
+}
+Foo.prototype[Symbol.toSringTag] = "Foo";
+Object.defineProperty(Foo, Symbol.hasInstance, {
+  value: function(inst) {
+    return inst.greeting == 'hello'
+  }
+})
+var a = new Foo("hello")
+var b = new Foo("world")
+
+b[Symbol.toStringTag] = 'cool'
+
+a.toString() // [Object Foo]
+b.toString() // [Object cool]
+
+a instanceof Foo; // true
+b instanceof Foo; // false
+```
+> 原型（或者是实例本身）的@@toStringTag符号指定了在[Object ___]字符串化时使用的字符串值
+
+> @@hasInstance 符号是在构造器函数上的一个方法，接收实例对象值，通过返回true 或者 false 来指示这个值是否可以被认为是一个实例
+> 要在一个函数上设置@@hasInstance必须使用Object.defineProperty，因为默认的那个是不可写的
+
+##### Symbol.species
+这个符号控制要生成新实例的时候，类的内置方法使用哪一个构造器
+```js
+class Cool {
+  // 把@@species推迟到子类
+  static get [Symbol.species]() {return this;} // 这个就是默认的行为
+  again(){
+    return new this.constructor[Symbol.species]();
+  }
+}
+class Fun extends Cool {}
+
+class Awesome extends Cool {
+  // 强制指定@@species为父构造器
+  static get [Symbol.species]() {
+    return Cool;
+  }
+}
+
+var a = new Fun(),
+b = new Awesome(),
+c = a.again(),
+d = b.again();
+c instanceof Fun; // true
+d instanceof Awesome; // false
+d instanceof Cool; // true
+```
+
+##### Symbol.toPrimitive
+如果一个对象或者数组要使用== 或者+那么就必须被强制转化成一个原生类型
+```js
+var arr = [1,2,3,4,5]
+arr + 10 // 1,2,3,4,510
+arr[Symbol.toPrimitive] = function (hint) {
+  if(hint == 'default' || hint == 'number') {
+    return this.reduce(function(acc, curr){
+      return acc + curr;
+    }, 0)
+  } 
+}
+arr + 10 // 25
+```
+> Symbol.toPrimitive方法根据调用ToPrimitive的运算期望的类型，会提供一个提示`hint`指定"string"、"number"或者"default"（这应该被解释成"number"）。在前面的代码中，加法运算没有提示（传入"default"）。而乘法运算提示为"number"，String(arr)提示为"string"。
+
+##### Symbol.isConcatSpreadable
+可以被定义为任何对象（比如数组或者其他可迭代对象）的布尔属性，用来指示如果把它传给一个数组的`concat()`是否应该将其**展开**
+```js
+var a = [1,2,3],
+b = [4,5,6];
+b[Symbol.isConcatSpreadable] = false;
+[].contact(a,b); // [1,2,3,[4,5,6]]
+```
+
+##### Symbol.unscopables
+可以被定义为任意对象的对象属性，用来指示使用with语句时那些属性可以或不可以暴露为词法变量
+```js
+var o = {a:1, b:2, c:3},
+a = 10, b = 20, c = 30;
+o[Symbol.unscopables] = {
+  a: false, // 能暴露为词法变量，因为是unscopables
+  b: true,
+  c: false
+}
+with (o) {
+  console.log(a,b,c)  // 1 20 3
+}
+```
+> strict 模式下不允许使用with属性，应该尽量避免使用with，所以这个没有什么用
