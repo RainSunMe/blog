@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>循环赛日程安排</title>
+    <link href="undefined2020/06/round-robin/"/>
+    <url>2020/06/round-robin/</url>
+    
+    <content type="html"><![CDATA[<h1 id="循环赛日程安排-–-170521328-赵英博"><a href="#循环赛日程安排-–-170521328-赵英博" class="headerlink" title="循环赛日程安排 – 170521328 赵英博"></a>循环赛日程安排 – 170521328 赵英博</h1><h2 id="问题背景（自定）"><a href="#问题背景（自定）" class="headerlink" title="问题背景（自定）"></a>问题背景（自定）</h2><p>设有<code>n=2^k</code>个选手要进行循环赛，设计一个满足以下要求的比赛日程表：</p><ul><li>每个选手必须与其他<code>n-1</code>个选手各比赛一次</li><li>每个选手一天只能比赛一次</li></ul><h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>每个选手必须与其他选手比赛一次，那么就设计一个<code>n×(n-1)</code>的二维表，其中，<code>(i, j)</code>表示和第<code>i</code>个选手在第<code>j</code>天比赛的选手。</p><p>我们可以对这个二维表进行分割，分割成两个部分，譬如<code>n＝2^k</code>个选手的日程表就可以分成两个<code>n/2＝2^(k-1)</code>的日程表</p><p>在进行递归分割</p><p>分割直到只剩下两个选手</p><blockquote><p>比赛日程表在这个时候就很简单了，让这两个人直接进行比赛就好了</p></blockquote><p>假设有八个人比赛</p><p>整个求解过程是自底向上的迭代过程，其中表格<code>c</code>左上角和左下角分别为选手1到选手8前三天的比赛日程</p><p>将左上角复制到右下角，将左下角复制到右上角，就安排了选手1到选手8后四天的比赛日程</p><ul><li>表格a</li></ul><table><thead><tr><th>1</th><th>2</th></tr></thead><tbody><tr><td>2</td><td>1</td></tr></tbody></table><ul><li>表格b</li></ul><table><thead><tr><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>2</td><td>1</td><td>4</td><td>3</td></tr><tr><td>3</td><td>4</td><td>1</td><td>2</td></tr><tr><td>4</td><td>3</td><td>2</td><td>1</td></tr></tbody></table><ul><li>表格c</li></ul><table><thead><tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead><tbody><tr><td>2</td><td>1</td><td>4</td><td>3</td><td>6</td><td>5</td><td>8</td><td>7</td></tr><tr><td>3</td><td>4</td><td>1</td><td>2</td><td>7</td><td>8</td><td>5</td><td>6</td></tr><tr><td>4</td><td>3</td><td>2</td><td>1</td><td>8</td><td>7</td><td>6</td><td>5</td></tr><tr><td>5</td><td>6</td><td>7</td><td>8</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><td>6</td><td>5</td><td>8</td><td>7</td><td>2</td><td>1</td><td>4</td><td>3</td></tr><tr><td>7</td><td>8</td><td>5</td><td>6</td><td>3</td><td>4</td><td>1</td><td>2</td></tr><tr><td>8</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr></tbody></table><p>将求解<code>2^k</code>个选手比赛日程规划分解为<code>2^1</code>，<code>2^2</code>，<code>2^k</code>个选手的比赛日程问题，通过迭代的方法将问题解决</p><h2 id="流程描述"><a href="#流程描述" class="headerlink" title="流程描述"></a>流程描述</h2><p>每次迭代中，将问题划分为了四部分</p><h3 id="左上角"><a href="#左上角" class="headerlink" title="左上角"></a>左上角</h3><p>是<code>2^(k-1)</code>个选手在前半程的比赛日程</p><h3 id="左下角"><a href="#左下角" class="headerlink" title="左下角"></a>左下角</h3><p>是另外<code>2^(k-1)</code>个选手在前半程的比赛日程</p><h3 id="右上角"><a href="#右上角" class="headerlink" title="右上角"></a>右上角</h3><p>左下角复制得来，是<code>2^(k-1)</code>个选手在后半程的比赛日程</p><h3 id="右下角"><a href="#右下角" class="headerlink" title="右下角"></a>右下角</h3><p>左上角复制得来，是另外<code>2^(k-1)</code>个选手在后半程的比赛日程</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>使用语言Javascript</p><pre><code class="js">// 根据人员数创建合适大小的空数组function createArray(k) {  let arr = new Array(k).map(item =&gt; return new Array(k))  return arr}// 主函数需要传入选手参数数kfunction gameTable(k) {  // n=2^k(k≥1)个选手参加比赛  let table = createArray(k)  let n = 2;  //求解2个选手比赛日程，得到左上角元素  table[0][0]=1; table[0][1]=2;     table[1][0]=2; table[1][1]=1;  // 如果k 就是1，那么直接返回  if(k == 1) return table  // 其余情况进行迭代运算  for(let time = 1; time &lt; k; time++) {    //迭代处理，依次处理2^2, …, 2^k个选手比赛日程    temp=n; n=n*2;       //填左下角元素    for (i=temp+1; i&lt;=n; i++ )          for (j=1; j&lt;=temp; j++)                table[i][j]=table[i-temp][j]+temp;    //左下角元素和左上角元素的对应关系    //填右上角元素    for (i=1; i&lt;=temp; i++)           for (j=temp+1; j&lt;=n; j++)                table[i][j]=table[i+temp][(j+temp)% n];    //填右下角元素    for (i=temp+1; i&lt;=n; i++)          for (j=temp+1; j&lt;=n; j++)                table[i][j]=table[i-temp][j-temp];  }  // 返回整个时间表  return table}</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+      <category>循环赛</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JS基础类型API整理--Array</title>
     <link href="undefined2020/06/js-api-array/"/>
     <url>2020/06/js-api-array/</url>
