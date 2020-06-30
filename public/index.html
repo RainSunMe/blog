@@ -141,6 +141,64 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/06/js-api-string/" target="_self">
+          <img src="/img/js-title.jpg" srcset="undefined" alt="JS基础类型API整理--String" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/js-api-string/">
+        <p class="h4 index-header">JS基础类型API整理--String</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JavaScriptStringstring.@@iteratorstring类型是可迭代的
+let str = &#39;test string&#39;
+let ite = str[Symbol.iterator]()
+console.log(ite.next().value) // t
+string.charAt获取字符串某一位的内容，无参数默认第一位，下标从0开始
+let str = &#39;text string&#39;
+console.log(str.charAt()) // t
+console.log(str.charAt(6)) // s 
+string.concat用于拼接一个或者多个字符串,返回一个新的字符串不会改变源字符串
+let str = &#39;test string&#39;
+let con_str = &#39; is cool!&#39;
+console.log(str.concat(con_str)) // test string is cool!
+string.endsWith查看该字符串是否以传入的字符串结尾，可以传入裁剪的字符串长度
+va</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/06/round-robin/" target="_self">
           <img src="/img/js-title.jpg" srcset="undefined" alt="循环赛日程安排" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -747,67 +805,6 @@ user-agent=Transmission/2</div>
             <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
           
             <a href="/tags/aria2">aria2</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/docker/" target="_self">
-          <img src="/img/docker-title.jpg" srcset="undefined" alt="docker学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/docker/">
-        <p class="h4 index-header">docker学习笔记</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">docker查看全部网桥
-docker network ls查看某个网桥
-docker network inspect &lt;name&gt;创建一个名为lacus的网桥
-docker network create --driver bridge lacus允许指定网段 上一句指定参数在名之前
---subnet 172.22.16.0/24 --gateway 172.22.16.1删除lacus网桥
-docker network rm lacus连接到lacus网桥
---network=lacus
-容器间通信的三种方式IP通信
-只要放在了一个网桥下就可以通过ip进行访问了
-Docker DNS Server
-docker内嵌了DNS Server，只要使用--name=&lt;name&gt;指定容器名并且绑定在一个网桥中就可以使用名字ping -c 3 name连通
-
-使用 docker DNS 有个限制：只能在 user-defined 网络中使用。
-
-joined 容器
-通过--network=container:&lt;name&gt;指定jointed容器
-实例运行por</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E5%B7%A5%E5%85%B7">工具</a>&nbsp;
-          
-            <a href="/categories/docker">docker</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-            <a href="/tags/docker">docker</a>&nbsp;
           
         
       </div>

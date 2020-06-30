@@ -141,6 +141,67 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/docker/" target="_self">
+          <img src="/img/docker-title.jpg" srcset="undefined" alt="docker学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/docker/">
+        <p class="h4 index-header">docker学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">docker查看全部网桥
+docker network ls查看某个网桥
+docker network inspect &lt;name&gt;创建一个名为lacus的网桥
+docker network create --driver bridge lacus允许指定网段 上一句指定参数在名之前
+--subnet 172.22.16.0/24 --gateway 172.22.16.1删除lacus网桥
+docker network rm lacus连接到lacus网桥
+--network=lacus
+容器间通信的三种方式IP通信
+只要放在了一个网桥下就可以通过ip进行访问了
+Docker DNS Server
+docker内嵌了DNS Server，只要使用--name=&lt;name&gt;指定容器名并且绑定在一个网桥中就可以使用名字ping -c 3 name连通
+
+使用 docker DNS 有个限制：只能在 user-defined 网络中使用。
+
+joined 容器
+通过--network=container:&lt;name&gt;指定jointed容器
+实例运行por</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7">工具</a>&nbsp;
+          
+            <a href="/categories/docker">docker</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/linux">linux</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/03/init-centos/" target="_self">
           <img src="/img/ali-title.png" srcset="undefined" alt="阿里云服务器初始化" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
