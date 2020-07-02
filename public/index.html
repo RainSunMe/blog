@@ -141,6 +141,70 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/js-api-object/" target="_self">
+          <img src="/img/js-title.jpg" srcset="undefined" alt="JS基础类型API整理--Object" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/js-api-object/">
+        <p class="h4 index-header">JS基础类型API整理--Object</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JavaScriptObjectObject.assign将一个或者多个对象的可枚举属性拷贝到源对象上，会改变源对象，如果key相同后边会覆盖前边的
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 }
+object.constructor返回构造函数本身
+var o = {};
+o.constructor === Object; // true
+
+var o = new Object;
+o.constructor === Object; // true
+
+var a = [];
+a.constructor === A</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-02&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/06/js-api-string/" target="_self">
           <img src="/img/js-title.jpg" srcset="undefined" alt="JS基础类型API整理--String" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -750,72 +814,11 @@ const two = (ctx, next) =&gt; {
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/pi-aria2/" target="_self">
-          <img src="/img/aria2-title.jpg" srcset="undefined" alt="树莓派3b安装aria2" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/pi-aria2/">
-        <p class="h4 index-header">树莓派3b安装aria2</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">aria2安装aria2sudo apt-get install aria2配置aria2的文件mkdir ~/.aria2
-touch ~/.aria2/aria2.session
-mkdir /home/pi/data/aria2
-mkdir /home/pi/data/aria2/download
-nano ~/.aria2/aria2.confconf文件里边写
-dir=/home/pi/data/aria2/download
-disable-ipv6=true
-enable-rpc=true
-rpc-allow-origin-all=true
-rpc-listen-all=true
-continue=true
-input-file=/home/pi/.aria2/aria2.session
-save-session=/home/pi/.aria2/aria2.session 
-max-concurrent-downloads=5
-save-session-interval=60
-peer-id-prefix=-TR2770-
-user-agent=Transmission/2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-04&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
-          
-            <a href="/categories/aria2">aria2</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
-          
-            <a href="/tags/aria2">aria2</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

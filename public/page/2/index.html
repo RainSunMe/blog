@@ -141,6 +141,67 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/pi-aria2/" target="_self">
+          <img src="/img/aria2-title.jpg" srcset="undefined" alt="树莓派3b安装aria2" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/pi-aria2/">
+        <p class="h4 index-header">树莓派3b安装aria2</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">aria2安装aria2sudo apt-get install aria2配置aria2的文件mkdir ~/.aria2
+touch ~/.aria2/aria2.session
+mkdir /home/pi/data/aria2
+mkdir /home/pi/data/aria2/download
+nano ~/.aria2/aria2.confconf文件里边写
+dir=/home/pi/data/aria2/download
+disable-ipv6=true
+enable-rpc=true
+rpc-allow-origin-all=true
+rpc-listen-all=true
+continue=true
+input-file=/home/pi/.aria2/aria2.session
+save-session=/home/pi/.aria2/aria2.session 
+max-concurrent-downloads=5
+save-session-interval=60
+peer-id-prefix=-TR2770-
+user-agent=Transmission/2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/categories/aria2">aria2</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE3b">树莓派3b</a>&nbsp;
+          
+            <a href="/tags/aria2">aria2</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/04/docker/" target="_self">
           <img src="/img/docker-title.jpg" srcset="undefined" alt="docker学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -744,63 +805,11 @@ workers </div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/11/hello-world/" target="_self">
-          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573903734488&di=5e20992798c05e322bb32348c9f0aa6d&imgtype=0&src=http%3A%2F%2Fimg.cwq.com%2F201712%2F1513127498165415.jpeg" srcset="undefined" alt="Hello World" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/hello-world/">
-        <p class="h4 index-header">Hello World</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server$ hexo server
-More info: Server
-Generate static files$ hexo generate
-More info: Generating
-Deploy to remote sites$ hexo deploy
-More info: Deployment
-&lt;meta name=&quot;baidu-site-verification&quot; content=&quot;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/quickStart">quickStart</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Hexo">Hexo</a>&nbsp;
-          
-            <a href="/tags/Fluid">Fluid</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
