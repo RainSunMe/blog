@@ -141,6 +141,65 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/js-api-others/" target="_self">
+          <img src="/img/js-title.jpg" srcset="undefined" alt="JS基础类型API整理-收尾" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/js-api-others/">
+        <p class="h4 index-header">JS基础类型API整理-收尾</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JavaScriptJSONJSON.parse将字符串转化为JSON
+const json = &#39;{&quot;result&quot;:true, &quot;count&quot;:42}&#39;;
+const obj = JSON.parse(json);
+
+console.log(obj.count);
+// expected output: 42
+
+console.log(obj.result);
+// expected output: true
+JSON.stringify将JSON转化为字符串
+console.log(JSON.stringify({ x: 5, y: 6 }));
+// expected output: &quot;{&quot;x&quot;:5,&quot;y&quot;:6}&quot;
+
+console.log(JSON.stringify([new Number(3), new String(&#39;false&#39;), new Boolean(false)]));
+// expected output: &quot;[3,&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/07/js-api-object/" target="_self">
           <img src="/img/js-title.jpg" srcset="undefined" alt="JS基础类型API整理--Object" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -744,70 +803,6 @@ let isDone: boolean = </div>
             <a href="/tags/ts">ts</a>&nbsp;
           
             <a href="/tags/%E5%9F%BA%E7%A1%801">基础1</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/js-koa/" target="_self">
-          <img src="/img/koa-title.jpg" srcset="undefined" alt="Koa学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/js-koa/">
-        <p class="h4 index-header">Koa学习笔记</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">应用安装cnpm install koa --savehello-worldconst Koa = require(&#39;koa&#39;);
-const app = new Koa();
-
-app.use(async ctx =&gt; {
-  ctx.body = &#39;Hello World&#39;;
-});
-
-app.listen(3000);
-中间件使用yield以及next,当一个中间件调用next()函数时，函数挂起并控件传递给定义的下一个中间件。在没有更多的中间件执行下游之后，堆栈将退出，并且每个中间件被恢复以执行其上游行为。
-const Koa = require(&#39;koa&#39;);
-const app = new Koa();
-
-const one = (ctx, next) =&gt; {
-  console.log(&#39;&gt;&gt; one&#39;);
-  next();
-  console.log(&#39;&lt;&lt; one&#39;);
-}
-
-const two = (ctx, next) =&gt; {
-  con</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-05&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%A1%86%E6%9E%B6">框架</a>&nbsp;
-          
-            <a href="/categories/koa">koa</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/Web%E5%90%8E%E7%AB%AF">Web后端</a>&nbsp;
           
         
       </div>

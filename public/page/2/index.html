@@ -141,6 +141,70 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/js-koa/" target="_self">
+          <img src="/img/koa-title.jpg" srcset="undefined" alt="Koa学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/js-koa/">
+        <p class="h4 index-header">Koa学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">应用安装cnpm install koa --savehello-worldconst Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+app.use(async ctx =&gt; {
+  ctx.body = &#39;Hello World&#39;;
+});
+
+app.listen(3000);
+中间件使用yield以及next,当一个中间件调用next()函数时，函数挂起并控件传递给定义的下一个中间件。在没有更多的中间件执行下游之后，堆栈将退出，并且每个中间件被恢复以执行其上游行为。
+const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+const one = (ctx, next) =&gt; {
+  console.log(&#39;&gt;&gt; one&#39;);
+  next();
+  console.log(&#39;&lt;&lt; one&#39;);
+}
+
+const two = (ctx, next) =&gt; {
+  con</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A1%86%E6%9E%B6">框架</a>&nbsp;
+          
+            <a href="/categories/koa">koa</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/Web%E5%90%8E%E7%AB%AF">Web后端</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/04/pi-aria2/" target="_self">
           <img src="/img/aria2-title.jpg" srcset="undefined" alt="树莓派3b安装aria2" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -725,80 +789,6 @@ cd -返回到上个目录
             <a href="/tags/linux">linux</a>&nbsp;
           
             <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/11/flask/" target="_self">
-          <img src="https://dormousehole.readthedocs.io/en/latest/_images/flask-logo.png" srcset="undefined" alt="Flask 简单安装和部署" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/flask/">
-        <p class="h4 index-header">Flask 简单安装和部署</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">flask安装venv
-python3 -m venv venv
-启动venv
-. venv/bin/activate
-关闭venv
-deactivate 
-查看现在已经安装的依赖
-pip3 list
-更新pip
-pip install --upgrade pip
-安装Flask
-pip install Flask
-安装最新的flask
-pip install -U https://github.com/pallets/flask/archive/master.tar.gz
-安装pymongo
-pip install pymongo
-安装requests
-pip install requests
-安装payjs
-pip install payjs
-设置全局变量
-export FLASK_APP=qrcode.py
-export FLASK_ENV=development
-启动
-flask run --host=0.0.0.0
-在虚拟环境下安装gunicorn 
-pip install gunicorn
-添加配置文件 gunicorn.conf.py
-# 并行工作线程数
-workers </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-30&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E6%A1%86%E6%9E%B6">框架</a>&nbsp;
-          
-            <a href="/categories/flask">flask</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/python">python</a>&nbsp;
-          
-            <a href="/tags/flask">flask</a>&nbsp;
           
         
       </div>
