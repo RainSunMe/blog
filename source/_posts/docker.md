@@ -76,6 +76,7 @@ docker build -t lacus/canary_frontend:1.0 .
 docker build -t lacus/cherry_backend:1.0 .
 // al cherry_frontend
 docker build -t lacus/cherry_frontend:1.0 .
+
 ```
 **运行**
 ```
@@ -105,4 +106,7 @@ docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.
  docker run  -d --name canary_frontEnd -p 127.0.0.1:5006:80 --restart=always -v /root/data/canary/frontEnd:/vue lacus/vueview
  // flask_env
  docker run -it --name phonebook_backend -p 127.0.0.1:5011:80 -v /root/data/phonebook/backEnd:/app --network=lacus lacus/flask_env /bin/sh
+
+ // blog
+ docker run -d --name blog -v /root/data/blog/blog:/usr/share/nginx/html -p 127.0.0.1:5019:80 --network=lacus lacus/blog:1.0
 ```

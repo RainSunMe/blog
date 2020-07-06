@@ -2,7 +2,7 @@
 title: 循环赛日程安排
 tags: [算法]
 categories: [算法, 循环赛]
-index_img: /img/js-title.jpg
+index_img: /img/js-round-title.png
 banner_img: /img/js.jpg
 date: 2020-06-30 8:03:00
 ---

@@ -2,7 +2,7 @@
 title: 你不知道的JavaScript（上）学习笔记
 tags: [js, 基础]
 categories: [语言, js]
-index_img: /img/js-title.jpg
+index_img: /img/js-up-title.png
 banner_img: /img/js.jpg
 date: 2020-04-06 14:33:00
 ---

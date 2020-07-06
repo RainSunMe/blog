@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    633 字
+                    661 字
                   </span>&nbsp;
                 
 
@@ -205,7 +205,8 @@ docker build -t lacus/canary_frontend:1.0 .
 // al cherry_backend
 docker build -t lacus/cherry_backend:1.0 .
 // al cherry_frontend
-docker build -t lacus/cherry_frontend:1.0 .</code></pre><p><strong>运行</strong></p>
+docker build -t lacus/cherry_frontend:1.0 .
+</code></pre><p><strong>运行</strong></p>
 <pre><code>// al tracer_backend
 docker run -it --name tracer_backend -v /root/data/tracer/backEnd/logs:/app/logs -v /root/data/tracer/backEnd/upload:/app/upload -p 127.0.0.1:5002:80 --network=lacus lacus/tracer_backend:1.0 /bin/sh
 // al tracer_user
@@ -231,7 +232,10 @@ docker run -it --name ccb -v /home/pi/data/ccb/docker/logs:/app/logs -p 127.0.0.
 // vueview
  docker run  -d --name canary_frontEnd -p 127.0.0.1:5006:80 --restart=always -v /root/data/canary/frontEnd:/vue lacus/vueview
  // flask_env
- docker run -it --name phonebook_backend -p 127.0.0.1:5011:80 -v /root/data/phonebook/backEnd:/app --network=lacus lacus/flask_env /bin/sh</code></pre>
+ docker run -it --name phonebook_backend -p 127.0.0.1:5011:80 -v /root/data/phonebook/backEnd:/app --network=lacus lacus/flask_env /bin/sh
+
+ // blog
+ docker run -d --name blog -v /root/data/blog/blog:/usr/share/nginx/html -p 127.0.0.1:5019:80 --network=lacus lacus/blog:1.0</code></pre>
             <hr>
           </div>
           <br>

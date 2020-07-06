@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lacus.site/2020/07/js-api-others/</loc>
-    <lastmod>2020-07-03</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/07/js-api-object/</loc>
-    <lastmod>2020-07-02</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/06/js-api-string/</loc>
-    <lastmod>2020-06-30</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/06/round-robin/</loc>
-    <lastmod>2020-06-30</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/06/js-api-array/</loc>
-    <lastmod>2020-06-29</lastmod>
-  </url>  <url>
     <loc>https://lacus.site/2020/06/js2/</loc>
-    <lastmod>2020-06-29</lastmod>
+    <lastmod>2020-07-06</lastmod>
   </url>  <url>
     <loc>https://lacus.site/2020/04/js1/</loc>
-    <lastmod>2020-06-27</lastmod>
+    <lastmod>2020-07-06</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/07/js-api-others/</loc>
+    <lastmod>2020-07-06</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/06/round-robin/</loc>
+    <lastmod>2020-07-06</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/06/js-api-string/</loc>
+    <lastmod>2020-07-06</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/06/js-api-array/</loc>
+    <lastmod>2020-07-06</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/07/js-api-object/</loc>
+    <lastmod>2020-07-06</lastmod>
   </url>  <url>
     <loc>https://lacus.site/2020/04/docker/</loc>
-    <lastmod>2020-04-20</lastmod>
+    <lastmod>2020-07-06</lastmod>
   </url>  <url>
     <loc>https://lacus.site/2020/04/ts3/</loc>
     <lastmod>2020-04-19</lastmod>

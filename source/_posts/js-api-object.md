@@ -2,7 +2,7 @@
 title: JS基础类型API整理--Object
 tags: [js, 基础]
 categories: [语言, js]
-index_img: /img/js-title.jpg
+index_img: /img/js-object-title.png
 banner_img: /img/js.jpg
 date: 2020-07-02 15:18:00
 ---
