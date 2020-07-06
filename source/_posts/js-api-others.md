@@ -1,5 +1,5 @@
 ---
-title: JS基础类型API整理-收尾
+title: JS基础类型API整理--收尾
 tags: [js, 基础]
 categories: [语言, js]
 index_img: /img/js-other-title.png

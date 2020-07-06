@@ -51,7 +51,7 @@ web_analytics:  # 网页访问统计
   cnzz:  # 友盟/cnzz站点统计web_id，参见 https://web.umeng.com/main.php?c=site&a=show
 
 lazyload: # 对页面中的图片进行懒加载处理，可见范围外的图片不会加载
-  enable: true
+  enable: false
   onlypost: false  # 仅在文章页使用懒加载
 
 smooth_scroll: # 平滑滚动效果
