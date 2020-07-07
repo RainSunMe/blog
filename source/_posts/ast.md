@@ -653,3 +653,8 @@ node exportific demo.js
 > 作者：刘羽冲
 > 链接：https://segmentfault.com/a/1190000016231512
 > 来源：SegmentFault 思否
+
+## 其他
+关于AST的解析可以看看这个[GitHub](https://github.com/jamiebuilds/the-super-tiny-compiler)
+
+一个可以直观导出AST的在线工具[链接](https://astexplorer.net/)
