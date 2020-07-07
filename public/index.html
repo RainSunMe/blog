@@ -141,6 +141,78 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/ast/" target="_self">
+          <img src="/img/ast-title.png" alt="AST 抽象语法树" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/ast/">
+        <p class="h4 index-header">AST 抽象语法树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">AST 抽象语法树
+抽象语法树（AST），是一个非常基础而重要的知识点，但国内的文档却几乎一片空白。本文将带大家从底层了解AST,并且通过发布一个小型前端工具，来带大家了解AST的强大功能
+
+拆解拆解一个简单的add函数
+function add(a, b) {
+  return a + b
+}
+首先我们拿到了这个语法快，这是一个FunctionDeclaration(函数定义)对象
+分解成三块
+
+一个id，就是他的名字，即add
+两个params，也就是它的参数，即[a,b]
+一块body，也就是大括号里边的东西
+
+add没办法继续拆下去了，它是一个最基础的Identifier(标志)对象，用来作为函数的唯一标志，就像人的姓名一样
+{
+  name: &#39;add&#39;,
+  type: &#39;identifier&#39;,
+  ...
+}
+params继续拆下去，其实是两个Identifier组成的数组。之后也没办法拆下去了。
+[
+    {
+        name: &#39;a&#39;
+        type: &#39;identifier&#39;
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
+          
+            <a href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9">知识点</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E9%AB%98%E7%BA%A7">高级</a>&nbsp;
+          
+            <a href="/tags/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/07/interview1/" target="_self">
           <img src="/img/interview-title.png" alt="前端基础面试题--灰蓝宇墨" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -180,6 +252,8 @@ console.log(Object.prototype.toString.call(obj))</div>
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
+          
+            <a href="/categories/%E9%A2%98%E5%BA%93">题库</a>&nbsp;
           &nbsp;
         
         
@@ -255,6 +329,8 @@ Cherry课表成绩查询（2020.02.09-至今）
           <i class="iconfont icon-inbox"></i>
           
             <a href="/categories/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
+          
+            <a href="/categories/%E6%96%87%E4%BB%B6">文件</a>&nbsp;
           &nbsp;
         
         
@@ -748,70 +824,6 @@ with(obj){ a = 1 } =&gt; obj.a = 1 with会创建一个作用域，并把obj的�
             <a href="/tags/js">js</a>&nbsp;
           
             <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/04/ts3/" target="_self">
-          <img src="/img/ts.jpg" alt="TypeScript学习笔记（高级篇" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/04/ts3/">
-        <p class="h4 index-header">TypeScript学习笔记（高级篇</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">TypeScript高级TypeScript入门教程
-写在前边这只是一个笔记，并不是教程，阮一峰大佬写的教程链接在上边
-类型别名类型别名用来给一个类型起个新名字。
-type Name = string;
-type NameResolver = () =&gt; string;
-type NameOrResolver = Name | NameResolver;
-function getName(n: NameOrResolver): Name {
-    if (typeof n === &#39;string&#39;) {
-        return n;
-    } else {
-        return n();
-    }
-}
-上例中，我们使用 type 创建类型别名。
-
-类型别名常用于联合类型。
-
-字符串字面量类型字符串字面量类型用来约束取值只能是某几个字符串中的一个。
-type EventNames = &#39;click&#39; | &#39;scroll&#39; | &#39;mousemove&#39;;
-function handleEvent(ele</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-06&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
-          
-            <a href="/categories/ts">ts</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/ts">ts</a>&nbsp;
-          
-            <a href="/tags/%E9%AB%98%E7%BA%A71">高级1</a>&nbsp;
           
         
       </div>

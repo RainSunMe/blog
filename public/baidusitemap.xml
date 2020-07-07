@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lacus.site/2020/07/cv/</loc>
-    <lastmod>2020-07-06</lastmod>
+    <loc>https://lacus.site/2020/07/ast/</loc>
+    <lastmod>2020-07-07</lastmod>
   </url>  <url>
     <loc>https://lacus.site/2020/07/interview1/</loc>
-    <lastmod>2020-07-06</lastmod>
+    <lastmod>2020-07-07</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/07/cv/</loc>
+    <lastmod>2020-07-07</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/04/ts3/</loc>
+    <lastmod>2020-07-07</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/04/ts2/</loc>
+    <lastmod>2020-07-07</lastmod>
+  </url>  <url>
+    <loc>https://lacus.site/2020/04/ts1/</loc>
+    <lastmod>2020-07-07</lastmod>
   </url>  <url>
     <loc>https://lacus.site/2020/07/js-api-others/</loc>
     <lastmod>2020-07-06</lastmod>
@@ -30,15 +42,6 @@
   </url>  <url>
     <loc>https://lacus.site/2020/04/docker/</loc>
     <lastmod>2020-07-06</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/04/ts3/</loc>
-    <lastmod>2020-04-19</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/04/ts2/</loc>
-    <lastmod>2020-04-19</lastmod>
-  </url>  <url>
-    <loc>https://lacus.site/2020/04/ts1/</loc>
-    <lastmod>2020-04-19</lastmod>
   </url>  <url>
     <loc>https://lacus.site/2019/11/hello-world/</loc>
     <lastmod>2020-04-11</lastmod>

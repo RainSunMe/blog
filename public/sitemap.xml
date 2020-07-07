@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lacus.site/2020/07/cv/</loc>
+    <loc>https://lacus.site/2020/07/ast/</loc>
     
-    <lastmod>2020-07-06T13:53:29.967Z</lastmod>
+    <lastmod>2020-07-07T11:15:25.646Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://lacus.site/2020/07/interview1/</loc>
     
-    <lastmod>2020-07-06T13:29:44.010Z</lastmod>
+    <lastmod>2020-07-07T11:15:14.303Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lacus.site/2020/07/cv/</loc>
+    
+    <lastmod>2020-07-07T11:14:57.063Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lacus.site/2020/04/ts3/</loc>
+    
+    <lastmod>2020-07-07T11:14:03.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lacus.site/2020/04/ts2/</loc>
+    
+    <lastmod>2020-07-07T11:14:01.003Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lacus.site/2020/04/ts1/</loc>
+    
+    <lastmod>2020-07-07T11:13:57.694Z</lastmod>
     
   </url>
   
@@ -68,27 +96,6 @@
     <loc>https://lacus.site/2020/04/docker/</loc>
     
     <lastmod>2020-07-06T03:00:34.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lacus.site/2020/04/ts3/</loc>
-    
-    <lastmod>2020-04-19T10:28:07.030Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lacus.site/2020/04/ts2/</loc>
-    
-    <lastmod>2020-04-19T10:28:02.029Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lacus.site/2020/04/ts1/</loc>
-    
-    <lastmod>2020-04-19T10:27:57.619Z</lastmod>
     
   </url>
   

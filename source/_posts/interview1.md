@@ -1,7 +1,7 @@
 ---
 title: 前端基础面试题--灰蓝宇墨
 tags: [js, 基础, 面试]
-categories: [面试]
+categories: [面试, 题库]
 index_img: /img/interview-title.png
 banner_img: /img/interview.jpg
 date: 2020-07-06 18:53:00

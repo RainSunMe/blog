@@ -1,7 +1,7 @@
 ---
 title: Curriculum Vitae
 tags: [简历, 面试]
-categories: [面试]
+categories: [面试, 文件]
 index_img: /img/cv-title.png
 banner_img: /img/cv.jpg
 date: 2020-07-05 22:00:00
