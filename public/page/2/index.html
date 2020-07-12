@@ -141,6 +141,137 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/06/round-robin/" target="_self">
+          <img src="/img/js-round-title.png" alt="循环赛日程安排" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/round-robin/">
+        <p class="h4 index-header">循环赛日程安排</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">循环赛日程安排 – 170521328 赵英博问题背景（自定）设有n=2^k个选手要进行循环赛，设计一个满足以下要求的比赛日程表：
+
+每个选手必须与其他n-1个选手各比赛一次
+每个选手一天只能比赛一次
+
+问题分析每个选手必须与其他选手比赛一次，那么就设计一个n×(n-1)的二维表，其中，(i, j)表示和第i个选手在第j天比赛的选手。
+我们可以对这个二维表进行分割，分割成两个部分，譬如n＝2^k个选手的日程表就可以分成两个n/2＝2^(k-1)的日程表
+在进行递归分割
+分割直到只剩下两个选手
+
+比赛日程表在这个时候就很简单了，让这两个人直接进行比赛就好了
+
+假设有八个人比赛
+整个求解过程是自底向上的迭代过程，其中表格c左上角和左下角分别为选手1到选手8前三天的比赛日程
+将左上角复制到右下角，将左下角复制到右上角，就安排了选手1到选手8后四天的比赛日程
+
+表格a
+
+
+
+
+1
+2
+
+
+
+2
+1
+
+
+
+表格b
+
+
+
+
+1
+2
+3
+4
+
+
+
+2
+1
+4
+3
+
+
+3
+4
+1
+2
+
+
+4
+3
+2
+1
+
+
+
+表格c
+
+
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+
+2
+1
+4
+3
+6
+5
+8
+7
+
+
+3</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+            <a href="/categories/%E5%BE%AA%E7%8E%AF%E8%B5%9B">循环赛</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/06/js-api-array/" target="_self">
           <img src="/img/js-array-title.png" alt="JS基础类型API整理--Array" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -677,63 +808,6 @@ joined 容器
             <a href="/tags/linux">linux</a>&nbsp;
           
             <a href="/tags/docker">docker</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/03/init-centos/" target="_self">
-          <img src="/img/ali-title.png" alt="阿里云服务器初始化" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/init-centos/">
-        <p class="h4 index-header">阿里云服务器初始化</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">初始化服务器因为是阿里的服务器，装的centos8，已经自己换好阿里的镜像源了，很nice更新yum
-sudo yum -y updateTodo
-
- nginx
- mongodb 
- docker
- htop安装nginx使用yum安装sudo yum -y install nginx   # 安装 nginx
-sudo yum remove nginx  # 卸载 nginx配置nginx服务sudo systemctl enable nginx # 设置开机启动
-sudo service nginx start # 启动nginx服务
-sudo service nginx stop # 停止nginx服务
-sudo service nginx restart # 重启nginx服务
-sudo service nginx reload # 重新加载配置，一般是在修改过nginx配置文件时使用安装htop使用yum安装yum install epel-release -y
-yum install htop -y安装docker网页链接如果报错package docker-ce-3:1</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-30&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E7%B3%BB%E7%BB%9F">系统</a>&nbsp;
-          
-            <a href="/categories/%E9%83%A8%E7%BD%B2%E6%96%B0%E6%9C%8D%E5%8A%A1%E5%99%A8">部署新服务器</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/linux">linux</a>&nbsp;
-          
-            <a href="/tags/%E5%91%BD%E4%BB%A4">命令</a>&nbsp;
           
         
       </div>
