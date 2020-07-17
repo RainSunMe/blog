@@ -141,6 +141,164 @@
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/green7/" target="_self">
+          <img src="/img/green-title.png" alt="绿宝书学习笔记7" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/green7/">
+        <p class="h4 index-header">绿宝书学习笔记7</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">写在前边早安！今天是第八天，希望我能一直坚持到看完这本书，祝我们变得更强！
+3.4.3 构造对象系统的方法JS的原型继承并不是唯一构造系统的方法，由语言提供的、原生支持的方法还包括类抄写、类继承、以及直接创建对象等，其他可以在ECMAScript语言基础上拓展的方法包括元继承、元类继承等
+3.4.3.1 类抄写子类的构造逻辑：先向父类传入this引用以抄写父类方法，再向子类传入this引用抄写子类方法，后者覆盖前者的同名成员。整个构造过程都是在不断的从“类构造器”向this引用抄写成员，所以被称为类抄写
+这种方法也有好处。由于这种方法是通过不断修改实例（this）的成员来得到对象的，因此所有的属性都在实例（this）的自有属性表中，进一步的推论是访问任何成员都不必回溯原型链，因而效率更高
+类抄写的第二个问题是系统并不维护原型继承链。因此在类抄写构建的系统中，不能用instanceof来检测继承关系
+3.4.3.2 原型继承存在缺陷；
+
+在维护构造器引用和外部原型链之间无法平衡
+没有提供调用父类方法的机制
+
+还是一个典型的时间换空间的方案：继承层次中临近的成员访问更快，而试图访问一个不存</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-17&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/green6/" target="_self">
+          <img src="/img/green-title.png" alt="绿宝书学习笔记6" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/green6/">
+        <p class="h4 index-header">绿宝书学习笔记6</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">写在前边昨天太累了，今天没能成功早起，科三第二次仍然没过，真是难受。今天就能看多少看多少吧，要尽可能补上之前落下的章节。今天是第七天，希望我能一直坚持到看完这本书，祝我们变得更强！
+3.2.1.2 构造复制？写时复制？还是读遍历？假设每构造一个实例，都从原型中复制出一个实例来，新的实例占用了和原型相同的内存空间，这确实可以使obj1 obj2等与它们的原型“完全一致”，但是也非常的不经济——因为内存的占用会急剧增加
+另一个策略来自一种欺骗系统的技术：写时复制。这种欺骗的典型示例就是操作系统中的动态链接库(DDL)，它的内存中总是写时复制的，这种机制先指明obj1和obj2与原型的引用关系，系统将这种关系理解为“两个对象都等同于它们的原型”，读的时候直接去读原型，接下来，写对象的属性的时候，我们就复制出原型的映像出来，并使以后的操作指向该映像就行了，优点是：之后第一次写的时候会用一些代码来分配内存，之后就不会有这些开销了，因为访问映像和访问原型的效率是一样的，但是对于经常读写的系统中，这种方法并不比上一种更经济
+JS采用第三种方法：把写复制的粒度从整个原型变成了成员。这种方法是：仅当写某</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-16&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/green5/" target="_self">
+          <img src="/img/green-title.png" alt="绿宝书学习笔记5" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/green5/">
+        <p class="h4 index-header">绿宝书学习笔记5</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">写在前边今天也成功早起，早上本来打算去佰壹自习室来着，但是那里满员了，然后就是做了一上午的图，中午才开始学习，明天要考科三，所以今天的上午20页推到后天补上，明天的上午20页推到大后天补上，实在不行就往后分散开，一定要在21天之内看完这本书！。今天是第五天，希望我能一直坚持到看完这本书，祝我们变得更强！
+3.1.3 对象成员JS中的对象是属性包，属性即所谓的对象成员，当我们分别讨论对象实例和类时，属性和类成员是两个概念，由于类本身也是函数类型的对象，所以当我们统一用”对象“这个概念来讲述的时候，其成员仍被称为属性
+对象成员有三种性质，称为”可读写“、”可枚举“和”可重置”
+对象成员可以是自有的也可以是继承的，所谓继承的就是指对象的父类或者祖先类原型上具有该成员，子类对象可以用相同的名字重新声明该成员，称为“覆盖”或者“重写”
+3.1.3.1 成员的列举以及可列举性对象成员是否可列举被称为成员的可列举性，当某个成员不存在或者不可列举时，对该对象成员调用propertyIsEnumerable()方法将返回false，比较常见的情况是，JS对象的某些特定成员是被设置为隐藏的，因此不能枚举，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-14&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/07/green4/" target="_self">
           <img src="/img/green-title.png" alt="绿宝书学习笔记4" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -639,209 +797,11 @@ console.log(Object.prototype.toString.call(obj))</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/cv/" target="_self">
-          <img src="/img/cv-title.png" alt="Curriculum Vitae" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/cv/">
-        <p class="h4 index-header">Curriculum Vitae</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">赵英博个人信息电话：15143211127邮箱：zhaoyingbo@live.cn地址：长春个人网站：https://lacus.site微信：15143211127求职意向：web前端开发
-项目经历Toast题库（2020.06.18-至今）
-项目描述：使用Vue开发，实现背题，题目检索，背题进度保存，用户反馈等功能
-
-项目职责：
-
-负责页面UI布局，不使用第三方UI库，自行封装组件，实现主题切换，使用rem对各种机型进行适配
-
-使用DFA算法实现题目检索
-
-使用LocalStorage存储用户背题进度
-
-使用PWA加速开屏速度以及实现本地化
-
-使用Docker，CDN等技术进行部署
-
-
-
-项目业绩：从设计到部署，独立完成整个项目第一版并上线，共用时三天，运行过程中无bug，抢在考试前一周发布，获得大量用户好评
-
-项目地址：https://tiku.lacus.site/
-
-
-Cherry课表成绩查询（2020.02.09-至今）
-项目描述：使用Python爬取教务系统课表以及成绩信息，并使用前端进行展示
-
-项目职责：
-
-整体的项目规划，分工协调
-
-负责页面UI布局，少量使用Ele</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-05&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
-          
-            <a href="/categories/%E6%96%87%E4%BB%B6">文件</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
-          
-            <a href="/tags/%E7%AE%80%E5%8E%86">简历</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/js-api-others/" target="_self">
-          <img src="/img/js-other-title.png" alt="JS基础类型API整理--收尾" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/js-api-others/">
-        <p class="h4 index-header">JS基础类型API整理--收尾</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">JavaScriptJSONJSON.parse将字符串转化为JSON
-const json = &#39;{&quot;result&quot;:true, &quot;count&quot;:42}&#39;;
-const obj = JSON.parse(json);
-
-console.log(obj.count);
-// expected output: 42
-
-console.log(obj.result);
-// expected output: true
-JSON.stringify将JSON转化为字符串
-console.log(JSON.stringify({ x: 5, y: 6 }));
-// expected output: &quot;{&quot;x&quot;:5,&quot;y&quot;:6}&quot;
-
-console.log(JSON.stringify([new Number(3), new String(&#39;false&#39;), new Boolean(false)]));
-// expected output: &quot;[3,&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-03&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
-          
-            <a href="/categories/js">js</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/js-api-object/" target="_self">
-          <img src="/img/js-object-title.png" alt="JS基础类型API整理--Object" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/js-api-object/">
-        <p class="h4 index-header">JS基础类型API整理--Object</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">JavaScriptObjectObject.assign将一个或者多个对象的可枚举属性拷贝到源对象上，会改变源对象，如果key相同后边会覆盖前边的
-const target = { a: 1, b: 2 };
-const source = { b: 4, c: 5 };
-
-const returnedTarget = Object.assign(target, source);
-
-console.log(target);
-// expected output: Object { a: 1, b: 4, c: 5 }
-
-console.log(returnedTarget);
-// expected output: Object { a: 1, b: 4, c: 5 }
-object.constructor返回构造函数本身
-var o = {};
-o.constructor === Object; // true
-
-var o = new Object;
-o.constructor === Object; // true
-
-var a = [];
-a.constructor === A</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-02&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
-          
-            <a href="/categories/js">js</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
