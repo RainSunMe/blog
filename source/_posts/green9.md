@@ -6,8 +6,6 @@ index_img: /img/green-title.png
 banner_img: /img/dandelion.png
 date: 2020-07-20 08:00:00
 ---
-# 写在前边
-早安！今天是第十一天，希望我能一直坚持到看完这本书，祝我们变得更强！
 # JavaScript语言的结构化
 程序是可被组织的元素。
 
