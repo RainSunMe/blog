@@ -141,137 +141,6 @@
     
     
       <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/interview2/" target="_self">
-          <img src="/img/interview-title.png" alt="前端面试题总结——牛客网" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/interview2/">
-        <p class="h4 index-header">前端面试题总结——牛客网</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">百度提前批面试一面如何清除浮动链接
-给浮动元素的父元素添加高度
-clear:both;
-伪元素清除浮动
-给父元素使用overflow:hidden;
-br标签清浮动
-px、em、rem说一下？em：相对于父级的字体大小
-rem: 相对于根节点的字体大小
-浏览器默认字体大小16px
-如何实现一个元素水平、垂直居中position 然后改margin
-position 然后transform:translate(-50%,-50%);
-position 上下左右定位0，然后margin:auto;
-flex
-单行文字：height撑满text-align:center;
-CSS选择第一个元素、最后一个元素、3的整数倍子元素伪类选择器链接
-
-
-
-n
-2n+1
-4n+1
-4n+4
-4n
-5n-2
--n+3
-
-
-
-0
-1
-1
-4
--
--
-3
-
-
-1
-3
-5
-8
-4
-3
-2
-
-
-2
-5
-9
-12
-8
-8
-1
-
-
-3
-7
-13
-16
-12
-13
--
-
-
-4
-9
-17
-20
-16
-18
--
-
-
-5
-11
-21
-24
-20
-23
--
-
-
-说一下伪类和伪元素的区别链接
-官方文档
-“伪元素”和“伪类”都带一</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-24&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
-          
-            <a href="/categories/%E9%A2%98%E5%BA%93">题库</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-            <a href="/tags/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/07/green10/" target="_self">
           <img src="/img/green-title.png" alt="绿宝书学习笔记10" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -778,6 +647,68 @@ async
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/07/green3/" target="_self">
+          <img src="/img/green-title.png" alt="绿宝书学习笔记3" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/green3/">
+        <p class="h4 index-header">绿宝书学习笔记3</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2.4 JavaScript的语法: 语句JS是一门在执行过程中以表达式求值为核心设计的语言
+语句：是代码语法分析中的核心元素，通常是单行语句，或者由一对大括号括起来的复合语句，在语法描述中，复合语句可以整体作为一个单行语句处理
+这里有两个原则
+
+语句由语法符号;来分隔
+一些语句存在返回值
+
+2.4.1 表达式语句下边的代码显然是表达式
+1+2+3
+在后边加一个分号1+2+3;就成为了表达式语句
+JS中，许多语法和语义最终都是由”表达式语句“来实现的，例如赋值、函数调用、以及我们在语言中常见的”调用对象方法“。由于表达式运算总是有值的——这包括NaN和undefined因此表达式语句也总是有值
+2.4.1.1 一般表达式语句单值后边加分号就是单值表达式
+evel()会返回”最后执行到的、有返回值“的那条语句的值
+JS允许空语句，但是使用的时候一定要加好注释，否则代码审查将无法清晰地理解使用该技术的意图
+2.4.1.2 赋值语句和隐式的变量声明赋值语句在JS中也是典型的表达式语句，是”赋值表达式运算“的一种效果，并且可以继续参与运算
+str2 = &#39;this is a &#39;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-12&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>

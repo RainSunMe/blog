@@ -4,7 +4,7 @@ tags: [js, 基础, 面试]
 categories: [面试, 题库]
 index_img: /img/interview-title.png
 banner_img: /img/interview.jpg
-date: 2020-07-24 13:48:00
+date: 2020-07-07 13:48:00
 ---
 # 百度提前批面试一面
 ## 如何清除浮动

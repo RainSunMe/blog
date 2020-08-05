@@ -4,37 +4,6 @@
   
   
   <entry>
-    <title>前端面试题总结——牛客网</title>
-    <link href="undefined2020/07/interview2/"/>
-    <url>2020/07/interview2/</url>
-    
-    <content type="html"><![CDATA[<h1 id="百度提前批面试一面"><a href="#百度提前批面试一面" class="headerlink" title="百度提前批面试一面"></a>百度提前批面试一面</h1><h2 id="如何清除浮动"><a href="#如何清除浮动" class="headerlink" title="如何清除浮动"></a>如何清除浮动</h2><p><a href="https://blog.csdn.net/xiaxiaoxian/article/details/85712035" target="_blank" rel="noopener">链接</a></p><p>给浮动元素的父元素添加高度</p><p>clear:both;</p><p>伪元素清除浮动</p><p>给父元素使用overflow:hidden;</p><p>br标签清浮动</p><h2 id="px、em、rem说一下？"><a href="#px、em、rem说一下？" class="headerlink" title="px、em、rem说一下？"></a>px、em、rem说一下？</h2><p>em：相对于父级的字体大小</p><p>rem: 相对于根节点的字体大小</p><p>浏览器默认字体大小16px</p><h2 id="如何实现一个元素水平、垂直居中"><a href="#如何实现一个元素水平、垂直居中" class="headerlink" title="如何实现一个元素水平、垂直居中"></a>如何实现一个元素水平、垂直居中</h2><p>position 然后改margin</p><p>position 然后<code>transform:translate(-50%,-50%);</code></p><p>position 上下左右定位0，然后<code>margin:auto;</code></p><p>flex</p><p>单行文字：height撑满text-align:center;</p><h2 id="CSS选择第一个元素、最后一个元素、3的整数倍子元素"><a href="#CSS选择第一个元素、最后一个元素、3的整数倍子元素" class="headerlink" title="CSS选择第一个元素、最后一个元素、3的整数倍子元素"></a>CSS选择第一个元素、最后一个元素、3的整数倍子元素</h2><p>伪类选择器<a href="https://www.cnblogs.com/yanggeng/p/11188285.html" target="_blank" rel="noopener">链接</a></p><table><thead><tr><th align="center">n</th><th align="center">2n+1</th><th align="center">4n+1</th><th align="center">4n+4</th><th align="center">4n</th><th align="center">5n-2</th><th align="center">-n+3</th></tr></thead><tbody><tr><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="center">4</td><td align="center">-</td><td align="center">-</td><td align="center">3</td></tr><tr><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">8</td><td align="center">4</td><td align="center">3</td><td align="center">2</td></tr><tr><td align="center">2</td><td align="center">5</td><td align="center">9</td><td align="center">12</td><td align="center">8</td><td align="center">8</td><td align="center">1</td></tr><tr><td align="center">3</td><td align="center">7</td><td align="center">13</td><td align="center">16</td><td align="center">12</td><td align="center">13</td><td align="center">-</td></tr><tr><td align="center">4</td><td align="center">9</td><td align="center">17</td><td align="center">20</td><td align="center">16</td><td align="center">18</td><td align="center">-</td></tr><tr><td align="center">5</td><td align="center">11</td><td align="center">21</td><td align="center">24</td><td align="center">20</td><td align="center">23</td><td align="center">-</td></tr></tbody></table><h2 id="说一下伪类和伪元素的区别"><a href="#说一下伪类和伪元素的区别" class="headerlink" title="说一下伪类和伪元素的区别"></a>说一下伪类和伪元素的区别</h2><p><a href="https://blog.csdn.net/guangtouhan/article/details/88074008?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">链接</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements" target="_blank" rel="noopener">官方文档</a></p><p>“伪元素”和“伪类”都带一个“伪”字，那是他们的共同点，所以，他们的区别就是一个本质上是元素，另一个本质上是类。</p><p>有没有创建一个文档树之外的元素</p><p>① 伪类是以1个冒号(:)作为前缀被添加到选择器末尾的关键字；伪元素是以2个冒号(::)作为前缀被添加到选择器末尾的关键字</p><p>② 如果伪类你用了2个冒号，不会报错，但也不会生效，比如 ::hover；但伪元素你用1个或2个冒号不会报错且有效，比如，:before，::before</p><h2 id="说一下原型和原型链"><a href="#说一下原型和原型链" class="headerlink" title="说一下原型和原型链"></a>说一下原型和原型链</h2><p><a href="https://www.cnblogs.com/Joe-and-Joan/p/10692844.html" target="_blank" rel="noopener">链接</a></p><p><img src="/img/interview2-proto.png" alt=""></p><h2 id="说一下闭包以及应用场景"><a href="#说一下闭包以及应用场景" class="headerlink" title="说一下闭包以及应用场景"></a>说一下闭包以及应用场景</h2><p><a href="https://www.cnblogs.com/star-studio/archive/2011/06/22/2086493.html" target="_blank" rel="noopener">链接</a></p><h2 id="说一下防抖和节流"><a href="#说一下防抖和节流" class="headerlink" title="说一下防抖和节流"></a>说一下防抖和节流</h2><p>防抖：就是将一段时间内连续的多次触发转化为一次触发</p><p>节流：减少一段时间内触发的频率</p><p><a href="https://blog.csdn.net/muge1161105403/article/details/106649675/" target="_blank" rel="noopener">链接</a></p><h2 id="说一下事件循环"><a href="#说一下事件循环" class="headerlink" title="说一下事件循环"></a>说一下事件循环</h2><p><a href="https://www.cnblogs.com/dong-xu/p/7000163.html" target="_blank" rel="noopener">链接</a></p><p><a href="https://blog.csdn.net/LuckyWinty/article/details/104765786/" target="_blank" rel="noopener">链接</a></p><h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别?"></a>TCP和UDP的区别?</h2><p><a href="https://blog.csdn.net/qq_34624951/article/details/82669444" target="_blank" rel="noopener">链接</a></p><h3 id="为什么说UDP是不可靠的？"><a href="#为什么说UDP是不可靠的？" class="headerlink" title="为什么说UDP是不可靠的？"></a>为什么说UDP是不可靠的？</h3><h3 id="说一下TCP报文头部的结构"><a href="#说一下TCP报文头部的结构" class="headerlink" title="说一下TCP报文头部的结构"></a>说一下TCP报文头部的结构</h3><h2 id="说一下Promise的优缺点？"><a href="#说一下Promise的优缺点？" class="headerlink" title="说一下Promise的优缺点？"></a>说一下Promise的优缺点？</h2><p><strong>优点</strong>：解决回调地狱</p><p><strong>缺点：</strong></p><p>Promise无法取消，一旦新建就会立即执行</p><p>不设置回调函数，Promise内部抛出的错误无法反应到外部</p><p>当处于pending状态时，无法得知目前处于哪一阶段（刚刚开始还是即将完成） </p><h2 id="简单实现一下Promise"><a href="#简单实现一下Promise" class="headerlink" title="简单实现一下Promise"></a>简单实现一下Promise</h2><p><a href="https://www.jianshu.com/p/51c65b314704" target="_blank" rel="noopener">链接</a></p><h2 id="JS快速排序"><a href="#JS快速排序" class="headerlink" title="JS快速排序"></a>JS快速排序</h2><p><a href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html" target="_blank" rel="noopener">链接</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>面试</category>
-      
-      <category>题库</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-      <tag>基础</tag>
-      
-      <tag>面试</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>绿宝书学习笔记10</title>
     <link href="undefined2020/07/green10/"/>
     <url>2020/07/green10/</url>
@@ -453,6 +422,37 @@
       <tag>js</tag>
       
       <tag>高级</tag>
+      
+      <tag>面试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>前端面试题总结——牛客网</title>
+    <link href="undefined2020/07/interview2/"/>
+    <url>2020/07/interview2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="百度提前批面试一面"><a href="#百度提前批面试一面" class="headerlink" title="百度提前批面试一面"></a>百度提前批面试一面</h1><h2 id="如何清除浮动"><a href="#如何清除浮动" class="headerlink" title="如何清除浮动"></a>如何清除浮动</h2><p><a href="https://blog.csdn.net/xiaxiaoxian/article/details/85712035" target="_blank" rel="noopener">链接</a></p><p>给浮动元素的父元素添加高度</p><p>clear:both;</p><p>伪元素清除浮动</p><p>给父元素使用overflow:hidden;</p><p>br标签清浮动</p><h2 id="px、em、rem说一下？"><a href="#px、em、rem说一下？" class="headerlink" title="px、em、rem说一下？"></a>px、em、rem说一下？</h2><p>em：相对于父级的字体大小</p><p>rem: 相对于根节点的字体大小</p><p>浏览器默认字体大小16px</p><h2 id="如何实现一个元素水平、垂直居中"><a href="#如何实现一个元素水平、垂直居中" class="headerlink" title="如何实现一个元素水平、垂直居中"></a>如何实现一个元素水平、垂直居中</h2><p>position 然后改margin</p><p>position 然后<code>transform:translate(-50%,-50%);</code></p><p>position 上下左右定位0，然后<code>margin:auto;</code></p><p>flex</p><p>单行文字：height撑满text-align:center;</p><h2 id="CSS选择第一个元素、最后一个元素、3的整数倍子元素"><a href="#CSS选择第一个元素、最后一个元素、3的整数倍子元素" class="headerlink" title="CSS选择第一个元素、最后一个元素、3的整数倍子元素"></a>CSS选择第一个元素、最后一个元素、3的整数倍子元素</h2><p>伪类选择器<a href="https://www.cnblogs.com/yanggeng/p/11188285.html" target="_blank" rel="noopener">链接</a></p><table><thead><tr><th align="center">n</th><th align="center">2n+1</th><th align="center">4n+1</th><th align="center">4n+4</th><th align="center">4n</th><th align="center">5n-2</th><th align="center">-n+3</th></tr></thead><tbody><tr><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="center">4</td><td align="center">-</td><td align="center">-</td><td align="center">3</td></tr><tr><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">8</td><td align="center">4</td><td align="center">3</td><td align="center">2</td></tr><tr><td align="center">2</td><td align="center">5</td><td align="center">9</td><td align="center">12</td><td align="center">8</td><td align="center">8</td><td align="center">1</td></tr><tr><td align="center">3</td><td align="center">7</td><td align="center">13</td><td align="center">16</td><td align="center">12</td><td align="center">13</td><td align="center">-</td></tr><tr><td align="center">4</td><td align="center">9</td><td align="center">17</td><td align="center">20</td><td align="center">16</td><td align="center">18</td><td align="center">-</td></tr><tr><td align="center">5</td><td align="center">11</td><td align="center">21</td><td align="center">24</td><td align="center">20</td><td align="center">23</td><td align="center">-</td></tr></tbody></table><h2 id="说一下伪类和伪元素的区别"><a href="#说一下伪类和伪元素的区别" class="headerlink" title="说一下伪类和伪元素的区别"></a>说一下伪类和伪元素的区别</h2><p><a href="https://blog.csdn.net/guangtouhan/article/details/88074008?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">链接</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements" target="_blank" rel="noopener">官方文档</a></p><p>“伪元素”和“伪类”都带一个“伪”字，那是他们的共同点，所以，他们的区别就是一个本质上是元素，另一个本质上是类。</p><p>有没有创建一个文档树之外的元素</p><p>① 伪类是以1个冒号(:)作为前缀被添加到选择器末尾的关键字；伪元素是以2个冒号(::)作为前缀被添加到选择器末尾的关键字</p><p>② 如果伪类你用了2个冒号，不会报错，但也不会生效，比如 ::hover；但伪元素你用1个或2个冒号不会报错且有效，比如，:before，::before</p><h2 id="说一下原型和原型链"><a href="#说一下原型和原型链" class="headerlink" title="说一下原型和原型链"></a>说一下原型和原型链</h2><p><a href="https://www.cnblogs.com/Joe-and-Joan/p/10692844.html" target="_blank" rel="noopener">链接</a></p><p><img src="/img/interview2-proto.png" alt=""></p><h2 id="说一下闭包以及应用场景"><a href="#说一下闭包以及应用场景" class="headerlink" title="说一下闭包以及应用场景"></a>说一下闭包以及应用场景</h2><p><a href="https://www.cnblogs.com/star-studio/archive/2011/06/22/2086493.html" target="_blank" rel="noopener">链接</a></p><h2 id="说一下防抖和节流"><a href="#说一下防抖和节流" class="headerlink" title="说一下防抖和节流"></a>说一下防抖和节流</h2><p>防抖：就是将一段时间内连续的多次触发转化为一次触发</p><p>节流：减少一段时间内触发的频率</p><p><a href="https://blog.csdn.net/muge1161105403/article/details/106649675/" target="_blank" rel="noopener">链接</a></p><h2 id="说一下事件循环"><a href="#说一下事件循环" class="headerlink" title="说一下事件循环"></a>说一下事件循环</h2><p><a href="https://www.cnblogs.com/dong-xu/p/7000163.html" target="_blank" rel="noopener">链接</a></p><p><a href="https://blog.csdn.net/LuckyWinty/article/details/104765786/" target="_blank" rel="noopener">链接</a></p><h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别?"></a>TCP和UDP的区别?</h2><p><a href="https://blog.csdn.net/qq_34624951/article/details/82669444" target="_blank" rel="noopener">链接</a></p><h3 id="为什么说UDP是不可靠的？"><a href="#为什么说UDP是不可靠的？" class="headerlink" title="为什么说UDP是不可靠的？"></a>为什么说UDP是不可靠的？</h3><h3 id="说一下TCP报文头部的结构"><a href="#说一下TCP报文头部的结构" class="headerlink" title="说一下TCP报文头部的结构"></a>说一下TCP报文头部的结构</h3><h2 id="说一下Promise的优缺点？"><a href="#说一下Promise的优缺点？" class="headerlink" title="说一下Promise的优缺点？"></a>说一下Promise的优缺点？</h2><p><strong>优点</strong>：解决回调地狱</p><p><strong>缺点：</strong></p><p>Promise无法取消，一旦新建就会立即执行</p><p>不设置回调函数，Promise内部抛出的错误无法反应到外部</p><p>当处于pending状态时，无法得知目前处于哪一阶段（刚刚开始还是即将完成） </p><h2 id="简单实现一下Promise"><a href="#简单实现一下Promise" class="headerlink" title="简单实现一下Promise"></a>简单实现一下Promise</h2><p><a href="https://www.jianshu.com/p/51c65b314704" target="_blank" rel="noopener">链接</a></p><h2 id="JS快速排序"><a href="#JS快速排序" class="headerlink" title="JS快速排序"></a>JS快速排序</h2><p><a href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html" target="_blank" rel="noopener">链接</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试</category>
+      
+      <category>题库</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>基础</tag>
       
       <tag>面试</tag>
       
