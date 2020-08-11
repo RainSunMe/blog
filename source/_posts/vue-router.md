@@ -106,3 +106,4 @@ pushState可额外设置title属性供后续使用
 
 history模式则会将URL修改得就和正常请求后端的URL一样,如后端没有配置对应/user/id的路由处理，则会返回404错误
 
+相关链接：[彻底搞懂路由跳转](https://segmentfault.com/a/1190000014120456?utm_source=tag-newest)

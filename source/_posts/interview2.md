@@ -108,3 +108,28 @@ Promise无法取消，一旦新建就会立即执行
 
 ## JS快速排序
 [链接](http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html)
+
+## 简单实现一下Promise.all()
+```js
+function isPromise(obj) {
+    return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';  
+}
+
+const myPromiseAll = (arr)=>{
+    let result = [];
+    return new Promise((resolve,reject)=>{
+        for(let i = 0;i < arr.length;i++){
+            if(isPromise(arr[i])){
+                arr[i].then((data)=>{
+                    result[i] = data;
+                    if(result.length === arr.length){
+                        resolve(result)
+                    }
+                },reject)
+            }else{
+                result[i] = arr[i];
+            }
+        }    
+    })
+}
+```
