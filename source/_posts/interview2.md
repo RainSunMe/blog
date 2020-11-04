@@ -133,3 +133,90 @@ const myPromiseAll = (arr)=>{
     })
 }
 ```
+
+
+
+
+1. 'dskfjoihtgbnigkwnfndng' 统计每个字符出现了多少次
+let str_list = 'dskfjoihtgbnigkwnfndng'
+let obj = {};
+for(let i = 0; i < str_list.length; i++)
+{
+	key = str_list[i];
+	if(obj[key]) obj[key]++;
+	else obj[key] = 1;
+}
+for(let key in obj) {
+	console.log(`${key}: ${obj[key]}`)
+}
+
+
+2. 简单实现一下快速排序
+const quickSort = (arr) => {
+　if (arr.length <= 1) { return arr; }
+	let pivotIndex = Math.floor(arr.length / 2);
+	let pivot = arr.splice(pivotIndex, 1)[0];
+	let left = [], right = [];
+　for (let i = 0; i < arr.length; i++){
+　　if (arr[i] < pivot) left.push(arr[i]);
+		else right.push(arr[i]);	
+　}
+　return quickSort(left).concat([pivot], quickSort(right));
+};
+
+3. 简单写一个组合继承
+function Father(age) {
+	this.age = age
+}
+Father.prototype.getAge = function() {
+	console.log(this.age)
+}
+function Son(name, age) {
+	Father.call(this, age);
+	this.name = name
+}
+Son.prototype = Object.create(Father.prototype);
+Son.prototype.constructor =Son;
+Son.prototype.getName = function() {
+	console.log(this.name)
+}
+
+
+4. 简单实现一下防抖
+function debounce(func, time) {
+	let timer = null
+	return () => {
+		clearTimeout(timer)
+		timer = setTimeout(() => {
+			func()
+		}, time)
+	}
+}
+
+5. 元素垂直居中
+position：absolute;
+top:50%;
+left: 50;
+transform: translate(-50%,-50%);
+
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+margin: auto;
+
+父元素
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+综合评价
+优秀，有足够的代码能力和的充足的项目经验
+1. Q1
+考察了计算机数据结构问题、快排问题以及防抖问题，基础较好，思维灵活。做过自己的课表项目，对于用户体验和UI设计有自己的理解，具有很强的独立完成项目的能力，可以在线演示并体验链接：https://cherry.lacus.site（用户名2020，无密码），很早就开始关注小爱课程表项目，也是课程表开发者之一，对于前端项目的规划和开发有自己的想法，善于与人合作共同完成项目，另有自己的博客，经常分享自己学过的知识体会，链接：https://lacus.site，动手能力强，曾自己购买服务器学习Docker等服务端技能
+2. Q2
+喜欢挑战困难，曾在以前的实习过程中对项目进行前后端分离重构并取得成功，善于从代码中发掘成就感，对于写代码具有很高的热情
+3. Q3
+适应能力很强，面试过程中并未出现紧张等情况，学习能力突出，能够很快理解问题并得出相应的答案，面试过程中整体沟通流畅，思维清晰
