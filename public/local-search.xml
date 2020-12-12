@@ -33,6 +33,97 @@
   
   
   <entry>
+    <title>你不知道的JavaScript（中）学习笔记</title>
+    <link href="undefined2020/11/js3/"/>
+    <url>2020/11/js3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="类型和语法"><a href="#类型和语法" class="headerlink" title="类型和语法"></a>类型和语法</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h4 id="内置类型"><a href="#内置类型" class="headerlink" title="内置类型"></a>内置类型</h4><p>JS有七种内置类型<code>空值(null)</code>、<code>未定义(undefined)</code>、<code>布尔值(boolean)</code>、<code>数字(Number)</code>、<code>字符串(String)</code>、<code>对象(Object)</code>、<code>符号(Symbol)</code></p><p><code>typeof</code>检测<strong>null</strong>会得到”object”, 使用<code>(!a &amp;&amp; typeof a === &#39;object&#39;)</code>即可得到正确的结果</p><p><code>typeof</code>检测<strong>函数</strong>会得到”function” ，但是函数是<code>object</code>的子类型，具体来说函数是“<strong>可调用对象</strong>”。</p><p><code>typeof</code>检测<strong>数组</strong>会得到”object”，数组也是<code>object</code>的子类型。</p><h4 id="值和类型"><a href="#值和类型" class="headerlink" title="值和类型"></a>值和类型</h4><p>JS的变量是没有类型的，只有值才有，变量可以随时持有任何类型的值</p><h4 id="对于未定义变量的检测"><a href="#对于未定义变量的检测" class="headerlink" title="对于未定义变量的检测"></a>对于未定义变量的检测</h4><p><code>typeof</code>检测对于<strong>未定义变量</strong>也返回<code>undefined</code>，这个机制可以帮助我们检测一个全局变量是否存在</p><pre><code class="js">if (a) {    ... // ReferenceError: a is not defined}if (typeof a !== undefined) {    ... // OK}</code></pre><h3 id="值"><a href="#值" class="headerlink" title="值"></a>值</h3><h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>创建的”稀疏数组”中的空白单元会表现为<code>undefined</code>但是和实际上赋值为<code>undefined</code>仍有区别</p><p>字符串键值如果能被强制转化为数字，则会被转化成数字索引</p><p>为字符串键值赋值，数组总长度不会变化，即</p><pre><code class="js">var a = []a[&quot;1&quot;] = 1a[&quot;dd&quot;] = &#39;阿巴阿巴阿巴&#39;a.length === 2 // true</code></pre><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>字符串和数组很相似，都拥有<code>indexOf</code>、<code>concat</code>等方法，但是实际上并不相同</p><p>字符串值不可变，成员函数会返回一个新的字符串</p><pre><code class="js">a = [&#39;f&#39;, &#39;o&#39; ,&#39;o&#39;]b = &#39;foo&#39;a[1] = &#39;O&#39;b[1] = &#39;O&#39;a // [&#39;f&#39;, &#39;O&#39;, &#39;o&#39;]b // foo</code></pre><p>字符串可以借用很多数组的方法，譬如<code>join</code>、<code>map</code>，不过对于字符串反转来讲，由于字符串不可变所以不可以直接用<code>reverse</code>，替代方法是</p><pre><code class="js">var a = &#39;abc&#39;var b = a    // 将a的值转化为字符数组    .split(&quot;&quot;)    // 将数组中的值进行倒转    .reverse()    // 将数组中的值拼回字符串    .join(&quot;&quot;)b // &quot;cba&quot;</code></pre><blockquote><p>注意：以上方法只适用于简单的字符串，对于复杂字符（UniCode、星号、多字节字符等）的字符串并不适用，去网上找库去</p></blockquote><h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><p>js中只有一种数字，包括整数和带小数的十进制数，整数即是没有小数的十进制数。所以42.0等于“整数”42</p><p>js使用的是“双精度”格式，即64位二进制</p><h5 id="数字的语法"><a href="#数字的语法" class="headerlink" title="数字的语法"></a>数字的语法</h5><p>不要直接在字面量数字后边调用方法，<code>.</code>操作符会被认为是数字的小数点</p><pre><code class="js">// 无效语法：42.toFixed( 3 ); // SyntaxError// 下面的语法都有效：(42).toFixed( 3 ); // &quot;42.000&quot;0.42.toFixed( 3 ); // &quot;0.420&quot;42..toFixed( 3 ); // &quot;42.000&quot; 请注意多出来的点42 .toFixed( 3 ); // &quot;42.000&quot; 请注意空格</code></pre><p>可以用指数形式来表示比较大的数字，特别大和特别小的数字默认用指数格式显示，与 <code>toExponential()</code> 函数的输出结果相同</p><pre><code class="js">var a = 5E10;a; // 50000000000a.toExponential(); // &quot;5e+10&quot;var b = a * a;b; // 2.5e+21var c = 1 / a;c; // 2e-11</code></pre><h5 id="整数的安全范围"><a href="#整数的安全范围" class="headerlink" title="整数的安全范围"></a>整数的安全范围</h5><p>能够被“安全”呈现的最大整数是 2^53 - 1，即 <code>9007199254740991</code>，在 ES6 中被定义为<strong>Number.MAX_SAFE_INTEGER。</strong></p><p>最小整数是 <code>-9007199254740991</code>，在 ES6 中被定义为 <strong>Number.MIN_SAFE_INTEGER。</strong></p><h5 id="void-运算符"><a href="#void-运算符" class="headerlink" title="void 运算符"></a>void 运算符</h5><p>我们可以使用<code>void 0</code>来获得<code>undefined</code></p><p>void加在表达式之前可以让表达式返回<code>undefined</code></p><pre><code class="js">return void doSomething();// -&gt; 等同于doSomething();return;</code></pre><h5 id="特殊的数字"><a href="#特殊的数字" class="headerlink" title="特殊的数字"></a>特殊的数字</h5><p><code>NaN</code>意指“不是一个数字”，typeof检测仍返回”number”，不过它不和任何东西相等，即使是<code>==</code>，可以使用<code>Number.isNaN()</code>来进行判断</p><blockquote><p>不要使用全局<code>isNaN()</code>，它有BUG！</p></blockquote><p>js使用有限数字表示法，所以一旦计算结果溢出为“无穷数”，就无法再得到“有穷数”</p><p>js中存在<code>-0</code>值，是因为在一些应用中，符号位可能会代表其他信息，譬如方向，如果一个值为0的变量失去了它的符号位，那么方向信息可能就会丢失，日常代码中几乎不会遇见</p><p>ES6中新加入了一个工具方法<code>Object.is()</code>来判断两个值是否绝对相等，可以用来处理所有特殊情况</p><pre><code class="js">var a = 2 / &quot;foo&quot;;var b = -3 * 0;Object.is( a, NaN ); // trueObject.is( b, -0 ); // trueObject.is( b, 0 ); // false</code></pre><blockquote><p>能使用<code>==</code>或者<code>===</code>就不要使用<code>Object.is()</code>，因为前者效率更高</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>语言</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>前端面试题总结</title>
+    <link href="undefined2020/10/interview2/"/>
+    <url>2020/10/interview2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="百度提前批面试一面"><a href="#百度提前批面试一面" class="headerlink" title="百度提前批面试一面"></a>百度提前批面试一面</h1><h2 id="如何清除浮动"><a href="#如何清除浮动" class="headerlink" title="如何清除浮动"></a>如何清除浮动</h2><p><a href="https://blog.csdn.net/xiaxiaoxian/article/details/85712035" target="_blank" rel="noopener">链接</a></p><p>给浮动元素的父元素添加高度</p><p>clear:both;</p><p>伪元素清除浮动</p><p>给父元素使用overflow:hidden;</p><p>br标签清浮动</p><h2 id="px、em、rem说一下？"><a href="#px、em、rem说一下？" class="headerlink" title="px、em、rem说一下？"></a>px、em、rem说一下？</h2><p>em：相对于父级的字体大小</p><p>rem: 相对于根节点的字体大小</p><p>浏览器默认字体大小16px</p><h2 id="如何实现一个元素水平、垂直居中"><a href="#如何实现一个元素水平、垂直居中" class="headerlink" title="如何实现一个元素水平、垂直居中"></a>如何实现一个元素水平、垂直居中</h2><p>position 然后改margin</p><p>position 然后<code>transform:translate(-50%,-50%);</code></p><p>position 上下左右定位0，然后<code>margin:auto;</code></p><p>flex</p><p>单行文字：height撑满text-align:center;</p><h2 id="CSS选择第一个元素、最后一个元素、3的整数倍子元素"><a href="#CSS选择第一个元素、最后一个元素、3的整数倍子元素" class="headerlink" title="CSS选择第一个元素、最后一个元素、3的整数倍子元素"></a>CSS选择第一个元素、最后一个元素、3的整数倍子元素</h2><p>伪类选择器<a href="https://www.cnblogs.com/yanggeng/p/11188285.html" target="_blank" rel="noopener">链接</a></p><table><thead><tr><th align="center">n</th><th align="center">2n+1</th><th align="center">4n+1</th><th align="center">4n+4</th><th align="center">4n</th><th align="center">5n-2</th><th align="center">-n+3</th></tr></thead><tbody><tr><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="center">4</td><td align="center">-</td><td align="center">-</td><td align="center">3</td></tr><tr><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">8</td><td align="center">4</td><td align="center">3</td><td align="center">2</td></tr><tr><td align="center">2</td><td align="center">5</td><td align="center">9</td><td align="center">12</td><td align="center">8</td><td align="center">8</td><td align="center">1</td></tr><tr><td align="center">3</td><td align="center">7</td><td align="center">13</td><td align="center">16</td><td align="center">12</td><td align="center">13</td><td align="center">-</td></tr><tr><td align="center">4</td><td align="center">9</td><td align="center">17</td><td align="center">20</td><td align="center">16</td><td align="center">18</td><td align="center">-</td></tr><tr><td align="center">5</td><td align="center">11</td><td align="center">21</td><td align="center">24</td><td align="center">20</td><td align="center">23</td><td align="center">-</td></tr></tbody></table><h2 id="说一下伪类和伪元素的区别"><a href="#说一下伪类和伪元素的区别" class="headerlink" title="说一下伪类和伪元素的区别"></a>说一下伪类和伪元素的区别</h2><p><a href="https://blog.csdn.net/guangtouhan/article/details/88074008?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">链接</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements" target="_blank" rel="noopener">官方文档</a></p><p>“伪元素”和“伪类”都带一个“伪”字，那是他们的共同点，所以，他们的区别就是一个本质上是元素，另一个本质上是类。</p><p>有没有创建一个文档树之外的元素</p><p>① 伪类是以1个冒号(:)作为前缀被添加到选择器末尾的关键字；伪元素是以2个冒号(::)作为前缀被添加到选择器末尾的关键字</p><p>② 如果伪类你用了2个冒号，不会报错，但也不会生效，比如 ::hover；但伪元素你用1个或2个冒号不会报错且有效，比如，:before，::before</p><h2 id="说一下原型和原型链"><a href="#说一下原型和原型链" class="headerlink" title="说一下原型和原型链"></a>说一下原型和原型链</h2><p><a href="https://www.cnblogs.com/Joe-and-Joan/p/10692844.html" target="_blank" rel="noopener">链接</a></p><p><img src="/img/interview2-proto.png" alt=""></p><h2 id="说一下闭包以及应用场景"><a href="#说一下闭包以及应用场景" class="headerlink" title="说一下闭包以及应用场景"></a>说一下闭包以及应用场景</h2><p><a href="https://www.cnblogs.com/star-studio/archive/2011/06/22/2086493.html" target="_blank" rel="noopener">链接</a></p><h2 id="说一下防抖和节流"><a href="#说一下防抖和节流" class="headerlink" title="说一下防抖和节流"></a>说一下防抖和节流</h2><p>防抖：就是将一段时间内连续的多次触发转化为一次触发</p><p>节流：减少一段时间内触发的频率</p><p><a href="https://blog.csdn.net/muge1161105403/article/details/106649675/" target="_blank" rel="noopener">链接</a></p><h2 id="说一下事件循环"><a href="#说一下事件循环" class="headerlink" title="说一下事件循环"></a>说一下事件循环</h2><p><a href="https://www.cnblogs.com/dong-xu/p/7000163.html" target="_blank" rel="noopener">链接</a></p><p><a href="https://blog.csdn.net/LuckyWinty/article/details/104765786/" target="_blank" rel="noopener">链接</a></p><h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别?"></a>TCP和UDP的区别?</h2><p><a href="https://blog.csdn.net/qq_34624951/article/details/82669444" target="_blank" rel="noopener">链接</a></p><h3 id="为什么说UDP是不可靠的？"><a href="#为什么说UDP是不可靠的？" class="headerlink" title="为什么说UDP是不可靠的？"></a>为什么说UDP是不可靠的？</h3><h3 id="说一下TCP报文头部的结构"><a href="#说一下TCP报文头部的结构" class="headerlink" title="说一下TCP报文头部的结构"></a>说一下TCP报文头部的结构</h3><h2 id="说一下Promise的优缺点？"><a href="#说一下Promise的优缺点？" class="headerlink" title="说一下Promise的优缺点？"></a>说一下Promise的优缺点？</h2><p><strong>优点</strong>：解决回调地狱</p><p><strong>缺点：</strong></p><p>Promise无法取消，一旦新建就会立即执行</p><p>不设置回调函数，Promise内部抛出的错误无法反应到外部</p><p>当处于pending状态时，无法得知目前处于哪一阶段（刚刚开始还是即将完成） </p><h2 id="简单实现一下Promise"><a href="#简单实现一下Promise" class="headerlink" title="简单实现一下Promise"></a>简单实现一下Promise</h2><p><a href="https://www.jianshu.com/p/51c65b314704" target="_blank" rel="noopener">链接</a></p><h2 id="JS快速排序"><a href="#JS快速排序" class="headerlink" title="JS快速排序"></a>JS快速排序</h2><p><a href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html" target="_blank" rel="noopener">链接</a></p><h2 id="简单实现一下Promise-all"><a href="#简单实现一下Promise-all" class="headerlink" title="简单实现一下Promise.all()"></a>简单实现一下Promise.all()</h2><pre><code class="js">function isPromise(obj) {    return !!obj &amp;&amp; (typeof obj === &#39;object&#39; || typeof obj === &#39;function&#39;) &amp;&amp; typeof obj.then === &#39;function&#39;;  }const myPromiseAll = (arr)=&gt;{    let result = [];    return new Promise((resolve,reject)=&gt;{        for(let i = 0;i &lt; arr.length;i++){            if(isPromise(arr[i])){                arr[i].then((data)=&gt;{                    result[i] = data;                    if(result.length === arr.length){                        resolve(result)                    }                },reject)            }else{                result[i] = arr[i];            }        }        })}</code></pre><h1 id="小米前端面试"><a href="#小米前端面试" class="headerlink" title="小米前端面试"></a>小米前端面试</h1><h2 id="‘dskfjoihtgbnigkwnfndng’-统计每个字符出现了多少次"><a href="#‘dskfjoihtgbnigkwnfndng’-统计每个字符出现了多少次" class="headerlink" title="‘dskfjoihtgbnigkwnfndng’ 统计每个字符出现了多少次"></a>‘dskfjoihtgbnigkwnfndng’ 统计每个字符出现了多少次</h2><pre><code class="js">let str_list = &#39;dskfjoihtgbnigkwnfndng&#39;let obj = {};for(let i = 0; i &lt; str_list.length; i++){    key = str_list[i];    if(obj[key]) obj[key]++;    else obj[key] = 1;}for(let key in obj) {    console.log(`${key}: ${obj[key]}`)}</code></pre><h2 id="简单实现一下快速排序"><a href="#简单实现一下快速排序" class="headerlink" title="简单实现一下快速排序"></a>简单实现一下快速排序</h2><pre><code class="js">const quickSort = (arr) =&gt; {　if (arr.length &lt;= 1) { return arr; }    let pivotIndex = Math.floor(arr.length / 2);    let pivot = arr.splice(pivotIndex, 1)[0];    let left = [], right = [];　for (let i = 0; i &lt; arr.length; i++){　　if (arr[i] &lt; pivot) left.push(arr[i]);        else right.push(arr[i]);    　}　return quickSort(left).concat([pivot], quickSort(right));};</code></pre><h2 id="简单写一个组合继承"><a href="#简单写一个组合继承" class="headerlink" title="简单写一个组合继承"></a>简单写一个组合继承</h2><pre><code class="js">function Father(age) {    this.age = age}Father.prototype.getAge = function() {    console.log(this.age)}function Son(name, age) {    Father.call(this, age);    this.name = name}Son.prototype = Object.create(Father.prototype);Son.prototype.constructor =Son;Son.prototype.getName = function() {    console.log(this.name)}</code></pre><h2 id="简单实现一下防抖"><a href="#简单实现一下防抖" class="headerlink" title="简单实现一下防抖"></a>简单实现一下防抖</h2><pre><code class="js">function debounce(func, time) {    let timer = null    return () =&gt; {        clearTimeout(timer)        timer = setTimeout(() =&gt; {            func()        }, time)    }}</code></pre><h2 id="元素垂直居中"><a href="#元素垂直居中" class="headerlink" title="元素垂直居中"></a>元素垂直居中</h2><pre><code class="js">position：absolute;top:50%;left: 50;transform: translate(-50%,-50%);position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: auto;父元素display: flex;align-items: center;justify-content: center;</code></pre><h2 id="综合评价"><a href="#综合评价" class="headerlink" title="综合评价"></a>综合评价</h2><p>优秀，有足够的代码能力和的充足的项目经验</p><ol><li>Q1<br>考察了计算机数据结构问题、快排问题以及防抖问题，基础较好，思维灵活。做过自己的课表项目，对于用户体验和UI设计有自己的理解，具有很强的独立完成项目的能力，可以在线演示并体验链接：<a href="https://cherry.lacus.site" target="_blank" rel="noopener">https://cherry.lacus.site</a>（用户名2020，无密码），很早就开始关注小爱课程表项目，也是课程表开发者之一，对于前端项目的规划和开发有自己的想法，善于与人合作共同完成项目，另有自己的博客，经常分享自己学过的知识体会，链接：<a href="https://lacus.site">https://lacus.site</a>，动手能力强，曾自己购买服务器学习Docker等服务端技能</li><li>Q2<br>喜欢挑战困难，曾在以前的实习过程中对项目进行前后端分离重构并取得成功，善于从代码中发掘成就感，对于写代码具有很高的热情</li><li>Q3<br>适应能力很强，面试过程中并未出现紧张等情况，学习能力突出，能够很快理解问题并得出相应的答案，面试过程中整体沟通流畅，思维清晰</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试</category>
+      
+      <category>题库</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>基础</tag>
+      
+      <tag>面试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Vue-router学习笔记</title>
+    <link href="undefined2020/08/vue-router/"/>
+    <url>2020/08/vue-router/</url>
+    
+    <content type="html"><![CDATA[<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>vue-router通过hash与History interface两种方式实现前端路由，更新视图但不重新请求页面”是前端路由原理的核心之一，目前在浏览器环境中这一功能的实现主要有两种方式</p><ul><li>hash 利用url里边的<code>#</code></li><li><code>history interface</code> 在HTML5中新增的方法</li></ul><blockquote><p>默认是 <code>hash</code> ,浏览器如果不支持就是<code>history interface</code></p></blockquote><h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><pre><code class="js">// 根据mode确定history实际的类并实例化switch (mode) {  case &#39;history&#39;:    this.history = new HTML5History(this, options.base)    break  case &#39;hash&#39;:    this.history = new HashHistory(this, options.base, this.fallback)    break  case &#39;abstract&#39;:    this.history = new AbstractHistory(this, options.base)    break  default:    if (process.env.NODE_ENV !== &#39;production&#39;) {      assert(false, `invalid mode: ${mode}`)    }}</code></pre><h1 id="两种模式的介绍"><a href="#两种模式的介绍" class="headerlink" title="两种模式的介绍"></a>两种模式的介绍</h1><h2 id="mode-’hash’，多了-“-”"><a href="#mode-’hash’，多了-“-”" class="headerlink" title="mode:’hash’，多了 “ # ”"></a>mode:’hash’，多了 “ # ”</h2><pre><code>http://localhost:8080/#/recommend</code></pre><h3 id="HashHistory-push"><a href="#HashHistory-push" class="headerlink" title="HashHistory.push()"></a>HashHistory.push()</h3><p>从设置到路由改变的过程<code>$router.push() --&gt; HashHistory.push() --&gt; History.transitionTo() --&gt; History.updateRoute() --&gt; {app._route = route} --&gt; vm.render()</code></p><pre><code class="js">$router.push() //调用方法HashHistory.push() //根据hash模式调用,设置hash并添加到浏览器历史记录（添加到栈顶）（window.location.hash= XXX）History.transitionTo() //监测更新，更新则调用History.updateRoute()History.updateRoute() //更新路由{app._route= route} //替换当前app路由vm.render() //更新视图</code></pre><blockquote><p>看上去就是手动更新，控制路由变化</p></blockquote><h3 id="HashHistory-replace"><a href="#HashHistory-replace" class="headerlink" title="HashHistory.replace()"></a>HashHistory.replace()</h3><p>源码</p><pre><code class="ts">replace (location: RawLocation, onComplete?: Function, onAbort?: Function) {  this.transitionTo(location, route =&gt; {    replaceHash(route.fullPath)    onComplete &amp;&amp; onComplete(route)  }, onAbort)}// 截取路由#之前的内容然后将新路由加在后边进行跳转function replaceHash (path) {  const i = window.location.href.indexOf(&#39;#&#39;)  window.location.replace(    window.location.href.slice(0, i &gt;= 0 ? i : 0) + &#39;#&#39; + path  )}</code></pre><h2 id="mode-’history’"><a href="#mode-’history’" class="headerlink" title="mode:’history’"></a>mode:’history’</h2><pre><code>http://localhost:8080/recommend</code></pre><p>History interface是浏览器历史记录栈提供的接口，通过back(), forward(), go()等方法，我们可以<strong>读取浏览器历史记录栈的信息</strong>，进行各种跳转操作。</p><p>从HTML5开始，History interface有进一步修炼：pushState(), replaceState() 这下不仅是读取了，还可以<strong>对浏览器历史记录栈进行修改</strong>：</p><pre><code class="js">window.history.pushState(stateObject, title, URL)window.history.replaceState(stateObject, title, URL)// stateObject: 当浏览器跳转到新的状态时，将触发popState事件，该事件将携带这个stateObject参数的副本// title: 所添加记录的标题// URL: 所添加记录的URL</code></pre><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>pushState设置的新URL可以是与当前URL同源的任意URL；而hash只可修改#后面的部分，故只可设置与当前同文档的URL</p><p>pushState通过stateObject可以添加任意类型的数据到记录中；而hash只可添加短字符串</p><p>pushState可额外设置title属性供后续使用</p><p>history模式则会将URL修改得就和正常请求后端的URL一样,如后端没有配置对应/user/id的路由处理，则会返回404错误</p><p>相关链接：<a href="https://segmentfault.com/a/1190000014120456?utm_source=tag-newest" target="_blank" rel="noopener">彻底搞懂路由跳转</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>vue</category>
+      
+      <category>router</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vue</tag>
+      
+      <tag>router</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>绿宝书学习笔记10</title>
     <link href="undefined2020/07/green10/"/>
     <url>2020/07/green10/</url>
@@ -451,37 +542,6 @@
       <tag>js</tag>
       
       <tag>高级</tag>
-      
-      <tag>面试</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>前端面试题总结——牛客网</title>
-    <link href="undefined2020/07/interview2/"/>
-    <url>2020/07/interview2/</url>
-    
-    <content type="html"><![CDATA[<h1 id="百度提前批面试一面"><a href="#百度提前批面试一面" class="headerlink" title="百度提前批面试一面"></a>百度提前批面试一面</h1><h2 id="如何清除浮动"><a href="#如何清除浮动" class="headerlink" title="如何清除浮动"></a>如何清除浮动</h2><p><a href="https://blog.csdn.net/xiaxiaoxian/article/details/85712035" target="_blank" rel="noopener">链接</a></p><p>给浮动元素的父元素添加高度</p><p>clear:both;</p><p>伪元素清除浮动</p><p>给父元素使用overflow:hidden;</p><p>br标签清浮动</p><h2 id="px、em、rem说一下？"><a href="#px、em、rem说一下？" class="headerlink" title="px、em、rem说一下？"></a>px、em、rem说一下？</h2><p>em：相对于父级的字体大小</p><p>rem: 相对于根节点的字体大小</p><p>浏览器默认字体大小16px</p><h2 id="如何实现一个元素水平、垂直居中"><a href="#如何实现一个元素水平、垂直居中" class="headerlink" title="如何实现一个元素水平、垂直居中"></a>如何实现一个元素水平、垂直居中</h2><p>position 然后改margin</p><p>position 然后<code>transform:translate(-50%,-50%);</code></p><p>position 上下左右定位0，然后<code>margin:auto;</code></p><p>flex</p><p>单行文字：height撑满text-align:center;</p><h2 id="CSS选择第一个元素、最后一个元素、3的整数倍子元素"><a href="#CSS选择第一个元素、最后一个元素、3的整数倍子元素" class="headerlink" title="CSS选择第一个元素、最后一个元素、3的整数倍子元素"></a>CSS选择第一个元素、最后一个元素、3的整数倍子元素</h2><p>伪类选择器<a href="https://www.cnblogs.com/yanggeng/p/11188285.html" target="_blank" rel="noopener">链接</a></p><table><thead><tr><th align="center">n</th><th align="center">2n+1</th><th align="center">4n+1</th><th align="center">4n+4</th><th align="center">4n</th><th align="center">5n-2</th><th align="center">-n+3</th></tr></thead><tbody><tr><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="center">4</td><td align="center">-</td><td align="center">-</td><td align="center">3</td></tr><tr><td align="center">1</td><td align="center">3</td><td align="center">5</td><td align="center">8</td><td align="center">4</td><td align="center">3</td><td align="center">2</td></tr><tr><td align="center">2</td><td align="center">5</td><td align="center">9</td><td align="center">12</td><td align="center">8</td><td align="center">8</td><td align="center">1</td></tr><tr><td align="center">3</td><td align="center">7</td><td align="center">13</td><td align="center">16</td><td align="center">12</td><td align="center">13</td><td align="center">-</td></tr><tr><td align="center">4</td><td align="center">9</td><td align="center">17</td><td align="center">20</td><td align="center">16</td><td align="center">18</td><td align="center">-</td></tr><tr><td align="center">5</td><td align="center">11</td><td align="center">21</td><td align="center">24</td><td align="center">20</td><td align="center">23</td><td align="center">-</td></tr></tbody></table><h2 id="说一下伪类和伪元素的区别"><a href="#说一下伪类和伪元素的区别" class="headerlink" title="说一下伪类和伪元素的区别"></a>说一下伪类和伪元素的区别</h2><p><a href="https://blog.csdn.net/guangtouhan/article/details/88074008?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">链接</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements" target="_blank" rel="noopener">官方文档</a></p><p>“伪元素”和“伪类”都带一个“伪”字，那是他们的共同点，所以，他们的区别就是一个本质上是元素，另一个本质上是类。</p><p>有没有创建一个文档树之外的元素</p><p>① 伪类是以1个冒号(:)作为前缀被添加到选择器末尾的关键字；伪元素是以2个冒号(::)作为前缀被添加到选择器末尾的关键字</p><p>② 如果伪类你用了2个冒号，不会报错，但也不会生效，比如 ::hover；但伪元素你用1个或2个冒号不会报错且有效，比如，:before，::before</p><h2 id="说一下原型和原型链"><a href="#说一下原型和原型链" class="headerlink" title="说一下原型和原型链"></a>说一下原型和原型链</h2><p><a href="https://www.cnblogs.com/Joe-and-Joan/p/10692844.html" target="_blank" rel="noopener">链接</a></p><p><img src="/img/interview2-proto.png" alt=""></p><h2 id="说一下闭包以及应用场景"><a href="#说一下闭包以及应用场景" class="headerlink" title="说一下闭包以及应用场景"></a>说一下闭包以及应用场景</h2><p><a href="https://www.cnblogs.com/star-studio/archive/2011/06/22/2086493.html" target="_blank" rel="noopener">链接</a></p><h2 id="说一下防抖和节流"><a href="#说一下防抖和节流" class="headerlink" title="说一下防抖和节流"></a>说一下防抖和节流</h2><p>防抖：就是将一段时间内连续的多次触发转化为一次触发</p><p>节流：减少一段时间内触发的频率</p><p><a href="https://blog.csdn.net/muge1161105403/article/details/106649675/" target="_blank" rel="noopener">链接</a></p><h2 id="说一下事件循环"><a href="#说一下事件循环" class="headerlink" title="说一下事件循环"></a>说一下事件循环</h2><p><a href="https://www.cnblogs.com/dong-xu/p/7000163.html" target="_blank" rel="noopener">链接</a></p><p><a href="https://blog.csdn.net/LuckyWinty/article/details/104765786/" target="_blank" rel="noopener">链接</a></p><h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别?"></a>TCP和UDP的区别?</h2><p><a href="https://blog.csdn.net/qq_34624951/article/details/82669444" target="_blank" rel="noopener">链接</a></p><h3 id="为什么说UDP是不可靠的？"><a href="#为什么说UDP是不可靠的？" class="headerlink" title="为什么说UDP是不可靠的？"></a>为什么说UDP是不可靠的？</h3><h3 id="说一下TCP报文头部的结构"><a href="#说一下TCP报文头部的结构" class="headerlink" title="说一下TCP报文头部的结构"></a>说一下TCP报文头部的结构</h3><h2 id="说一下Promise的优缺点？"><a href="#说一下Promise的优缺点？" class="headerlink" title="说一下Promise的优缺点？"></a>说一下Promise的优缺点？</h2><p><strong>优点</strong>：解决回调地狱</p><p><strong>缺点：</strong></p><p>Promise无法取消，一旦新建就会立即执行</p><p>不设置回调函数，Promise内部抛出的错误无法反应到外部</p><p>当处于pending状态时，无法得知目前处于哪一阶段（刚刚开始还是即将完成） </p><h2 id="简单实现一下Promise"><a href="#简单实现一下Promise" class="headerlink" title="简单实现一下Promise"></a>简单实现一下Promise</h2><p><a href="https://www.jianshu.com/p/51c65b314704" target="_blank" rel="noopener">链接</a></p><h2 id="JS快速排序"><a href="#JS快速排序" class="headerlink" title="JS快速排序"></a>JS快速排序</h2><p><a href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html" target="_blank" rel="noopener">链接</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>面试</category>
-      
-      <category>题库</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-      <tag>基础</tag>
       
       <tag>面试</tag>
       

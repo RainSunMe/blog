@@ -2,8 +2,8 @@
 title: Vue-router学习笔记
 tags: [vue, router]
 categories: [框架, vue, router]
-index_img: /img/ts.jpg
-banner_img: /img/ts.jpg
+index_img: /img/vue-router-title.png
+banner_img: /img/dandelion.png
 date: 2020-08-11 14:17:00
 ---
 # 原理 

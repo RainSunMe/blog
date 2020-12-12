@@ -198,6 +198,259 @@ BSON（Binary JSON）格式存储数据，类似于JSON
     
     
       <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/11/js3/" target="_self">
+          <img src="/img/js-m-title.png" alt="你不知道的JavaScript（中）学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/js3/">
+        <p class="h4 index-header">你不知道的JavaScript（中）学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">JavaScript类型和语法类型内置类型JS有七种内置类型空值(null)、未定义(undefined)、布尔值(boolean)、数字(Number)、字符串(String)、对象(Object)、符号(Symbol)
+typeof检测null会得到”object”, 使用(!a &amp;&amp; typeof a === &#39;object&#39;)即可得到正确的结果
+typeof检测函数会得到”function” ，但是函数是object的子类型，具体来说函数是“可调用对象”。
+typeof检测数组会得到”object”，数组也是object的子类型。
+值和类型JS的变量是没有类型的，只有值才有，变量可以随时持有任何类型的值
+对于未定义变量的检测typeof检测对于未定义变量也返回undefined，这个机制可以帮助我们检测一个全局变量是否存在
+if (a) {
+    ... // ReferenceError: a is not defined
+}
+
+if (typeof a !== undefined) {
+    ... // OK
+}
+值数组创建的”稀疏数组</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
+          
+            <a href="/categories/js">js</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/10/interview2/" target="_self">
+          <img src="/img/interview-title.png" alt="前端面试题总结" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/interview2/">
+        <p class="h4 index-header">前端面试题总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">百度提前批面试一面如何清除浮动链接
+给浮动元素的父元素添加高度
+clear:both;
+伪元素清除浮动
+给父元素使用overflow:hidden;
+br标签清浮动
+px、em、rem说一下？em：相对于父级的字体大小
+rem: 相对于根节点的字体大小
+浏览器默认字体大小16px
+如何实现一个元素水平、垂直居中position 然后改margin
+position 然后transform:translate(-50%,-50%);
+position 上下左右定位0，然后margin:auto;
+flex
+单行文字：height撑满text-align:center;
+CSS选择第一个元素、最后一个元素、3的整数倍子元素伪类选择器链接
+
+
+
+n
+2n+1
+4n+1
+4n+4
+4n
+5n-2
+-n+3
+
+
+
+0
+1
+1
+4
+-
+-
+3
+
+
+1
+3
+5
+8
+4
+3
+2
+
+
+2
+5
+9
+12
+8
+8
+1
+
+
+3
+7
+13
+16
+12
+13
+-
+
+
+4
+9
+17
+20
+16
+18
+-
+
+
+5
+11
+21
+24
+20
+23
+-
+
+
+说一下伪类和伪元素的区别链接
+官方文档
+“伪元素”和“伪类”都带一</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
+          
+            <a href="/categories/%E9%A2%98%E5%BA%93">题库</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
+          
+            <a href="/tags/%E9%9D%A2%E8%AF%95">面试</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/08/vue-router/" target="_self">
+          <img src="/img/vue-router-title.png" alt="Vue-router学习笔记" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/vue-router/">
+        <p class="h4 index-header">Vue-router学习笔记</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">原理vue-router通过hash与History interface两种方式实现前端路由，更新视图但不重新请求页面”是前端路由原理的核心之一，目前在浏览器环境中这一功能的实现主要有两种方式
+
+hash 利用url里边的#
+history interface 在HTML5中新增的方法
+
+
+默认是 hash ,浏览器如果不支持就是history interface
+
+源码// 根据mode确定history实际的类并实例化
+switch (mode) {
+  case &#39;history&#39;:
+    this.history = new HTML5History(this, options.base)
+    break
+  case &#39;hash&#39;:
+    this.history = new HashHistory(this, options.base, this.fallback)
+    break
+  case &#39;abstract&#39;:
+    this.history = new AbstractHistory(this, opt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-11&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%A1%86%E6%9E%B6">框架</a>&nbsp;
+          
+            <a href="/categories/vue">vue</a>&nbsp;
+          
+            <a href="/categories/router">router</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/vue">vue</a>&nbsp;
+          
+            <a href="/tags/router">router</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
         <a href="/2020/07/green10/" target="_self">
           <img src="/img/green-title.png" alt="绿宝书学习笔记10" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
@@ -512,226 +765,11 @@ __proto__属性反映了我们了解和影响JS内部运行逻辑的迫切需求
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/green6/" target="_self">
-          <img src="/img/green-title.png" alt="绿宝书学习笔记6" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/green6/">
-        <p class="h4 index-header">绿宝书学习笔记6</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.2.1.2 构造复制？写时复制？还是读遍历？假设每构造一个实例，都从原型中复制出一个实例来，新的实例占用了和原型相同的内存空间，这确实可以使obj1 obj2等与它们的原型“完全一致”，但是也非常的不经济——因为内存的占用会急剧增加
-另一个策略来自一种欺骗系统的技术：写时复制。这种欺骗的典型示例就是操作系统中的动态链接库(DDL)，它的内存中总是写时复制的，这种机制先指明obj1和obj2与原型的引用关系，系统将这种关系理解为“两个对象都等同于它们的原型”，读的时候直接去读原型，接下来，写对象的属性的时候，我们就复制出原型的映像出来，并使以后的操作指向该映像就行了，优点是：之后第一次写的时候会用一些代码来分配内存，之后就不会有这些开销了，因为访问映像和访问原型的效率是一样的，但是对于经常读写的系统中，这种方法并不比上一种更经济
-JS采用第三种方法：把写复制的粒度从整个原型变成了成员。这种方法是：仅当写某个实例的成员时，才将成员的信息复制到实例映像中。这样一来，在读取该对象的时候，仍然和上一种一样，但是在写的时候，实例会产生一个写的属性值，放在实例的成员列表中，所以现在对象仍然是一个</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
-          
-            <a href="/categories/js">js</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/green5/" target="_self">
-          <img src="/img/green-title.png" alt="绿宝书学习笔记5" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/green5/">
-        <p class="h4 index-header">绿宝书学习笔记5</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">3.1.3 对象成员JS中的对象是属性包，属性即所谓的对象成员，当我们分别讨论对象实例和类时，属性和类成员是两个概念，由于类本身也是函数类型的对象，所以当我们统一用”对象“这个概念来讲述的时候，其成员仍被称为属性
-对象成员有三种性质，称为”可读写“、”可枚举“和”可重置”
-对象成员可以是自有的也可以是继承的，所谓继承的就是指对象的父类或者祖先类原型上具有该成员，子类对象可以用相同的名字重新声明该成员，称为“覆盖”或者“重写”
-3.1.3.1 成员的列举以及可列举性对象成员是否可列举被称为成员的可列举性，当某个成员不存在或者不可列举时，对该对象成员调用propertyIsEnumerable()方法将返回false，比较常见的情况是，JS对象的某些特定成员是被设置为隐藏的，因此不能枚举，例如：
-var obj = new Object()
-
-// 不存在a所以返回false
-console.log(obj.propertyIsEnumerable(a)) // false
-
-// 数组的length也是隐藏的
-console.log([].propertyIsEnumerable(len</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-14&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
-          
-            <a href="/categories/js">js</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-      <div class="col-12 col-md-4 m-auto">
-        <a href="/2020/07/green4/" target="_self">
-          <img src="/img/green-title.png" alt="绿宝书学习笔记4" class="img-fluid rounded z-depth-3 index-thumbnails">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/green4/">
-        <p class="h4 index-header">绿宝书学习笔记4</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2.7 运算符的二义性存在二义性的语法元素
-
-
-
-运算符
-含义
-其他含义
-
-
-
-+
-增值运算符正值运算符链接运算符
-数值字面量声明(正值、负值或指数形式)
-
-
-( )
-函数调用运算符分组运算符
-new运算符的形式参数表(某些语句中的语法符号)(分组运算符常用作强制优先级)
-
-
-?:
-条件运算符
-:号有声明标签的含义:号有声明switch分支的含义:号有声明对象成员的含义
-
-
-,
-连续运算符
-参数分隔符对象、数组声明分隔符
-
-
-[]
-解构赋值数组下标对象成员存取
-数组字面量声明
-
-
-*
-幂运算符乘法运算符yield委托
-生成器函数声明
-
-
-{ }
-解构赋值
-复合语句函数的代码体字面量风格的对象声明
-
-
-;
-
-空语句语句分隔符类声明分隔符(分号可以被回车和文末符代替)
-
-
-in
-属性检查
-循环语句的语法元素
-
-
-async
-
-箭头函数声明有语法歧义
-
-
-2.7.1 加号”+”的二义性加号可以表示字符串链接、数字取正值的一元运算、数值表达式的求和运算，字符串和数字求和容易出现二义性
-如果表达式中存在字符串则优先按字符串链接进行运算
-当加号执行的是值运算的时候，当对象x参与运算时，将调用x.v</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-13&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>&nbsp;
-          
-            <a href="/categories/js">js</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/js">js</a>&nbsp;
-          
-            <a href="/tags/%E5%9F%BA%E7%A1%80">基础</a>&nbsp;
-          
-            <a href="/tags/%E7%BB%BF%E5%AE%9D%E4%B9%A6">绿宝书</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

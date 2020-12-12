@@ -1,10 +1,10 @@
 ---
-title: 前端面试题总结——牛客网
+title: 前端面试题总结
 tags: [js, 基础, 面试]
 categories: [面试, 题库]
 index_img: /img/interview-title.png
 banner_img: /img/interview.jpg
-date: 2020-07-07 13:48:00
+date: 2020-10-07 13:48:00
 ---
 # 百度提前批面试一面
 ## 如何清除浮动
@@ -134,10 +134,9 @@ const myPromiseAll = (arr)=>{
 }
 ```
 
-
-
-
-1. 'dskfjoihtgbnigkwnfndng' 统计每个字符出现了多少次
+# 小米前端面试
+## 'dskfjoihtgbnigkwnfndng' 统计每个字符出现了多少次
+```js
 let str_list = 'dskfjoihtgbnigkwnfndng'
 let obj = {};
 for(let i = 0; i < str_list.length; i++)
@@ -149,9 +148,10 @@ for(let i = 0; i < str_list.length; i++)
 for(let key in obj) {
 	console.log(`${key}: ${obj[key]}`)
 }
+```
 
-
-2. 简单实现一下快速排序
+## 简单实现一下快速排序
+```js
 const quickSort = (arr) => {
 　if (arr.length <= 1) { return arr; }
 	let pivotIndex = Math.floor(arr.length / 2);
@@ -163,8 +163,10 @@ const quickSort = (arr) => {
 　}
 　return quickSort(left).concat([pivot], quickSort(right));
 };
+```
 
-3. 简单写一个组合继承
+## 简单写一个组合继承
+```js
 function Father(age) {
 	this.age = age
 }
@@ -180,9 +182,10 @@ Son.prototype.constructor =Son;
 Son.prototype.getName = function() {
 	console.log(this.name)
 }
+```
 
-
-4. 简单实现一下防抖
+## 简单实现一下防抖
+```js
 function debounce(func, time) {
 	let timer = null
 	return () => {
@@ -192,8 +195,9 @@ function debounce(func, time) {
 		}, time)
 	}
 }
-
-5. 元素垂直居中
+```
+## 元素垂直居中
+```js
 position：absolute;
 top:50%;
 left: 50;
@@ -210,12 +214,12 @@ margin: auto;
 display: flex;
 align-items: center;
 justify-content: center;
+```
 
-
-综合评价
+## 综合评价
 优秀，有足够的代码能力和的充足的项目经验
 1. Q1
-考察了计算机数据结构问题、快排问题以及防抖问题，基础较好，思维灵活。做过自己的课表项目，对于用户体验和UI设计有自己的理解，具有很强的独立完成项目的能力，可以在线演示并体验链接：https://cherry.lacus.site（用户名2020，无密码），很早就开始关注小爱课程表项目，也是课程表开发者之一，对于前端项目的规划和开发有自己的想法，善于与人合作共同完成项目，另有自己的博客，经常分享自己学过的知识体会，链接：https://lacus.site，动手能力强，曾自己购买服务器学习Docker等服务端技能
+考察了计算机数据结构问题、快排问题以及防抖问题，基础较好，思维灵活。做过自己的课表项目，对于用户体验和UI设计有自己的理解，具有很强的独立完成项目的能力，可以在线演示并体验链接：[https://cherry.lacus.site](https://cherry.lacus.site)（用户名2020，无密码），很早就开始关注小爱课程表项目，也是课程表开发者之一，对于前端项目的规划和开发有自己的想法，善于与人合作共同完成项目，另有自己的博客，经常分享自己学过的知识体会，链接：[https://lacus.site](https://lacus.site)，动手能力强，曾自己购买服务器学习Docker等服务端技能
 2. Q2
 喜欢挑战困难，曾在以前的实习过程中对项目进行前后端分离重构并取得成功，善于从代码中发掘成就感，对于写代码具有很高的热情
 3. Q3
